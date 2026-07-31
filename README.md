@@ -1,5 +1,5 @@
 <div align="center">
   
-# Pizzaria<br>Projeto de DS e BD
+<h1>Pizzaria<br>Projeto de DS e BD
 
 </div>
