@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizzaria Sabores Italiano - A verdadeira pizza artesanal</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23C13B28'/%3E%3Cpath d='M6 5.5a12.5 12.5 0 0 1 12.5 12.5H6z' fill='%23F5E6D0'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body data-page="landing">
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+  <symbol id="pizza" viewBox="0 0 24 24">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 3.5a16.5 16.5 0 0 1 16.5 16.5H4zM9.3 10.3a1.3 1.3 0 1 0 .1 2.6 1.3 1.3 0 0 0-.1-2.6zm3.5 3.4a1.2 1.2 0 1 0 .1 2.4 1.2 1.2 0 0 0-.1-2.4zm-5.3 1.3a1.1 1.1 0 1 0 .1 2.2 1.1 1.1 0 0 0-.1-2.2z"/>
+  </symbol>
+
+  <symbol id="home" viewBox="0 0 24 24">
+    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+    <polyline points="9 22 9 12 15 12 15 22"/>
+  </symbol>
+
+  <symbol id="menu" viewBox="0 0 24 24">
+    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
+    <path d="M7 2v20"/>
+    <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>
+  </symbol>
+
+  <symbol id="cart" viewBox="0 0 24 24">
+    <circle cx="9" cy="21" r="1"/>
+    <circle cx="20" cy="21" r="1"/>
+    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+  </symbol>
+
+  <symbol id="pin" viewBox="0 0 24 24">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+    <circle cx="12" cy="10" r="3"/>
+  </symbol>
+
+  <symbol id="logout" viewBox="0 0 24 24">
+    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+    <polyline points="16 17 21 12 16 7"/>
+    <line x1="21" y1="12" x2="9" y2="12"/>
+  </symbol>
+
+  <symbol id="user" viewBox="0 0 24 24">
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+    <circle cx="12" cy="7" r="4"/>
+  </symbol>
+
+  <symbol id="users" viewBox="0 0 24 24">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+    <circle cx="9" cy="7" r="4"/>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+  </symbol>
+
+  <symbol id="box" viewBox="0 0 24 24">
+    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+    <line x1="12" y1="22.08" x2="12" y2="12"/>
+  </symbol>
+
+  <symbol id="clipboard" viewBox="0 0 24 24">
+    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+  </symbol>
+
+  <symbol id="chart" viewBox="0 0 24 24">
+    <line x1="18" y1="20" x2="18" y2="10"/>
+    <line x1="12" y1="20" x2="12" y2="4"/>
+    <line x1="6" y1="20" x2="6" y2="14"/>
+  </symbol>
+
+  <symbol id="settings" viewBox="0 0 24 24">
+    <line x1="4" y1="21" x2="4" y2="14"/>
+    <line x1="4" y1="10" x2="4" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="12"/>
+    <line x1="12" y1="8" x2="12" y2="3"/>
+    <line x1="20" y1="21" x2="20" y2="16"/>
+    <line x1="20" y1="12" x2="20" y2="3"/>
+    <line x1="1" y1="14" x2="7" y2="14"/>
+    <line x1="9" y1="8" x2="15" y2="8"/>
+    <line x1="17" y1="16" x2="23" y2="16"/>
+  </symbol>
+
+  <symbol id="phone" viewBox="0 0 24 24">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+  </symbol>
+
+  <symbol id="clock" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10"/>
+    <polyline points="12 6 12 12 16 14"/>
+  </symbol>
+
+  <symbol id="mail" viewBox="0 0 24 24">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+  </symbol>
+
+  <symbol id="check" viewBox="0 0 24 24">
+    <polyline points="20 6 9 17 4 12"/>
+  </symbol>
+
+  <symbol id="x" viewBox="0 0 24 24">
+    <line x1="18" y1="6" x2="6" y2="18"/>
+    <line x1="6" y1="6" x2="18" y2="18"/>
+  </symbol>
+
+  <symbol id="plus" viewBox="0 0 24 24">
+    <line x1="12" y1="5" x2="12" y2="19"/>
+    <line x1="5" y1="12" x2="19" y2="12"/>
+  </symbol>
+
+  <symbol id="minus" viewBox="0 0 24 24">
+    <line x1="5" y1="12" x2="19" y2="12"/>
+  </symbol>
+
+  <symbol id="trash" viewBox="0 0 24 24">
+    <polyline points="3 6 5 6 21 6"/>
+    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+  </symbol>
+
+  <symbol id="search" viewBox="0 0 24 24">
+    <circle cx="11" cy="11" r="8"/>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+  </symbol>
+
+  <symbol id="edit" viewBox="0 0 24 24">
+    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+  </symbol>
+
+  <symbol id="star" viewBox="0 0 24 24">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+  </symbol>
+
+  <symbol id="truck" viewBox="0 0 24 24">
+    <rect x="1" y="3" width="15" height="13" rx="1"/>
+    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+    <circle cx="5.5" cy="18.5" r="2.5"/>
+    <circle cx="18.5" cy="18.5" r="2.5"/>
+  </symbol>
+
+  <symbol id="chef" viewBox="0 0 24 24">
+    <path d="M6 19a3 3 0 0 1-3-3 4 4 0 0 1 2.5-3.7A5 5 0 0 1 12 5a5 5 0 0 1 6.5 7.3A4 4 0 0 1 21 16a3 3 0 0 1-3 3z"/>
+    <line x1="7" y1="19" x2="17" y2="19"/>
+  </symbol>
+
+  <symbol id="refresh" viewBox="0 0 24 24">
+    <polyline points="23 4 23 10 17 10"/>
+    <polyline points="1 20 1 14 7 14"/>
+    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+  </symbol>
+
+  <symbol id="award" viewBox="0 0 24 24">
+    <circle cx="12" cy="8" r="7"/>
+    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+  </symbol>
+
+  <symbol id="dollar" viewBox="0 0 24 24">
+    <line x1="12" y1="1" x2="12" y2="23"/>
+    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+  </symbol>
+
+  <symbol id="alert" viewBox="0 0 24 24">
+    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+    <line x1="12" y1="9" x2="12" y2="13"/>
+    <line x1="12" y1="17" x2="12.01" y2="17"/>
+  </symbol>
+
+  <symbol id="chevron-right" viewBox="0 0 24 24">
+    <polyline points="9 18 15 12 9 6"/>
+  </symbol>
+
+  <symbol id="save" viewBox="0 0 24 24">
+    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+    <polyline points="17 21 17 13 7 13 7 21"/>
+    <polyline points="7 3 7 8 15 8"/>
+  </symbol>
+
+  <symbol id="card" viewBox="0 0 24 24">
+    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+    <line x1="1" y1="10" x2="23" y2="10"/>
+  </symbol>
+
+  <symbol id="calendar" viewBox="0 0 24 24">
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+    <line x1="16" y1="2" x2="16" y2="6"/>
+    <line x1="8" y1="2" x2="8" y2="6"/>
+    <line x1="3" y1="10" x2="21" y2="10"/>
+  </symbol>
+
+  <symbol id="trend" viewBox="0 0 24 24">
+    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+    <polyline points="17 6 23 6 23 12"/>
+  </symbol>
+
+  <symbol id="store" viewBox="0 0 24 24">
+    <path d="M3 9l1.5-5h15L21 9v1a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1-3 3 3 3 0 0 1-3-3V9z"/>
+    <path d="M6 14v7h12v-7"/>
+  </symbol>
+
+  <symbol id="flag" viewBox="0 0 24 24">
+    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+    <line x1="4" y1="22" x2="4" y2="15"/>
+  </symbol>
+
+  <symbol id="tag" viewBox="0 0 24 24">
+    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+    <line x1="7" y1="7" x2="7.01" y2="7"/>
+  </symbol>
+
+  <symbol id="info" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="12" y1="16" x2="12" y2="12"/>
+    <line x1="12" y1="8" x2="12.01" y2="8"/>
+  </symbol>
+
+  <symbol id="download" viewBox="0 0 24 24">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+    <polyline points="7 10 12 15 17 10"/>
+    <line x1="12" y1="15" x2="12" y2="3"/>
+  </symbol>
+
+</svg>
+
+
+  <div class="demo-banner">
+    <svg class="ic"><use href="#info"/></svg>
+    <span>Sistema sem acesso ao servidor Java/banco de dados - exibindo dados de demonstração.</span>
+  </div>
+
+  <header class="land-nav">
+    <div class="land-nav-inner">
+      <a class="land-brand" href="index.html">
+        <span class="land-logo"><svg class="ic ic-filled"><use href="#pizza"/></svg></span>
+        <span class="land-name">Pizzaria <b>Sabores</b></span>
+      </a>
+      <nav class="land-links">
+        <a href="#cardapio">Cardápio</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="land-actions">
+        <a class="btn btn-ghost" href="login/login.html">Entrar</a>
+        <a class="btn btn-primary" href="login/login.html">Fazer Pedido</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="land-hero">
+    <div class="land-hero-inner">
+      <div class="land-hero-txt">
+        <span class="eyebrow"><svg class="ic ic-sm" style="display:inline-block;vertical-align:-3px"><use href="#star"/></svg> Feita no forno a lenha</span>
+        <h1>A verdadeira pizza <em>artesanal</em></h1>
+        <p>Massa fresca, ingredientes selecionados e o sabor de casa. Peça online e receba quentinha onde estiver.</p>
+        <div class="land-hero-cta">
+          <a class="btn btn-yellow" href="login/login.html">
+            Ver Cardápio
+            <svg class="ic"><use href="#chevron-right"/></svg>
+          </a>
+          <a class="btn btn-white-outline" href="login/login.html">Entrar como Cliente</a>
+        </div>
+        <div class="land-hero-meta">
+          <span><svg class="ic"><use href="#clock"/></svg> <span data-config="horario">Ter a Dom, 18h as 23h</span></span>
+          <span><svg class="ic"><use href="#pin"/></svg> <span data-config="endereco">Rua das Flores, 123</span></span>
+        </div>
+      </div>
+      <div class="land-hero-img">
+        <img src="assets/img/hero.png" alt="Pizza artesanal">
+      </div>
+    </div>
+  </section>
+
+  <section class="land-features">
+    <div class="land-feature">
+      <span class="f-icon"><svg class="ic"><use href="#chef"/></svg></span>
+      <h3>Massa fresca diária</h3>
+      <p>Preparada na hora, fermentação natural e forno a lenha.</p>
+    </div>
+    <div class="land-feature">
+      <span class="f-icon green"><svg class="ic"><use href="#tag"/></svg></span>
+      <h3>Ingredientes selecionados</h3>
+      <p>Queijos, embutidos e vegetais de fornecedores locais.</p>
+    </div>
+    <div class="land-feature">
+      <span class="f-icon red"><svg class="ic"><use href="#truck"/></svg></span>
+      <h3>Entrega rápida</h3>
+      <p>Seu pedido sai quentinho do forno direto até você.</p>
+    </div>
+  </section>
+
+  <section class="land-menu" id="cardapio">
+    <div class="land-menu-head">
+      <span class="eyebrow"><svg class="ic ic-sm" style="display:inline-block;vertical-align:-3px"><use href="#pizza"/></svg> Nossas pizzas</span>
+      <h2>As mais pedidas</h2>
+      <p>Escolha seu sabor favorito e peça em poucos cliques.</p>
+    </div>
+    <div class="land-cards">
+      <div class="land-card">
+        <div class="land-card-img"><img src="assets/img/margherita.png" alt="Margherita"><span class="tag tag-green">Tradicional</span></div>
+        <h3>Margherita</h3>
+        <p>Molho de tomate, mussarela e manjericão fresco</p>
+        <div class="land-card-foot"><span class="price">R$ 45,90</span><a class="btn btn-primary btn-sm" href="login/login.html">Pedir</a></div>
+      </div>
+      <div class="land-card">
+        <div class="land-card-img"><img src="assets/img/pepperoni.png" alt="Pepperoni"><span class="tag tag-yellow">Especial</span></div>
+        <h3>Pepperoni</h3>
+        <p>Molho de tomate, mussarela e pepperoni artesanal</p>
+        <div class="land-card-foot"><span class="price">R$ 52,90</span><a class="btn btn-primary btn-sm" href="login/login.html">Pedir</a></div>
+      </div>
+      <div class="land-card">
+        <div class="land-card-img"><img src="assets/img/quatro-queijos.png" alt="Quatro Queijos"><span class="tag tag-yellow">Especial</span></div>
+        <h3>Quatro Queijos</h3>
+        <p>Mussarela, gorgonzola, parmesão e catupiry</p>
+        <div class="land-card-foot"><span class="price">R$ 48,90</span><a class="btn btn-primary btn-sm" href="login/login.html">Pedir</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="land-promo">
+    <div class="land-promo-inner">
+      <span class="eyebrow"><svg class="ic ic-sm" style="display:inline-block;vertical-align:-3px"><use href="#award"/></svg> Promoção da semana</span>
+      <h2>2ª pizza com <em>30% de desconto</em></h2>
+      <p>Aproveite o combo perfeito para dividir com quem você ama.</p>
+      <a class="btn btn-yellow" href="login/login.html">Pedir Agora <svg class="ic"><use href="#chevron-right"/></svg></a>
+    </div>
+  </section>
+
+  <section class="land-about" id="sobre">
+    <div class="land-about-img">
+      <img src="assets/img/portuguesa.png" alt="Pizza da casa">
+    </div>
+    <div class="land-about-txt">
+      <span class="eyebrow">Nossa história</span>
+      <h2>Receitas de família, sabor de infância</h2>
+      <p>Há gerações, a Pizzaria Sabores Italiano leva à mesa a mesma massa artesanal e o mesmo cuidado com cada ingrediente. Aqui, pizza é tradição.</p>
+      <a class="btn btn-outline" href="cadastro/cadastro.html">Criar Conta <svg class="ic"><use href="#plus"/></svg></a>
+    </div>
+  </section>
+
+  <footer class="land-footer" id="contato">
+    <div class="land-footer-inner">
+      <div class="land-footer-brand">
+        <span class="land-logo"><svg class="ic ic-filled"><use href="#pizza"/></svg></span>
+        <p class="display">Pizzaria Sabores Italiano</p>
+        <p class="slogan" data-config="slogan">A verdadeira pizza artesanal</p>
+      </div>
+      <div class="land-footer-col">
+        <h4>Atendimento</h4>
+        <p><svg class="ic"><use href="#phone"/></svg> <span data-config="telefone">(11) 3456-7890</span></p>
+        <p><svg class="ic"><use href="#mail"/></svg> contato@saboresitaliano.com.br</p>
+        <p><svg class="ic"><use href="#clock"/></svg> <span data-config="horario">Ter a Dom, 18h as 23h</span></p>
+      </div>
+      <div class="land-footer-col">
+        <h4>Endereço</h4>
+        <p><svg class="ic"><use href="#pin"/></svg> <span data-config="endereco">Rua das Flores, 123</span></p>
+        <p><svg class="ic"><use href="#pin"/></svg> <span data-config="cidade">Sao Paulo, SP</span></p>
+        <p><svg class="ic"><use href="#tag"/></svg> CEP <span data-config="cep">01310-100</span></p>
+      </div>
+      <div class="land-footer-col">
+        <h4>Acesso</h4>
+        <p><a href="login/login.html">Login</a></p>
+        <p><a href="cadastro/cadastro.html">Criar conta</a></p>
+        <p><a href="login/login.html">Fazer pedido</a></p>
+      </div>
+    </div>
+    <div class="land-footer-bottom">
+      <p>© 2026 Pizzaria Sabores Italiano - Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+  <script src="assets/js/base.js" data-base="assets/"></script>
+  <script>
+    (function () {
+      var P = window.Pizzaria;
+      if (!P) return;
+      P.detectServer().then(function (server) {
+        if (server) {
+          P.loadConfig().then(function (cfg) {
+            P.applyConfig();
+          });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

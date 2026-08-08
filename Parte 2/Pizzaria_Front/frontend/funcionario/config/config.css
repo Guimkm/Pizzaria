@@ -1,0 +1,27 @@
+/* ============================================================
+   PIZZARIA SABORES ITALIANO - Configuracao (cliente e funcionario)
+   Usado por: cliente/config.html e funcionario/config.html
+   ============================================================ */
+
+.config-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.config-card {
+  background: #fff;
+  border: 1px solid rgba(42, 24, 16, 0.05);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+.config-side {
+  position: sticky;
+  top: 24px;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1000px) {
+  .config-grid { grid-template-columns: 1fr; }
+  .config-side { position: static; }
+}
