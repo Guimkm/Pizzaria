@@ -68,9 +68,9 @@ public class TelaLogin extends javax.swing.JFrame {
         Llogin.setForeground(new java.awt.Color(27, 94, 32));
         Llogin.setText("Login:");
 
-        titulo.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
+        titulo.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         titulo.setForeground(new java.awt.Color(27, 94, 32));
-        titulo.setText("Carlotta's");
+        titulo.setText("Pizzaria Sabores Italianos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
