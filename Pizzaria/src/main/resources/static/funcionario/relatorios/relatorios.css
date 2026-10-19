@@ -1,0 +1,219 @@
+/* ============================================================
+   PIZZARIA SABORES ITALIANO - Relatorios
+   ============================================================ */
+
+.seg {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  background: #fff;
+  border: 2px solid var(--dark);
+  padding: 6px;
+  border-radius: 12px;
+  width: fit-content;
+  box-shadow: 3px 3px 0 rgba(42, 24, 16, 0.5);
+}
+.seg-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.87rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.seg-btn .ic { width: 17px; height: 17px; }
+.seg-btn:hover { color: var(--dark); }
+.seg-btn.active {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 3px 3px 0 var(--dark);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  color: var(--dark);
+  font-size: 1.35rem;
+  margin: 0 0 18px;
+  letter-spacing: 0.01em;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 28px;
+}
+.kpi {
+  border: 2px solid var(--dark);
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: 4px 4px 0 rgba(42, 24, 16, 0.8);
+  background: #fff;
+}
+.kpi.yellow {
+  background: linear-gradient(180deg, var(--yellow-soft) 0%, var(--yellow) 100%);
+}
+.kpi .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+.kpi .label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+.kpi .value {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+.kpi .icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1.5px solid var(--dark);
+  background: rgba(255, 255, 255, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  box-shadow: 2px 2px 0 rgba(42, 24, 16, 0.35);
+}
+.kpi.white .icon-box {
+  background: rgba(42, 24, 16, 0.06);
+}
+.kpi .icon-box .ic { width: 22px; height: 22px; }
+
+.bar-track {
+  background: #fff;
+  border: 1.5px solid var(--dark);
+  border-radius: 100px;
+  height: 12px;
+  overflow: hidden;
+  flex: 1;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--red-deep) 0%, var(--red) 100%);
+}
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.bar-row .rank {
+  font-family: var(--font-display);
+  color: var(--muted-light);
+  font-size: 1.1rem;
+  width: 26px;
+  text-align: center;
+}
+.bar-row .name {
+  font-weight: 800;
+  color: var(--dark);
+  width: 150px;
+}
+.bar-row .qty {
+  color: var(--muted);
+  font-weight: 700;
+  width: 32px;
+  text-align: right;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.stat-box {
+  padding: 22px;
+  border-radius: 12px;
+  background: #fff;
+  border: 2px solid var(--dark);
+  box-shadow: 3px 3px 0 rgba(42, 24, 16, 0.5);
+  text-align: center;
+}
+.stat-box p {
+  color: var(--muted);
+  font-size: 0.83rem;
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+.stat-box .v {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.status-card {
+  background: #fff;
+  border: 2px solid var(--dark);
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 3px 3px 0 rgba(42, 24, 16, 0.5);
+}
+.status-card .main { flex: 1; }
+.status-card .label {
+  font-weight: 800;
+  font-size: 0.88rem;
+  margin: 0 0 8px;
+}
+.status-card .mini-bar {
+  background: #fff;
+  border: 1.5px solid var(--dark);
+  border-radius: 100px;
+  height: 8px;
+  overflow: hidden;
+}
+.status-card .count {
+  font-family: var(--font-display);
+  font-size: 2.3rem;
+  letter-spacing: 0.01em;
+}
+
+.fat-card {
+  padding: 26px;
+  border-radius: 14px;
+  border: 2px solid var(--dark);
+  box-shadow: 4px 4px 0 rgba(42, 24, 16, 0.8);
+  background: #fff;
+}
+.fat-card .label {
+  color: var(--muted);
+  font-size: 0.83rem;
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+.fat-card .value {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin: 0 0 14px;
+  letter-spacing: 0.01em;
+}
+.fat-card .pct {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin: 6px 0 0;
+  font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
