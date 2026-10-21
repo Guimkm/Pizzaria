@@ -50,11 +50,16 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- ADICIONE ESTE BLOCO EXATAMENTE AQUI -->
+<!--		banco de dados teste-->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-h2console</artifactId>
 		</dependency>
 
 		<!-- Source: https://mvnrepository.com/artifact/org.projectlombok/lombok -->

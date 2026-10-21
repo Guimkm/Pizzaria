@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><title>Cadastro de Funcionário</title></head>
+<body>
+<h2>Cadastro de Funcionário</h2>
+<form id="form">
+    <input id="nome" placeholder="Nome completo" required><br>
+    <input type="email" id="email" placeholder="E-mail @PizzariaSabores" required><br>
+    <input id="telefone" placeholder="Telefone (DDD + número)" maxlength="15" required><br>
+    <input type="password" id="senha" placeholder="Senha (mín. 6)" minlength="6" required><br>
+    <input type="password" id="confirmar" placeholder="Confirmar senha" required><br>
+    <button>Cadastrar</button>
+</form>
+<p id="msg"></p>
+<a href="/funcionario/login.html">Já tenho conta</a>
+
+<script src="/js/sessao.js"></script>
+<script>
+    const v = id => document.getElementById(id).value;
+    document.getElementById('form').onsubmit = async e => {
+        e.preventDefault();
+        const msg = document.getElementById('msg');
+
+        if (v('senha') !== v('confirmar')) {
+            msg.style.color = 'red';
+            msg.textContent = 'As senhas não conferem';
+            return;
+        }
+
+        const r = await enviar('/api/funcionario/cadastro', {
+            nome: v('nome'), email: v('email'), telefone: v('telefone'),
+            senha: v('senha'), confirmarSenha: v('confirmar')
+        });
+        const d = await r.json();
+        msg.style.color = r.ok ? 'green' : 'red';
+        msg.textContent = d.mensagem || d.erro;   // "Email em processamento"
+    };
+</script>
+</body>
+</html>
