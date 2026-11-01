@@ -14,5 +14,3 @@ public class PizzariaApplication {
 }
 
 
-//Teste Usuario
-
