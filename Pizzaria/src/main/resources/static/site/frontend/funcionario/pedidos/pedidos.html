@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedidos - Pizzaria Sabores Italiano</title>
+  <link rel="icon" href="../../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="pedidos.css">
+</head>
+<body data-page="funcionario" data-tab="pedidos">
+<div class="demo-banner">
+  <svg class="ic"><use href="#info"/></svg>
+  <span>Sistema sem acesso ao servidor Java/banco de dados - exibindo dados de demonstração.</span>
+</div>
+
+<div class="layout">
+  <aside class="sidebar sidebar-func">
+    <div class="sidebar-top">
+      <div class="profile">
+        <div class="avatar"><svg class="ic"><use href="#user"/></svg></div>
+        <div>
+          <p class="who">Administrador</p>
+          <p class="name">Equipe da pizzaria</p>
+          <p class="caption">Pequenos detalhes fazem a diferença.</p>
+        </div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-item active" href="../pedidos/pedidos.html"><span class="nav-ic"><svg class="ic"><use href="#clipboard"/></svg></span> Pedidos</a>
+      <a class="nav-item" href="../pizzas/pizzas.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
+      <a class="nav-item" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Clientes</a>
+      <a class="nav-item" href="../estoque/estoque.html"><span class="nav-ic"><svg class="ic"><use href="#box"/></svg></span> Estoque</a>
+      <a class="nav-item" href="../relatorios/relatorios.html"><span class="nav-ic"><svg class="ic"><use href="#chart"/></svg></span> Relatórios</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="sidebar-logout" href="../../auth/login/login.html">
+        <span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão
+      </a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="content">
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">Painel da casa</h1>
+          <p class="page-sub" id="page-date">Domingo, 25 de outubro de 2026 · Atualizado às 20:03</p>
+        </div>
+        <span class="status-pill pill-green"><span class="dot"></span>Loja aberta</span>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#clipboard"/></svg></span><span class="kpi-label">Pedidos hoje</span></div>
+          <p class="kpi-value">8</p>
+          <p class="kpi-detail">4 entregues · 4 em andamento</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#dollar"/></svg></span><span class="kpi-label">Vendas do dia</span></div>
+          <p class="kpi-value">R$ 695,70</p>
+          <p class="kpi-detail">Total dos 8 pedidos até hoje</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#clock"/></svg></span><span class="kpi-label">Em andamento</span></div>
+          <p class="kpi-value">4</p>
+          <p class="kpi-detail">2 recebidos · 1 no forno · 1 na rua</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#trend"/></svg></span><span class="kpi-label">Ticket médio</span></div>
+          <p class="kpi-value">R$ 86,96</p>
+          <p class="kpi-detail">Vendas · pedidos do dia</p>
+        </div>
+      </div>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title">Pedidos de hoje</h2>
+            <p class="panel-sub">Dê confirmação para a última entrega</p>
+          </div>
+          <div class="panel-actions">
+            <button type="button" class="btn btn-outline" onclick="Pizzaria.toast('Arquivo de pedidos pronto para exportar.', 'info', 'download')"><svg class="ic"><use href="#download"/></svg> Exportar</button>
+            <button type="button" class="btn btn-primary" onclick="Pizzaria.toast('Novo pedido em breve.', 'info', 'plus')"><svg class="ic"><use href="#plus"/></svg> Novo pedido</button>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button type="button" class="tab active" data-filter="todos">Todos (8)</button>
+          <button type="button" class="tab" data-filter="recebido">Recebidos (2)</button>
+          <button type="button" class="tab" data-filter="preparo">Em preparo (1)</button>
+          <button type="button" class="tab" data-filter="entrega">Em entrega (1)</button>
+          <button type="button" class="tab" data-filter="entregue">Entregues (4)</button>
+        </div>
+
+        <div class="toolbar">
+          <div class="field-icon">
+            <svg class="ic"><use href="#search"/></svg>
+            <input type="text" placeholder="Buscar por número ou cliente" data-search="#table-pedidos">
+          </div>
+          <label class="date-select">
+            <svg class="ic ic-sm"><use href="#calendar"/></svg>
+            <select id="filter-pedidos" aria-label="Filtro">
+              <option>Hoje, 25/10/2026</option>
+              <option>Últimos 7 dias</option>
+              <option>Outubro de 2026</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="table-pedidos" class="table-wrap">
+          <table class="table" data-api="pedidos">
+            <thead><tr><th>Pedido</th><th>Cliente</th><th>Funcionário</th><th>Data</th><th>Pagamento</th><th>Total</th><th>Status</th><th>Ação</th></tr></thead>
+            <tbody>
+              <tr data-status="recebido">
+                <td class="cell-order">#8</td>
+                <td><div class="cell-strong">Carlos Mendes</div><div class="cell-sub">carlos.mendes@email.com</div></td>
+                <td><div class="cell-strong">—</div><div class="cell-sub">não atribuído</div></td>
+                <td class="cell-time">25/10/2026 20:01</td>
+                <td>Pix</td>
+                <td class="cell-total">R$ 104,80</td>
+                <td><span class="badge badge-green">Pedido Recebido</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Pedido #8 aceito e enviado para a cozinha.', 'info', 'check')">Aceitar pedido</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="recebido">
+                <td class="cell-order">#7</td>
+                <td><div class="cell-strong">Maria Oliveira</div><div class="cell-sub">maria.oliveira@email.com</div></td>
+                <td><div class="cell-strong">—</div><div class="cell-sub">não atribuído</div></td>
+                <td class="cell-time">25/10/2026 19:58</td>
+                <td>Cartão de Crédito</td>
+                <td class="cell-total">R$ 98,80</td>
+                <td><span class="badge badge-green">Pedido Recebido</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Pedido #7 aceito e enviado para a cozinha.', 'info', 'check')">Aceitar pedido</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="preparo">
+                <td class="cell-order">#6</td>
+                <td><div class="cell-strong">Fernanda Lima</div><div class="cell-sub">fe.lima@email.com</div></td>
+                <td><div class="cell-strong">Carlos Souza</div><div class="cell-sub">Atendente</div></td>
+                <td class="cell-time">25/10/2026 19:46</td>
+                <td>Pix</td>
+                <td class="cell-total">R$ 112,80</td>
+                <td><span class="badge badge-outline">Em Preparo</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Pedido #6 saiu para entrega.', 'info', 'truck')">Enviar entrega</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr class="row-soft" data-status="entrega">
+                <td class="cell-order">#5</td>
+                <td><div class="cell-strong">Carlos Mendes</div><div class="cell-sub">carlos.mendes@email.com</div></td>
+                <td><div class="cell-strong">Diego Ramos</div><div class="cell-sub">Entregador</div></td>
+                <td class="cell-time">25/10/2026 19:32</td>
+                <td>Pix</td>
+                <td class="cell-total">R$ 57,90</td>
+                <td><span class="badge badge-outline">Saiu para Entrega</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Detalhes do pedido #5.', 'info', 'clipboard')">Ver detalhes</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="entregue">
+                <td class="cell-order">#4</td>
+                <td><div class="cell-strong">João Pereira</div><div class="cell-sub">joao.pereira@email.com</div></td>
+                <td><div class="cell-strong">Carlos Souza</div><div class="cell-sub">Atendente</div></td>
+                <td class="cell-time">25/10/2026 19:20</td>
+                <td>Dinheiro</td>
+                <td class="cell-total">R$ 106,80</td>
+                <td><span class="badge badge-green">Entregue</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Detalhes do pedido #4.', 'info', 'clipboard')">Ver detalhes</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="entregue">
+                <td class="cell-order">#3</td>
+                <td><div class="cell-strong">Maria Oliveira</div><div class="cell-sub">maria.oliveira@email.com</div></td>
+                <td><div class="cell-strong">Juliana Prado</div><div class="cell-sub">Pizzaiolo</div></td>
+                <td class="cell-time">25/10/2026 19:12</td>
+                <td>Pix</td>
+                <td class="cell-total">R$ 51,90</td>
+                <td><span class="badge badge-green">Entregue</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Detalhes do pedido #3.', 'info', 'clipboard')">Ver detalhes</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="entregue">
+                <td class="cell-order">#2</td>
+                <td><div class="cell-strong">Carlos Mendes</div><div class="cell-sub">carlos.mendes@email.com</div></td>
+                <td><div class="cell-strong">Carlos Souza</div><div class="cell-sub">Atendente</div></td>
+                <td class="cell-time">25/10/2026 19:05</td>
+                <td>Cartão de Crédito</td>
+                <td class="cell-total">R$ 109,80</td>
+                <td><span class="badge badge-green">Entregue</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Detalhes do pedido #2.', 'info', 'clipboard')">Ver detalhes</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="entregue">
+                <td class="cell-order">#1</td>
+                <td><div class="cell-strong">Ana Silva</div><div class="cell-sub">ana@email.com</div></td>
+                <td><div class="cell-strong">Carlos Souza</div><div class="cell-sub">Atendente</div></td>
+                <td class="cell-time">25/10/2026 19:00</td>
+                <td>Pix</td>
+                <td class="cell-total">R$ 52,90</td>
+                <td><span class="badge badge-green">Entregue</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Detalhes do pedido #1.', 'info', 'clipboard')">Ver detalhes</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel-foot">
+          <span>8 pedidos · Soma dos totais: R$ 695,70</span>
+          <span>Dados ilustrativos</span>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/base.js" data-base="../../assets/"></script>
+  <script src="pedidos.js"></script>
+
+</body>
+</html>

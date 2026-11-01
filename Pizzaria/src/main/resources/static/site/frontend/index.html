@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizzaria Sabores Italiano — peça sua pizza online</title>
+<meta name="description" content="Pizzas artesanais assadas em forno a lenha, entrega rápida e as melhores promoções da cidade. Peça online pelo site.">
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/landing.css">
+</head>
+<body data-page="landing">
+
+<!-- Ícones (sprite) -->
+<!-- Banner de demonstração -->
+<div class="demo-banner" id="demo-banner" hidden>
+  <div class="demo-banner-inner">
+    <svg class="ic"><use href="#i-info"></use></svg>
+    <span><b>Modo demonstração:</b> nenhum servidor Java foi detectado — você pode entrar com as credenciais abaixo e testar o sistema completo.</span>
+    <button type="button" class="demo-close" id="demo-close" aria-label="Fechar aviso">×</button>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="land-nav">
+  <div class="land-nav-inner">
+    <a class="land-brand" href="index.html">
+      <span class="land-logo"><svg class="ic"><use href="#i-pizza"></use></svg></span>
+      <span class="land-name">Sabores Italiano<small>Pizzaria &amp; Delivery</small></span>
+    </a>
+    <nav class="land-links">
+      <a href="#cardapio">Cardápio</a>
+      <a href="#promocoes">Promoções</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#sobre">Sobre nós</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="land-actions">
+      <a class="btn btn-ghost" href="auth/login/login.html">Entrar</a>
+      <a class="btn btn-orange" href="auth/login/login.html">Fazer pedido</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="land-hero">
+  <div class="land-hero-inner">
+    <div class="land-hero-txt">
+      <span class="eyebrow">Forno a lenha · Desde 2009</span>
+      <h1>A melhor pizza da cidade, <em>direto do forno</em> até a sua casa.</h1>
+      <p>Massa de fermentação natural, ingredientes selecionados e entrega quentinha em até 40 minutos. Peça pelo site, acompanhe seu pedido e pague na entrega ou online.</p>
+
+      <div class="land-hero-cta">
+        <a class="btn btn-orange" href="auth/login/login.html">Ver cardápio <svg class="ic"><use href="#i-arrow-right"></use></svg></a>
+        <a class="btn btn-white-outline" href="#como-funciona">Como funciona</a>
+      </div>
+
+      <div class="land-hero-meta">
+        <span><svg class="ic"><use href="#i-clock"></use></svg> Entrega em 40 min</span>
+        <span><svg class="ic"><use href="#i-shield"></use></svg> Pagamento seguro</span>
+        <span><svg class="ic"><use href="#i-pin"></use></svg> Rua das Flores, 123</span>
+      </div>
+
+      <div class="land-stats">
+        <div>
+          <strong>4,9 <span class="stars">★</span></strong>
+          <span>2.480 avaliações no Google</span>
+        </div>
+        <div>
+          <strong>+38 mil</strong>
+          <span>pizzas entregues</span>
+        </div>
+        <div>
+          <strong>17 anos</strong>
+          <span>de tradição familiar</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="land-hero-media">
+      <img class="main" src="assets/img/hero.png" alt="Pizza saindo do forno a lenha">
+      <div class="float-card top">
+        <span class="fc-ic"><svg class="ic"><use href="#i-truck"></use></svg></span>
+        <div><strong>Entrega grátis</strong><span>acima de R$ 69,90</span></div>
+      </div>
+      <div class="float-card bottom">
+        <span class="fc-ic orange"><svg class="ic"><use href="#i-award"></use></svg></span>
+        <div><strong>Pizza da semana</strong><span>Calabresa especial -20%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMO FUNCIONA ============ -->
+<section id="como-funciona" class="land-steps">
+  <article class="step-card">
+    <span class="num">1</span>
+    <h3>Escolha suas pizzas</h3>
+    <p>Navegue pelo cardápio com fotos, ingredientes e preços. Monte do jeito que gosta: bordas, tamanhos e adicionais.</p>
+  </article>
+  <article class="step-card">
+    <span class="num">2</span>
+    <h3>Confirme o pedido</h3>
+    <p>Informe o endereço, escolha a forma de pagamento e acompanhe o pedido em tempo real pelo rastreio.</p>
+  </article>
+  <article class="step-card">
+    <span class="num">3</span>
+    <h3>Receba quentinha</h3>
+    <p>Nossa equipe prepara e sai para entrega. Você recebe atualizações a cada etapa, até a porta da sua casa.</p>
+  </article>
+</section>
+
+<!-- ============ CATEGORIAS ============ -->
+<section class="land-cats">
+  <a class="cat-card" href="auth/login/login.html">
+    <span class="cat-ic"><svg class="ic"><use href="#i-pizza"></use></svg></span>
+    <div><h3><b>Pizzas</b> salgadas</h3><span>20 sabores a partir de R$ 39,90</span></div>
+  </a>
+  <a class="cat-card" href="auth/login/login.html">
+    <span class="cat-ic"><svg class="ic"><use href="#i-heart"></use></svg></span>
+    <div><h3><b>Pizzas</b> doces</h3><span>Sobremesa em forma de pizza</span></div>
+  </a>
+  <a class="cat-card" href="auth/login/login.html">
+    <span class="cat-ic"><svg class="ic"><use href="#i-tag"></use></svg></span>
+    <div><h3><b>Combos</b> promocionais</h3><span>Economize até 30% no combo</span></div>
+  </a>
+</section>
+
+<!-- ============ CARDÁPIO ============ -->
+<section class="land-menu" id="cardapio">
+  <div class="land-menu-head">
+    <span class="eyebrow">Nosso cardápio</span>
+    <h2>As mais pedidas da casa</h2>
+    <p>Massa fina, fermentação de 48 horas e assamento em forno a lenha.</p>
+  </div>
+
+  <div class="land-cards">
+    <article class="land-card">
+      <div class="land-card-img">
+        <span class="tag">Mais pedida</span>
+        <img src="assets/img/calabresa.png" alt="Pizza Calabresa">
+      </div>
+      <h3>Calabresa</h3>
+      <p>Calabresa fatiada, cebola caramelizada e mussarela sobre molho de tomate italiano.</p>
+      <div class="land-card-foot">
+        <span class="price">R$ 39,90 <small>broto · média · grande</small></span>
+        <a class="btn btn-orange-outline btn-sm" href="auth/login/login.html">Pedir</a>
+      </div>
+    </article>
+
+    <article class="land-card">
+      <div class="land-card-img">
+        <span class="tag">Clássica</span>
+        <img src="assets/img/margherita.png" alt="Pizza Margherita">
+      </div>
+      <h3>Margherita</h3>
+      <p>Molho de tomate, mussarela e manjericão fresco regado com azeite extravirgem.</p>
+      <div class="land-card-foot">
+        <span class="price">R$ 45,90 <small>broto · média · grande</small></span>
+        <a class="btn btn-orange-outline btn-sm" href="auth/login/login.html">Pedir</a>
+      </div>
+    </article>
+
+    <article class="land-card">
+      <div class="land-card-img">
+        <span class="tag">Premium</span>
+        <img src="assets/img/portuguesa.png" alt="Pizza Portuguesa">
+      </div>
+      <h3>Portuguesa</h3>
+      <p>Presunto, ovos, cebola, azeitonas, ervilha e mussarela no ponto de dourar.</p>
+      <div class="land-card-foot">
+        <span class="price">R$ 47,90 <small>broto · média · grande</small></span>
+        <a class="btn btn-orange-outline btn-sm" href="auth/login/login.html">Pedir</a>
+      </div>
+    </article>
+
+    <article class="land-card">
+      <div class="land-card-img">
+        <span class="tag">Especial</span>
+        <img src="assets/img/quatro-queijos.png" alt="Pizza Quatro Queijos">
+      </div>
+      <h3>Quatro Queijos</h3>
+      <p>Mussarela, gorgonzola, parmesão e catupiry cremoso no forno a lenha.</p>
+      <div class="land-card-foot">
+        <span class="price">R$ 48,90 <small>broto · média · grande</small></span>
+        <a class="btn btn-orange-outline btn-sm" href="auth/login/login.html">Pedir</a>
+      </div>
+    </article>
+
+    <article class="land-card">
+      <div class="land-card-img">
+        <span class="tag">Artesanal</span>
+        <img src="assets/img/pepperoni.png" alt="Pizza Pepperoni">
+      </div>
+      <h3>Pepperoni</h3>
+      <p>Pepperoni artesanal levemente picante com mussarela e orégano fresco.</p>
+      <div class="land-card-foot">
+        <span class="price">R$ 52,90 <small>broto · média · grande</small></span>
+        <a class="btn btn-orange-outline btn-sm" href="auth/login/login.html">Pedir</a>
+      </div>
+    </article>
+
+    <article class="land-card">
+      <div class="land-card-img">
+        <span class="tag">Favorita</span>
+        <img src="assets/img/frango-catupiry.png" alt="Pizza Frango Catupiry">
+      </div>
+      <h3>Frango Catupiry</h3>
+      <p>Frango desfiado temperado, catupiry cremoso e azeitona preta.</p>
+      <div class="land-card-foot">
+        <span class="price">R$ 54,90 <small>broto · média · grande</small></span>
+        <a class="btn btn-orange-outline btn-sm" href="auth/login/login.html">Pedir</a>
+      </div>
+    </article>
+  </div>
+
+  <div class="land-menu-foot">
+    <a class="btn btn-orange" href="auth/login/login.html">Ver cardápio completo <svg class="ic"><use href="#i-arrow-right"></use></svg></a>
+  </div>
+</section>
+
+<!-- ============ PROMOÇÕES ============ -->
+<section class="land-promo" id="promocoes">
+  <div class="land-promo-grid">
+    <article class="promo-main">
+      <span class="eyebrow">Oferta da semana</span>
+      <h2>Terça é dia de <em>porção dupla</em> de calabresa -20%</h2>
+      <p>Válida nas terças-feiras em pedidos online, com cupom <b>TERCA20</b>. Acumulável com entrega grátis acima de R$ 69,90.</p>
+      <a class="btn" href="auth/login/login.html">Aproveitar oferta</a>
+    </article>
+    <article class="promo-side">
+      <span class="fc-ic"><svg class="ic"><use href="#i-truck"></use></svg></span>
+      <h3>Frete grátis acima de R$ 69,90</h3>
+      <p>Em toda a região central. Peça em grupo e divida o pedido — cada um paga a sua conta direto no app.</p>
+      <span class="tag">Válido todos os dias</span>
+    </article>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="land-about" id="sobre">
+  <div class="land-about-img">
+    <img src="assets/img/promo.png" alt="Pizza assada no forno a lenha">
+  </div>
+  <div class="land-about-txt">
+    <span class="eyebrow">Sobre nós</span>
+    <h2>Receita de família, forno a lenha há 17 anos</h2>
+    <p>Tudo começou numa pequena cozinha nos fundos de casa. Hoje somos uma equipe de 18 pessoas, mas a receita da massa continua a mesma da vovó Rita: farinha selecionada, fermentação natural de 48 horas e paciência.</p>
+    <ul class="land-about-list">
+      <li><svg class="ic"><use href="#i-check"></use></svg> Molho de tomate feito aqui todos os dias</li>
+      <li><svg class="ic"><use href="#i-check"></use></svg> Ingredientes frescos comprados no mercado de manhã</li>
+      <li><svg class="ic"><use href="#i-check"></use></svg> Entrega com bolsa térmica para manter a pizza quente</li>
+      <li><svg class="ic"><use href="#i-check"></use></svg> Acompanhe o pedido em tempo real</li>
+    </ul>
+    <a class="btn btn-orange" href="auth/login/login.html">Conhecer o cardápio <svg class="ic"><use href="#i-arrow-right"></use></svg></a>
+  </div>
+</section>
+
+<!-- ============ DEPOIMENTOS ============ -->
+<section class="land-reviews">
+  <div class="land-reviews-head">
+    <h2>O que dizem nossos clientes</h2>
+  </div>
+  <div class="land-reviews-grid">
+    <article class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Pedi pela primeira vez e veio quentinha com a massa perfeita. O rastreio do pedido no site é muito prático!"</p>
+      <div class="who">
+        <span class="avatar">AS</span>
+        <div><strong>Ana Silva</strong><span>Cliente desde 2023</span></div>
+      </div>
+    </article>
+    <article class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"A calabresa especial é minha fraqueza. Entrega antes do prazo e ainda ganhei cupom de desconto no segundo pedido."</p>
+      <div class="who">
+        <span class="avatar">RM</span>
+        <div><strong>Rafael Mendes</strong><span>Cliente desde 2021</span></div>
+      </div>
+    </article>
+    <article class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Fomos numa sexta à noite, fila enorme — mas em 20 minutos estava tudo servido. Ambiente muito agradável."</p>
+      <div class="who">
+        <span class="avatar">JC</span>
+        <div><strong>Juliana Costa</strong><span>Cliente desde 2024</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="land-cta">
+  <div class="land-cta-inner">
+    <div>
+      <h2>Bora pedir uma pizza?</h2>
+      <p>Crie sua conta grátis, salve seus endereços e ganhe cupons exclusivos.</p>
+    </div>
+    <div class="land-cta-actions">
+      <a class="btn btn-orange" href="auth/login/login.html">Entrar / Criar conta</a>
+      <a class="btn btn-outline" href="#cardapio">Ver cardápio</a>
+    </div>
+  </div>
+
+  <div class="land-demo">
+    <b>Demonstração:</b> cliente <b>ana@email.com / 1234</b> · administrador <b>adm@email.com / admin123</b> · balconista <b>balcao@email.com / balcona123</b> · pizzaiolo <b>pizza@email.com / pizza123</b>
+  </div>
+</section>
+
+<!-- ============ RODAPÉ ============ -->
+<footer class="land-footer" id="contato">
+  <div class="land-footer-inner">
+    <div class="land-footer-brand">
+      <span class="land-logo"><svg class="ic"><use href="#i-pizza"></use></svg></span>
+      <div class="display">Sabores Italiano</div>
+      <p class="slogan">Pizza de verdade, feita com carinho desde 2009.</p>
+      <div class="socials">
+        <a href="#" aria-label="Instagram"><svg class="ic"><use href="#i-instagram"></use></svg></a>
+        <a href="#" aria-label="Facebook"><svg class="ic"><use href="#i-facebook"></use></svg></a>
+        <a href="#" aria-label="WhatsApp"><svg class="ic"><use href="#i-whatsapp"></use></svg></a>
+      </div>
+    </div>
+
+    <div class="land-footer-col">
+      <h4>Contato</h4>
+      <p><svg class="ic"><use href="#i-pin"></use></svg> Rua das Flores, 123<br>Centro - São Paulo/SP</p>
+      <p><svg class="ic"><use href="#i-phone"></use></svg> <a href="tel:+551140028922">(11) 4002-8922</a></p>
+      <p><svg class="ic"><use href="#i-mail"></use></svg> <a href="mailto:contato@saboresitaliano.com.br">contato@saboresitaliano.com.br</a></p>
+    </div>
+
+    <div class="land-footer-col">
+      <h4>Horário</h4>
+      <p><svg class="ic"><use href="#i-calendar"></use></svg> Segunda a quinta<br><b>18h às 23h</b></p>
+      <p><svg class="ic"><use href="#i-calendar"></use></svg> Sexta e sábado<br><b>18h à meia-noite</b></p>
+      <p><svg class="ic"><use href="#i-clock"></use></svg> Domingo<br><b>17h às 23h</b></p>
+    </div>
+
+    <div class="land-footer-col">
+      <h4>Atendimento</h4>
+      <p><svg class="ic"><use href="#i-truck"></use></svg> Área de entrega em até 6 km</p>
+      <p><svg class="ic"><use href="#i-dollar"></use></svg> Pix, cartão, dinheiro e vale-refeição</p>
+      <p><svg class="ic"><use href="#i-store"></use></svg> Retirada no balcão sem taxa</p>
+      <p><svg class="ic"><use href="#i-info"></use></svg> <a href="auth/login/login.html">Área do cliente e da equipe</a></p>
+    </div>
+  </div>
+  <div class="land-footer-bottom">
+    <p>© 2026 Pizzaria Sabores Italiano · CNPJ 12.345.678/0001-90 · Projeto acadêmico — sistema de pedidos online</p>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script src="assets/js/icons.js"></script>
+<script src="assets/js/base.js"></script>
+<script>
+  (function () {
+    if (!window.Pizzaria) return;
+    Pizzaria.loadConfig().then(function () { Pizzaria.applyConfig(); }).catch(function () {});
+  })();
+</script>
+</body>
+</html>

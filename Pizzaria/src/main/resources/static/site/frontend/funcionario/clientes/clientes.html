@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clientes - Pizzaria Sabores Italiano</title>
+  <link rel="icon" href="../../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="clientes.css">
+</head>
+<body data-page="funcionario" data-tab="clientes">
+<div class="demo-banner">
+  <svg class="ic"><use href="#info"/></svg>
+  <span>Sistema sem acesso ao servidor Java/banco de dados - exibindo dados de demonstração.</span>
+</div>
+
+<div class="layout">
+  <aside class="sidebar sidebar-func">
+    <div class="sidebar-top">
+      <div class="profile">
+        <div class="avatar"><svg class="ic"><use href="#user"/></svg></div>
+        <div>
+          <p class="who">Administrador</p>
+          <p class="name">Equipe da pizzaria</p>
+          <p class="caption">Pequenos detalhes fazem a diferença.</p>
+        </div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="../pedidos/pedidos.html"><span class="nav-ic"><svg class="ic"><use href="#clipboard"/></svg></span> Pedidos</a>
+      <a class="nav-item" href="../pizzas/pizzas.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
+      <a class="nav-item active" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Clientes</a>
+      <a class="nav-item" href="../estoque/estoque.html"><span class="nav-ic"><svg class="ic"><use href="#box"/></svg></span> Estoque</a>
+      <a class="nav-item" href="../relatorios/relatorios.html"><span class="nav-ic"><svg class="ic"><use href="#chart"/></svg></span> Relatórios</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="sidebar-logout" href="../../auth/login/login.html">
+        <span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão
+      </a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="content">
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">Clientes</h1>
+          <p class="page-sub">Quem faz parte da história da pizzaria.</p>
+        </div>
+        <span class="status-pill pill-green"><span class="dot"></span>6 cadastrados</span>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#users"/></svg></span><span class="kpi-label">Clientes cadastrados</span></div>
+          <p class="kpi-value">6</p>
+          <p class="kpi-detail">3 novos em outubro</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#user"/></svg></span><span class="kpi-label">Novos em outubro</span></div>
+          <p class="kpi-value">3</p>
+          <p class="kpi-detail">Cadastros de 02/10 a 25/10/2026</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#refresh"/></svg></span><span class="kpi-label">Recorrentes</span></div>
+          <p class="kpi-value">2</p>
+          <p class="kpi-detail">Dois pedidos ou mais</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#dollar"/></svg></span><span class="kpi-label">Ticket médio</span></div>
+          <p class="kpi-value">R$ 86,96</p>
+          <p class="kpi-detail">Média dos pedidos de hoje</p>
+        </div>
+      </div>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title">Base de clientes</h2>
+            <p class="panel-sub">Contato, cadastro e frequência de compra</p>
+          </div>
+          <div class="panel-actions">
+            <button type="button" class="btn btn-outline" onclick="Pizzaria.toast('Lista de clientes exportada em breve.', 'info', 'download')"><svg class="ic"><use href="#download"/></svg> Exportar</button>
+            <button type="button" class="btn btn-primary" onclick="Pizzaria.toast('Cadastro de cliente em breve.', 'info', 'plus')"><svg class="ic"><use href="#plus"/></svg> Novo cliente</button>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button type="button" class="tab active" data-filter="todos">Todos (6)</button>
+          <button type="button" class="tab" data-filter="novo">Novos (3)</button>
+          <button type="button" class="tab" data-filter="recorrente">Recorrentes (2)</button>
+          <button type="button" class="tab" data-filter="sempedido">Sem pedidos (1)</button>
+        </div>
+
+        <div class="toolbar">
+          <div class="field-icon">
+            <svg class="ic"><use href="#search"/></svg>
+            <input type="text" placeholder="Buscar por nome, CPF, e-mail ou telefone" data-search="#table-clientes">
+          </div>
+          <label class="date-select">
+            <svg class="ic ic-sm"><use href="#calendar"/></svg>
+            <select id="filter-clientes" aria-label="Filtro">
+              <option>Todos os bairros</option>
+              <option>Centro</option>
+              <option>Vila Nova</option>
+              <option>Jardim Sul</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="table-clientes" class="table-wrap">
+          <table class="table" data-api="clientes">
+            <thead><tr><th>Código</th><th>Cliente</th><th>CPF</th><th>Telefone</th><th>Endereço</th><th>Cadastro</th><th>Pedidos</th><th>Ação</th></tr></thead>
+            <tbody>
+              <tr data-status="novo" data-bairro="Centro">
+                <td class="cell-code">#001</td>
+                <td>
+                  <div class="cli-cell">
+                    <span class="cli-avatar">AS</span>
+                    <div><div class="cell-strong">Ana Silva</div><div class="cell-sub">ana@email.com</div></div>
+                  </div>
+                </td>
+                <td>12345678901</td>
+                <td>(11) 98765-4321</td>
+                <td><div class="cell-strong">Rua das Flores, 123</div><div class="cell-sub">Centro · São Paulo · 01310-100</div></td>
+                <td class="cell-muted">25/10/2026</td>
+                <td class="cell-sub-plain">1 pedido</td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Perfil de Ana Silva em breve.', 'info', 'user')">Ver perfil</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="recorrente" data-bairro="Vila Nova">
+                <td class="cell-code">#002</td>
+                <td>
+                  <div class="cli-cell">
+                    <span class="cli-avatar">CM</span>
+                    <div><div class="cell-strong">Carlos Mendes</div><div class="cell-sub">carlos.mendes@email.com</div></div>
+                  </div>
+                </td>
+                <td>23456789012</td>
+                <td>(11) 93333-4444</td>
+                <td><div class="cell-strong">Av. Brasil, 450</div><div class="cell-sub">Vila Nova · São Paulo · 02110-000</div></td>
+                <td class="cell-muted">03/03/2025</td>
+                <td class="cell-sub-plain">3 pedidos</td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Perfil de Carlos Mendes em breve.', 'info', 'user')">Ver perfil</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="recorrente" data-bairro="Centro">
+                <td class="cell-code">#003</td>
+                <td>
+                  <div class="cli-cell">
+                    <span class="cli-avatar">MO</span>
+                    <div><div class="cell-strong">Maria Oliveira</div><div class="cell-sub">maria.oliveira@email.com</div></div>
+                  </div>
+                </td>
+                <td>34567890123</td>
+                <td>(11) 99887-6543</td>
+                <td><div class="cell-strong">Rua Sete de Setembro, 88</div><div class="cell-sub">Centro · São Paulo · 01010-020</div></td>
+                <td class="cell-muted">15/04/2025</td>
+                <td class="cell-sub-plain">2 pedidos</td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Perfil de Maria Oliveira em breve.', 'info', 'user')">Ver perfil</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="novo" data-bairro="Jardim Sul">
+                <td class="cell-code">#004</td>
+                <td>
+                  <div class="cli-cell">
+                    <span class="cli-avatar">JP</span>
+                    <div><div class="cell-strong">João Pereira</div><div class="cell-sub">joao.pereira@email.com</div></div>
+                  </div>
+                </td>
+                <td>45678901234</td>
+                <td>(11) 97777-1010</td>
+                <td><div class="cell-strong">Rua Jardim das Acácias, 78</div><div class="cell-sub">Jardim Sul · São Paulo · 04567-000</div></td>
+                <td class="cell-muted">02/10/2026</td>
+                <td class="cell-sub-plain">1 pedido</td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Perfil de João Pereira em breve.', 'info', 'user')">Ver perfil</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="novo" data-bairro="Vila Nova">
+                <td class="cell-code">#005</td>
+                <td>
+                  <div class="cli-cell">
+                    <span class="cli-avatar">FL</span>
+                    <div><div class="cell-strong">Fernanda Lima</div><div class="cell-sub">fe.lima@email.com</div></div>
+                  </div>
+                </td>
+                <td>56789012345</td>
+                <td>(11) 96655-4433</td>
+                <td><div class="cell-strong">Travessa Aurora, 12</div><div class="cell-sub">Vila Nova · São Paulo · 02110-050</div></td>
+                <td class="cell-muted">21/10/2026</td>
+                <td class="cell-sub-plain">1 pedido</td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Perfil de Fernanda Lima em breve.', 'info', 'user')">Ver perfil</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="sempedido" data-bairro="Centro">
+                <td class="cell-code">#006</td>
+                <td>
+                  <div class="cli-cell">
+                    <span class="cli-avatar">RA</span>
+                    <div><div class="cell-strong">Ricardo Alves</div><div class="cell-sub">ricardo@email.com</div></div>
+                  </div>
+                </td>
+                <td>67890123456</td>
+                <td>(11) 95544-3322</td>
+                <td><div class="cell-strong">Rua do Comércio, 900</div><div class="cell-sub">Centro · São Paulo · 01010-000</div></td>
+                <td class="cell-muted">08/11/2025</td>
+                <td class="cell-sub-plain">0 pedidos</td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Perfil de Ricardo Alves em breve.', 'info', 'user')">Ver perfil</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel-foot">
+          <span>6 clientes · Base de demonstração</span>
+          <span>Dados ilustrativos</span>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/base.js" data-base="../../assets/"></script>
+  <script src="clientes.js"></script>
+
+</body>
+</html>

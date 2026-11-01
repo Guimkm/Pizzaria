@@ -1,0 +1,162 @@
+/* ============================================================
+   PIZZARIA SABORES ITALIANO - Minha conta (cliente)
+   Usado por: cliente/config/config.html
+   ============================================================ */
+
+.config-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.config-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+/* Cabeçalho de card com quadradinho de ícone */
+.cfg-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cfg-head-ic {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--green-soft);
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cfg-head-ic-brand {
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+}
+
+/* Campo com dica */
+.cfg-head + .field-row,
+.cfg-head + .field {
+  margin-top: 4px;
+}
+.field .hint {
+  display: block;
+}
+
+/* Barra de salvamento */
+.cfg-save {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.cfg-save-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Coluna lateral */
+.config-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+}
+
+/* Card "Sobre a loja" (preview da configuração) */
+.cfg-list {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+}
+.cfg-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 11px 0;
+  border-top: 1px solid var(--line);
+}
+.cfg-list li:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+.cfg-list .ic {
+  color: var(--brand-ink);
+  margin-top: 3px;
+}
+.cfg-list span {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.cfg-list b {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.cfg-list small {
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.cfg-store-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 11px 13px;
+  background: #fafafa;
+  border: 1px dashed var(--line-2);
+  border-radius: 12px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.cfg-store-note .ic {
+  color: var(--brand-ink);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Card de promoção */
+.cfg-promo {
+  background: var(--brand-soft);
+  border-color: #ffe7c4;
+}
+.cfg-promo-ic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: #fff;
+  color: var(--brand-ink);
+  margin-bottom: 12px;
+}
+.cfg-promo .card-title {
+  margin-bottom: 6px;
+}
+.cfg-promo-txt {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1000px) {
+  .config-grid {
+    grid-template-columns: 1fr;
+  }
+  .config-side {
+    position: static;
+  }
+}

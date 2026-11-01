@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - Pizzaria Sabores Italiano</title>
+  <link rel="icon" href="../../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="menu.css">
+</head>
+<body data-page="cliente" data-tab="menu">
+  <div class="demo-banner">
+    <svg class="ic"><use href="#info"/></svg>
+    <span>Servidor Java ou banco de dados indisponível - exibindo dados de demonstração.</span>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar sidebar-cliente">
+      <div class="sidebar-top">
+        <a class="profile" href="../home/home.html">
+          <div class="avatar"><svg class="ic"><use href="#user"/></svg></div>
+          <div>
+            <p class="who" data-client-nome>John Luke</p>
+            <p class="name">Cliente</p>
+            <p class="caption">Pequenos detalhes fazem a diferença.</p>
+          </div>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="nav-item active" href="../menu/menu.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
+        <a class="nav-item" href="../carrinho/carrinho.html"><span class="nav-ic"><svg class="ic"><use href="#cart"/></svg></span> Carrinho <span class="nav-badge" data-cart-count style="display:none">0</span></a>
+        <a class="nav-item" href="../rastreio/rastreio.html"><span class="nav-ic"><svg class="ic"><use href="#truck"/></svg></span> Rastrear pedido</a>
+        <a class="nav-item" href="../historico/historico.html"><span class="nav-ic"><svg class="ic"><use href="#clock"/></svg></span> Histórico</a>
+        <a class="nav-item" href="../config/config.html"><span class="nav-ic"><svg class="ic"><use href="#settings"/></svg></span> Minha conta</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a class="sidebar-logout" href="../../auth/login/login.html"><span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="content">
+
+        <!-- Topo: titulo, busca e carrinho -->
+        <div class="page-head menu-head">
+          <div class="head-main">
+            <h1 class="page-title">Menu</h1>
+            <p class="page-sub">Escolha sua pizza favorita e faça seu pedido</p>
+            <div class="search field-icon">
+              <svg class="ic"><use href="#search"/></svg>
+              <input type="search" data-menu-search placeholder="Buscar pizzas, bebidas..." aria-label="Buscar pizzas, bebidas" autocomplete="off">
+            </div>
+          </div>
+          <div class="head-actions">
+            <a class="cart-btn" href="../carrinho/carrinho.html" aria-label="Ver carrinho">
+              <svg class="ic"><use href="#cart"/></svg>
+              <span class="count" data-cart-count style="display:none">0</span>
+            </a>
+            <a class="cart-label" href="../carrinho/carrinho.html">Ver carrinho</a>
+          </div>
+        </div>
+
+        <!-- Saudacao -->
+        <div class="greet-pill" id="greet">Olá, John <b>Luke</b>! O que vai ser hoje?</div>
+
+        <!-- Categorias (filtram a grade la embaixo) -->
+        <section class="block">
+          <h2 class="block-title">Categorias</h2>
+          <div class="cat-grid">
+            <a class="cat-card" href="#grid" data-cat="Tradicional,Especial">
+              <span class="cat-ic"><svg class="ic ic-sm"><use href="#pizza"/></svg></span>
+              <p class="cat-title two-tone">Pizzas <b>Salgadas</b></p>
+              <p class="cat-sub">Tradicionais</p>
+            </a>
+            <a class="cat-card" href="#grid" data-cat="Doce">
+              <span class="cat-ic"><svg class="ic ic-sm"><use href="#award"/></svg></span>
+              <p class="cat-title two-tone">Pizzas <b class="olive">Doces</b></p>
+              <p class="cat-sub">Doces</p>
+            </a>
+            <a class="cat-card" href="#grid" data-cat="Bebida">
+              <span class="cat-ic"><svg class="ic ic-sm"><use href="#drink"/></svg></span>
+              <p class="cat-title">Bebidas</p>
+              <p class="cat-sub">Geladas</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- Grade de pizzas -->
+        <section class="block" id="grid">
+          <div class="grid-head">
+            <h2 class="block-title">Todas as pizzas</h2>
+            <div class="pill-row">
+              <button type="button" class="pill active" data-cat="Todos">Todos</button>
+              <button type="button" class="pill" data-cat="Tradicional">Tradicional</button>
+              <button type="button" class="pill" data-cat="Especial">Especial</button>
+              <button type="button" class="pill" data-cat="Doce">Doce</button>
+              <button type="button" class="pill" data-cat="Bebida">Bebida</button>
+            </div>
+          </div>
+
+          <div class="pizza-grid">
+            <article class="pizza-card" data-cat="Tradicional">
+              <a class="prod-media" href="../produto/produto.html?id=1">
+                <img src="../../assets/img/margherita.png" alt="Margherita">
+              </a>
+              <div class="prod-body">
+                <a class="prod-name" href="../produto/produto.html?id=1">Margherita</a>
+                <p class="prod-desc">Molho de tomate, mussarela e manjericão fresco</p>
+                <div class="prod-foot">
+                  <span class="prod-price">R$ 45,90</span>
+                  <button type="button" class="add-btn" data-add="1" aria-label="Adicionar Margherita ao carrinho">
+                    <svg class="ic"><use href="#plus"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="pizza-card" data-cat="Especial">
+              <a class="prod-media" href="../produto/produto.html?id=2">
+                <img src="../../assets/img/pepperoni.png" alt="Pepperoni">
+              </a>
+              <div class="prod-body">
+                <a class="prod-name" href="../produto/produto.html?id=2">Pepperoni</a>
+                <p class="prod-desc">Molho de tomate, mussarela e pepperoni artesanal</p>
+                <div class="prod-foot">
+                  <span class="prod-price">R$ 52,90</span>
+                  <button type="button" class="add-btn" data-add="2" aria-label="Adicionar Pepperoni ao carrinho">
+                    <svg class="ic"><use href="#plus"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="pizza-card" data-cat="Especial">
+              <a class="prod-media" href="../produto/produto.html?id=3">
+                <img src="../../assets/img/quatro-queijos.png" alt="Quatro Queijos">
+              </a>
+              <div class="prod-body">
+                <a class="prod-name" href="../produto/produto.html?id=3">Quatro <b>Queijos</b></a>
+                <p class="prod-desc">Mussarela, gorgonzola, parmesão e catupiry</p>
+                <div class="prod-foot">
+                  <span class="prod-price">R$ 48,90</span>
+                  <button type="button" class="add-btn" data-add="3" aria-label="Adicionar Quatro Queijos ao carrinho">
+                    <svg class="ic"><use href="#plus"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="pizza-card" data-cat="Tradicional">
+              <a class="prod-media" href="../produto/produto.html?id=4">
+                <img src="../../assets/img/portuguesa.png" alt="Portuguesa">
+              </a>
+              <div class="prod-body">
+                <a class="prod-name" href="../produto/produto.html?id=4">Portuguesa</a>
+                <p class="prod-desc">Presunto, ovos, cebola, azeitona e mussarela</p>
+                <div class="prod-foot">
+                  <span class="prod-price">R$ 47,90</span>
+                  <button type="button" class="add-btn" data-add="4" aria-label="Adicionar Portuguesa ao carrinho">
+                    <svg class="ic"><use href="#plus"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="pizza-card" data-cat="Tradicional">
+              <a class="prod-media" href="../produto/produto.html?id=5">
+                <img src="../../assets/img/calabresa.png" alt="Calabresa">
+              </a>
+              <div class="prod-body">
+                <a class="prod-name" href="../produto/produto.html?id=5">Calabresa</a>
+                <p class="prod-desc">Calabresa fatiada, cebola caramelizada e mussarela</p>
+                <div class="prod-foot">
+                  <span class="prod-price">R$ 39,90</span>
+                  <button type="button" class="add-btn" data-add="5" aria-label="Adicionar Calabresa ao carrinho">
+                    <svg class="ic"><use href="#plus"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="pizza-card" data-cat="Especial">
+              <a class="prod-media" href="../produto/produto.html?id=6">
+                <img src="../../assets/img/frango-catupiry.png" alt="Frango Catupiry">
+              </a>
+              <div class="prod-body">
+                <a class="prod-name" href="../produto/produto.html?id=6">Frango <b>Catupiry</b></a>
+                <p class="prod-desc">Frango desfiado, catupiry cremoso e azeitona</p>
+                <div class="prod-foot">
+                  <span class="prod-price">R$ 54,90</span>
+                  <button type="button" class="add-btn" data-add="6" aria-label="Adicionar Frango Catupiry ao carrinho">
+                    <svg class="ic"><use href="#plus"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="pizza-card" data-cat="Doce">
+              <a class="prod-media" href="../produto/produto.html?id=brigadeiro">
+                <img src="../../assets/img/promo.png" alt="Brigadeiro">
+              </a>
+              <div class="prod-body">
+                <a class="prod-name" href="../produto/produto.html?id=brigadeiro">Brigadeiro</a>
+                <p class="prod-desc">Chocolate cremoso com granulado colorido</p>
+                <div class="prod-foot">
+                  <span class="prod-price">R$ 39,90</span>
+                  <button type="button" class="add-btn" data-add="brigadeiro" aria-label="Adicionar Brigadeiro ao carrinho">
+                    <svg class="ic"><use href="#plus"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="pizza-card" data-cat="Bebida">
+              <div class="prod-media prod-emoji"><svg class="ic ic-sm"><use href="#drink"/></svg></div>
+              <div class="prod-body">
+                <span class="prod-name">Coca-Cola lata</span>
+                <p class="prod-desc">Lata 350ml gelada, direto da geladeira</p>
+                <div class="prod-foot">
+                  <span class="prod-price">R$ 8,00</span>
+                  <button type="button" class="add-btn" data-add="coca" aria-label="Adicionar Coca-Cola ao carrinho">
+                    <svg class="ic"><use href="#plus"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="pizza-card" data-cat="Bebida">
+              <div class="prod-media prod-emoji"><svg class="ic ic-sm"><use href="#drink"/></svg></div>
+              <div class="prod-body">
+                <span class="prod-name">Guaraná lata</span>
+                <p class="prod-desc">Guaraná gelado 350ml, o clássico da casa</p>
+                <div class="prod-foot">
+                  <span class="prod-price">R$ 7,50</span>
+                  <button type="button" class="add-btn" data-add="guarana" aria-label="Adicionar Guaraná ao carrinho">
+                    <svg class="ic"><use href="#plus"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="empty-state" id="grid-empty" style="display:none">
+            <svg class="ic"><use href="#search"/></svg>
+            <h3>Nenhum item nesta categoria</h3>
+            <p>Tente outra categoria ou volte para "Todos".</p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/base.js" data-base="../../assets/"></script>
+  <script src="menu.js"></script>
+</body>
+</html>

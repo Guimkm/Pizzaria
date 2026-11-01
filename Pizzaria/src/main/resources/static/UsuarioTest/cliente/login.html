@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><title>Login do Cliente</title></head>
+<body>
+<h2>Login do Cliente</h2>
+<form id="form">
+    <input type="email" id="email" placeholder="E-mail" required><br>
+    <input type="password" id="senha" placeholder="Senha" required><br>
+    <label><input type="checkbox" id="lembrar"> Manter conectado</label><br>
+    <button>Entrar</button>
+</form>
+<p id="msg" style="color:red"></p>
+<a href="/UsuarioTest/clienteTest/cliente/cadastro.html">Criar conta</a> | <a href="/UsuarioTest/index.htmlt/index.html">Voltar</a>
+
+<script src="/UsuarioTest/jsuarioTest/js/sessao.js"></script>
+<script>
+    jaLogado();
+    const v = id => document.getElementById(id);
+    v('form').onsubmit = async e => {
+        e.preventDefault();
+        const r = await enviar('/api/cliente/login',
+            { email: v('email').value, senha: v('senha').value, lembrar: v('lembrar').checked });
+        const d = await r.json();
+        if (r.ok) location.href = d.redirect; else v('msg').textContent = d.erro;
+    };
+</script>
+</body>
+</html>

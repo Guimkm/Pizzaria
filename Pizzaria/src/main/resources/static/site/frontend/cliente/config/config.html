@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Conta - Pizzaria Sabores Italiano</title>
+  <link rel="icon" href="../../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="config.css">
+</head>
+<body data-page="cliente" data-tab="config">
+
+  <div class="demo-banner">
+    <svg class="ic"><use href="#info"/></svg>
+    <span>Servidor Java ou banco de dados indisponível - as alterações serão salvas apenas no navegador.</span>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar sidebar-cliente">
+      <div class="sidebar-top">
+        <a class="profile" href="../home/home.html">
+          <div class="avatar"><svg class="ic"><use href="#user"/></svg></div>
+          <div>
+            <p class="who">John Luke</p>
+            <p class="name">Cliente</p>
+            <p class="caption">Pequenos detalhes fazem a diferença.</p>
+          </div>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a class="nav-item" href="../menu/menu.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
+        <a class="nav-item" href="../carrinho/carrinho.html"><span class="nav-ic"><svg class="ic"><use href="#cart"/></svg></span> Carrinho <span class="nav-badge" data-cart-count style="display:none">0</span></a>
+        <a class="nav-item" href="../rastreio/rastreio.html"><span class="nav-ic"><svg class="ic"><use href="#scooter"/></svg></span> Rastrear pedido</a>
+        <a class="nav-item" href="../historico/historico.html"><span class="nav-ic"><svg class="ic"><use href="#history"/></svg></span> Histórico</a>
+        <a class="nav-item active" href="../config/config.html"><span class="nav-ic"><svg class="ic"><use href="#settings"/></svg></span> Minha conta</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <a class="sidebar-logout" href="../../auth/login/login.html">
+          <span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão
+        </a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="content">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Minha conta</h1>
+            <p class="page-sub">Atualize seus dados e endereço de entrega</p>
+          </div>
+          <a class="cart-btn" href="../carrinho/carrinho.html" aria-label="Abrir carrinho">
+            <svg class="ic"><use href="#cart"/></svg>
+            <span class="count" data-cart-count style="display:none">0</span>
+          </a>
+        </div>
+
+        <div class="config-grid">
+          <form id="form-cliente-config" class="config-main" novalidate>
+            <!-- Dados pessoais -->
+            <section class="card card-pad">
+              <div class="cfg-head">
+                <span class="cfg-head-ic"><svg class="ic"><use href="#user"/></svg></span>
+                <div>
+                  <h2 class="card-title">Dados pessoais</h2>
+                  <p class="card-sub">Como a gente te chama e como falar com você.</p>
+                </div>
+              </div>
+
+              <div class="field-row" style="margin-top:18px">
+                <div class="field">
+                  <label for="cfg-nome">Nome completo</label>
+                  <input id="cfg-nome" type="text" required placeholder="Seu nome">
+                </div>
+                <div class="field">
+                  <label for="cfg-telefone">Telefone / WhatsApp</label>
+                  <input id="cfg-telefone" type="tel" required placeholder="(11) 99999-9999">
+                </div>
+              </div>
+
+              <div class="field" style="margin-bottom:0">
+                <label for="cfg-email">E-mail</label>
+                <input id="cfg-email" type="email" placeholder="voce@email.com">
+              </div>
+            </section>
+
+            <!-- Endereço -->
+            <section class="card card-pad">
+              <div class="cfg-head">
+                <span class="cfg-head-ic"><svg class="ic"><use href="#pin"/></svg></span>
+                <div>
+                  <h2 class="card-title">Endereço de entrega</h2>
+                  <p class="card-sub">Para onde a gente leva a pizza quentinha.</p>
+                </div>
+              </div>
+
+              <div class="field" style="margin-top:18px;margin-bottom:0">
+                <label for="cfg-endereco">Endereço</label>
+                <input id="cfg-endereco" type="text" required placeholder="Rua, número - bairro">
+                <span class="hint">Ponto de referência ajuda o entregador a chegar mais rápido.</span>
+              </div>
+            </section>
+
+            <div class="cfg-save">
+              <button type="submit" class="btn btn-primary">
+                <svg class="ic"><use href="#save"/></svg>
+                Salvar alterações
+              </button>
+              <p class="cfg-save-note">Seus dados ficam salvos neste navegador e na sua conta.</p>
+            </div>
+          </form>
+
+          <aside class="config-side">
+            <!-- Sobre a loja (dados de configuração) -->
+            <div class="card card-pad cfg-store" id="config-preview">
+              <div class="cfg-head">
+                <span class="cfg-head-ic cfg-head-ic-brand"><svg class="ic"><use href="#store"/></svg></span>
+                <div>
+                  <h2 class="card-title" id="pv-nomePizzaria">Pizzaria Sabores Italiano</h2>
+                  <p class="card-sub" id="pv-slogan">A verdadeira pizza artesanal</p>
+                </div>
+              </div>
+
+              <ul class="cfg-list">
+                <li>
+                  <svg class="ic ic-sm"><use href="#pin"/></svg>
+                  <span><b id="pv-endereco">Rua das Flores, 123</b><small id="pv-cidade">Sao Paulo, SP</small></span>
+                </li>
+                <li>
+                  <svg class="ic ic-sm"><use href="#tag"/></svg>
+                  <span><b data-config="cep" id="pv-cep">01310-100</b><small>CEP</small></span>
+                </li>
+                <li>
+                  <svg class="ic ic-sm"><use href="#phone"/></svg>
+                  <span><b id="pv-telefone" data-config="telefone">(11) 3456-7890</b><small>Telefone · <span data-config="whatsapp" id="pv-whatsapp">(11) 99999-1234</span></small></span>
+                </li>
+                <li>
+                  <svg class="ic ic-sm"><use href="#clock"/></svg>
+                  <span><b id="pv-horario" data-config="horario">Ter a Dom, 18h as 23h</b><small>Horário de funcionamento</small></span>
+                </li>
+                <li>
+                  <svg class="ic ic-sm"><use href="#truck"/></svg>
+                  <span><b id="pv-taxa">R$ 8,90</b><small>Taxa de entrega padrão</small></span>
+                </li>
+              </ul>
+
+              <p class="cfg-store-note">
+                <svg class="ic ic-sm"><use href="#info"/></svg>
+                Seu pedido chega em até 40 minutos. A taxa é calculada no carrinho.
+              </p>
+            </div>
+
+            <!-- Promoção -->
+            <div class="card card-pad cfg-promo">
+              <span class="cfg-promo-ic"><svg class="ic"><use href="#award"/></svg></span>
+              <h2 class="card-title">Promoção da semana</h2>
+              <p class="cfg-promo-txt">2ª pizza com 30% de desconto em pedidos acima de R$ 80.</p>
+              <a class="btn btn-orange-outline btn-sm btn-block" href="../menu/menu.html">Ver cardápio</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/base.js" data-base="../../assets/"></script>
+  <script src="config.js"></script>
+</body>
+</html>

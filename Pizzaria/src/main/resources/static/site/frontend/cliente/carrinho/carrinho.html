@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho - Pizzaria Sabores Italiano</title>
+  <link rel="icon" href="../../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="carrinho.css">
+</head>
+<body data-page="cliente" data-tab="carrinho">
+
+  <div class="demo-banner">
+    <svg class="ic"><use href="#info"/></svg>
+    <span>Servidor Java ou banco de dados indisponível - exibindo dados de demonstração.</span>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar sidebar-cliente">
+      <div class="sidebar-top">
+        <a class="profile" href="../home/home.html">
+          <div class="avatar"><svg class="ic"><use href="#user"/></svg></div>
+          <div>
+            <p class="who">John Luke</p>
+            <p class="name">Cliente</p>
+            <p class="caption">Pequenos detalhes fazem a diferença.</p>
+          </div>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="nav-item" href="../menu/menu.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
+        <a class="nav-item active" href="../carrinho/carrinho.html"><span class="nav-ic"><svg class="ic"><use href="#cart"/></svg></span> Carrinho <span class="nav-badge" data-cart-count style="display:none">0</span></a>
+        <a class="nav-item" href="../rastreio/rastreio.html"><span class="nav-ic"><svg class="ic"><use href="#truck"/></svg></span> Rastrear pedido</a>
+        <a class="nav-item" href="../historico/historico.html"><span class="nav-ic"><svg class="ic"><use href="#refresh"/></svg></span> Histórico</a>
+        <a class="nav-item" href="../config/config.html"><span class="nav-ic"><svg class="ic"><use href="#user"/></svg></span> Minha conta</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a class="sidebar-logout" href="../../auth/login/login.html">
+          <span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span>
+          Encerrar sessão
+        </a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="content">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Seu carrinho</h1>
+            <p class="page-sub">Temos coisas boas esperando por você. Confira seu pedido!</p>
+          </div>
+          <a class="cart-btn" href="../carrinho/carrinho.html" aria-label="Ver carrinho">
+            <svg class="ic"><use href="#cart"/></svg>
+            <span class="count" data-cart-count>0</span>
+          </a>
+        </div>
+
+        <!-- Stepper de etapas -->
+        <div class="steps-bar">
+          <span class="step on"><b>1</b> Carrinho</span>
+          <svg class="ic ic-sm sep"><use href="#arrow-right"/></svg>
+          <span class="step"><b>2</b> Checkout</span>
+          <svg class="ic ic-sm sep"><use href="#arrow-right"/></svg>
+          <span class="step"><b>3</b> Acompanhar pedido</span>
+        </div>
+
+        <!-- Estado vazio -->
+        <div id="cart-empty" class="empty-state" style="display:none">
+          <svg class="ic"><use href="#cart"/></svg>
+          <h3>Seu carrinho está vazio</h3>
+          <p>Adicione deliciosas pizzas ao seu pedido!</p>
+          <a class="btn btn-primary" href="../menu/menu.html">Ver Menu</a>
+        </div>
+
+        <!-- Conteudo do carrinho -->
+        <div id="cart-content" class="cart-grid">
+          <div class="cart-col">
+
+            <!-- Itens -->
+            <section class="card card-pad pick-card">
+              <header class="block-head">
+                <h2 class="card-title">Uma ótima escolha!</h2>
+                <span id="cart-count-line" class="mini-count">0 itens</span>
+              </header>
+              <div id="cart-items"></div>
+              <a class="link-add" href="../menu/menu.html">
+                <svg class="ic ic-sm"><use href="#plus"/></svg>
+                Continuar adicionando no menu
+              </a>
+            </section>
+
+            <!-- Endereco -->
+            <section class="card card-pad addr-card">
+              <header class="block-head">
+                <h2 class="card-title">Entregar em</h2>
+                <a class="link-orange" href="../config/config.html">Alterar</a>
+              </header>
+
+              <div class="addr-list">
+                <label class="addr-opt active">
+                  <input type="radio" name="endereco" value="casa" checked>
+                  <span class="addr-ic"><svg class="ic"><use href="#pin"/></svg></span>
+                  <span class="addr-txt">
+                    <b>Casa • John Luke</b>
+                    <span class="line"><span id="cart-addr">Rua das Flores, 123</span> • Apto 302</span>
+                    <span class="line">Centro, São Paulo - SP - 01310-000</span>
+                    <span class="line muted">Interfone 202 • Entregar na portaria.</span>
+                  </span>
+                  <span class="addr-check"><svg class="ic ic-sm"><use href="#check"/></svg></span>
+                </label>
+
+                <label class="addr-opt">
+                  <input type="radio" name="endereco" value="trabalho">
+                  <span class="addr-ic"><svg class="ic"><use href="#pin"/></svg></span>
+                  <span class="addr-txt">
+                    <b>Trabalho • John Luke</b>
+                    <span class="line">Avenida Paulista, 1000 • Sala 21</span>
+                    <span class="line">Bela Vista, São Paulo - SP - 01310-100</span>
+                    <span class="line muted">Recepção • Entregar na recepção.</span>
+                  </span>
+                  <span class="addr-check"><svg class="ic ic-sm"><use href="#check"/></svg></span>
+                </label>
+              </div>
+            </section>
+          </div>
+
+          <!-- Resumo -->
+          <aside class="card card-pad summary">
+            <h2 class="card-title">Resumo do pedido</h2>
+
+            <div class="coupon">
+              <span class="coupon-label">Tem um cupom?</span>
+              <div class="coupon-row">
+                <input type="text" id="cupom-input" placeholder="Digite seu cupom" autocomplete="off">
+                <button type="button" id="btn-cupom">Aplicar</button>
+              </div>
+            </div>
+
+            <div class="sum-row">
+              <span>Subtotal</span>
+              <strong id="sub-val">R$ 0,00</strong>
+            </div>
+            <div class="sum-row">
+              <span>Taxa de entrega</span>
+              <strong id="taxa-val">R$ 0,00</strong>
+            </div>
+
+            <div class="sum-total">
+              <span>Total</span>
+              <strong id="tot-val">R$ 0,00</strong>
+            </div>
+
+            <div class="ship-box">
+              <span class="ship-ic"><svg class="ic ic-sm"><use href="#clock"/></svg></span>
+              <span class="ship-txt">
+                <b>Entrega em 30-45 min</b>
+                <small>A partir da confirmação</small>
+              </span>
+            </div>
+
+            <button id="btn-finalizar" type="button" class="btn btn-primary btn-block go-checkout">
+              Ir para o checkout
+              <svg class="ic ic-sm"><use href="#arrow-right"/></svg>
+            </button>
+
+            <p class="sum-note">Você escolhe como pagar na próxima etapa.</p>
+
+            <!-- Ids de pagamento mantidos para compatibilidade com carrinho.js:
+                 a escolha de pagamento acontece agora na pagina de checkout. -->
+            <div class="pay-legacy" hidden>
+              <input type="radio" name="pagamento" value="pix" checked>
+              <input type="radio" name="pagamento" value="credito">
+              <input type="radio" name="pagamento" value="debito">
+              <input type="radio" name="pagamento" value="dinheiro">
+              <div id="pay-troco" style="display:none">
+                <input type="text" id="troco-input" placeholder="Ex.: R$ 100,00">
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Banner "Sempre cabe um docinho" -->
+        <section class="promo">
+          <img class="promo-img" src="../../assets/img/promo.png" alt="Pizza de brigadeiro">
+          <div class="promo-txt">
+            <h3>Sempre cabe um docinho.</h3>
+            <p>Pizza de Brigadeiro - Chocolate cremoso e granulado colorido</p>
+            <strong>R$ 39,90</strong>
+          </div>
+          <button type="button" class="promo-btn" id="btn-docinho">
+            <svg class="ic ic-sm"><use href="#plus"/></svg>
+            Adicionar
+          </button>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/base.js" data-base="../../assets/"></script>
+  <script src="carrinho.js"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do seu jeito - Pizzaria Sabores Italiano</title>
+  <link rel="icon" href="../../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="produto.css">
+</head>
+<body data-page="cliente" data-tab="produto">
+  <div class="demo-banner">
+    <svg class="ic"><use href="#info"/></svg>
+    <span>Servidor Java ou banco de dados indisponível - exibindo dados de demonstração.</span>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar sidebar-cliente">
+      <div class="sidebar-top">
+        <a class="profile" href="../home/home.html">
+          <div class="avatar"><svg class="ic"><use href="#user"/></svg></div>
+          <div>
+            <p class="who" data-client-nome>John Luke</p>
+            <p class="name">Cliente</p>
+            <p class="caption">Pequenos detalhes fazem a diferença.</p>
+          </div>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="nav-item active" href="../menu/menu.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
+        <a class="nav-item" href="../carrinho/carrinho.html"><span class="nav-ic"><svg class="ic"><use href="#cart"/></svg></span> Carrinho <span class="nav-badge" data-cart-count style="display:none">0</span></a>
+        <a class="nav-item" href="../rastreio/rastreio.html"><span class="nav-ic"><svg class="ic"><use href="#truck"/></svg></span> Rastrear pedido</a>
+        <a class="nav-item" href="../historico/historico.html"><span class="nav-ic"><svg class="ic"><use href="#clock"/></svg></span> Histórico</a>
+        <a class="nav-item" href="../config/config.html"><span class="nav-ic"><svg class="ic"><use href="#settings"/></svg></span> Minha conta</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a class="sidebar-logout" href="../../auth/login/login.html"><span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="content">
+
+        <!-- Topo -->
+        <div class="page-head prod-head">
+          <div class="head-main">
+            <h1 class="page-title">Do seu jeito</h1>
+            <nav class="crumb" aria-label="Trilha de navegação">
+              <a href="../menu/menu.html">Menu</a>
+              <span class="sep">/</span>
+              <a href="../menu/menu.html" data-p-cat>Pizzas Salgadas</a>
+              <span class="sep">/</span>
+              <b data-p-name>Calabresa</b>
+            </nav>
+          </div>
+          <div class="head-actions">
+            <a class="cart-btn" href="../carrinho/carrinho.html" aria-label="Ver carrinho">
+              <svg class="ic"><use href="#cart"/></svg>
+              <span class="count" data-cart-count style="display:none">0</span>
+            </a>
+            <a class="cart-label" href="../carrinho/carrinho.html">Ver carrinho</a>
+          </div>
+        </div>
+
+        <div class="prod-grid">
+
+          <!-- Coluna esquerda: foto + resumo do produto -->
+          <div class="col-left">
+            <article class="card prod-card">
+              <div class="prod-photo">
+                <img data-p-img src="../../assets/img/calabresa.png" alt="Calabresa">
+              </div>
+              <div class="prod-info">
+                <span class="tag tag-yellow">A favorita da casa</span>
+                <h2 class="prod-title" data-p-name>Calabresa</h2>
+                <p class="prod-desc" data-p-desc>Molho, mussarela e calabresa fatiada. Uma combinação clássica com massa leve e borda douradinha.</p>
+                <div class="price-row">
+                  <span class="price" data-p-price>R$ 39,90</span>
+                  <span class="rating"><svg class="ic ic-sm"><use href="#star"/></svg> 4,9 (123)</span>
+                </div>
+                <p class="eta"><svg class="ic ic-sm"><use href="#clock"/></svg> Prepara e entrega · 30–45 min</p>
+              </div>
+            </article>
+
+            <div class="note-box">
+              <p class="note-title">Feita na hora, com carinho.</p>
+              <p class="note-text">Contém glúten e leite. Se tiver alguma restrição alimentar, fale com a nossa equipe.</p>
+            </div>
+          </div>
+
+          <!-- Coluna direita: opções + barra de compra -->
+          <div class="col-right">
+            <div class="card opt-card">
+
+              <!-- Tamanho -->
+              <div class="opt-head">
+                <h3 class="opt-title">Escolha o tamanho</h3>
+                <span class="tag">Obrigatório</span>
+              </div>
+              <div class="size-grid">
+                <button type="button" class="size-opt" data-size="Broto" data-delta="-16" data-fatias="4">
+                  <span class="size-name"><svg class="ic ic-sm tick"><use href="#check"/></svg> Broto</span>
+                  <span class="size-fatias">4 fatias</span>
+                  <span class="size-price" data-size-price>—</span>
+                </button>
+                <button type="button" class="size-opt" data-size="Média" data-delta="-8" data-fatias="6">
+                  <span class="size-name"><svg class="ic ic-sm tick"><use href="#check"/></svg> Média</span>
+                  <span class="size-fatias">6 fatias</span>
+                  <span class="size-price" data-size-price>—</span>
+                </button>
+                <button type="button" class="size-opt active" data-size="Grande" data-delta="0" data-fatias="8">
+                  <span class="size-name"><svg class="ic ic-sm tick"><use href="#check"/></svg> Grande</span>
+                  <span class="size-fatias">8 fatias</span>
+                  <span class="size-price" data-size-price>—</span>
+                </button>
+              </div>
+
+              <!-- Borda -->
+              <h3 class="opt-title opt-title-block">Uma borda especial?</h3>
+              <div class="opt-list">
+                <label class="opt-row active">
+                  <input type="radio" name="borda" value="Sem borda extra" data-extra="0" checked>
+                  <span class="radio-dot"></span>
+                  <span class="opt-label">Sem borda extra</span>
+                  <span class="opt-val">Sem acréscimo</span>
+                </label>
+                <label class="opt-row">
+                  <input type="radio" name="borda" value="Catupiry" data-extra="8">
+                  <span class="radio-dot"></span>
+                  <span class="opt-label">Catupiry</span>
+                  <span class="opt-val">+ R$ 8,00</span>
+                </label>
+                <label class="opt-row">
+                  <input type="radio" name="borda" value="Cheddar" data-extra="8">
+                  <span class="radio-dot"></span>
+                  <span class="opt-label">Cheddar</span>
+                  <span class="opt-val">+ R$ 8,00</span>
+                </label>
+              </div>
+
+              <!-- Opcionais da casa -->
+              <h3 class="opt-title opt-title-block">Opcionais da casa</h3>
+              <div class="field-icon opt-search">
+                <svg class="ic"><use href="#search"/></svg>
+                <input type="search" id="busca-extra" placeholder="Buscar ingrediente, molho, borda especial..." aria-label="Buscar opcional" autocomplete="off">
+              </div>
+              <div class="opt-list" id="extras-list">
+                <label class="opt-row" data-extra-name="Extra de mussarela">
+                  <input type="checkbox" name="extra" value="Extra de mussarela" data-extra="5">
+                  <span class="check-box"><svg class="ic ic-sm"><use href="#check"/></svg></span>
+                  <span class="opt-label">Extra de mussarela</span>
+                  <span class="opt-val">+ R$ 5,00</span>
+                </label>
+                <label class="opt-row" data-extra-name="Azeitonas">
+                  <input type="checkbox" name="extra" value="Azeitonas" data-extra="3">
+                  <span class="check-box"><svg class="ic ic-sm"><use href="#check"/></svg></span>
+                  <span class="opt-label">Azeitonas</span>
+                  <span class="opt-val">+ R$ 3,00</span>
+                </label>
+                <label class="opt-row" data-extra-name="Borda recheada">
+                  <input type="checkbox" name="extra" value="Borda recheada" data-extra="8">
+                  <span class="check-box"><svg class="ic ic-sm"><use href="#check"/></svg></span>
+                  <span class="opt-label">Borda recheada</span>
+                  <span class="opt-val">+ R$ 8,00</span>
+                </label>
+              </div>
+              <p class="opt-note">Escolha até 3 itens. São opcionais e podem ser removidos depois.</p>
+
+              <!-- Observações -->
+              <h3 class="opt-title opt-title-block">Observações para a cozinha</h3>
+              <textarea class="obs" id="obs" maxlength="200" placeholder="Ex.: cortar em 8 fatias. Algum cuidado especial?"></textarea>
+              <p class="opt-note">Opcional · <span id="obs-count">0</span>/200 caracteres · Extras estão adicionados acima.</p>
+
+              <hr class="hr">
+
+              <!-- Resumo -->
+              <div class="sum-row">
+                <span>Pizza <b data-p-size>Grande</b></span>
+                <span class="sum-val" data-sum-base>R$ 39,90</span>
+              </div>
+              <div class="sum-row">
+                <span>Extras selecionados</span>
+                <span class="sum-val" data-sum-extra>R$ 0,00</span>
+              </div>
+            </div>
+
+            <!-- Barra fixa de compra -->
+            <div class="buy-bar">
+              <div class="stepper">
+                <button type="button" class="step" data-step="-1" aria-label="Diminuir quantidade">
+                  <svg class="ic ic-sm"><use href="#minus"/></svg>
+                </button>
+                <span class="qty" data-qty>1</span>
+                <button type="button" class="step" data-step="1" aria-label="Aumentar quantidade">
+                  <svg class="ic ic-sm"><use href="#plus"/></svg>
+                </button>
+              </div>
+              <button type="button" class="btn btn-primary buy-btn" id="btn-add">
+                <svg class="ic"><use href="#cart"/></svg>
+                Adicionar - <span data-total>R$ 39,90</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/base.js" data-base="../../assets/"></script>
+  <script src="produto.js"></script>
+</body>
+</html>

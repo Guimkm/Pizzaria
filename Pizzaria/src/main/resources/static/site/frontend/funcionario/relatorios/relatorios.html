@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatórios - Pizzaria Sabores Italiano</title>
+  <link rel="icon" href="../../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="relatorios.css">
+</head>
+<body data-page="funcionario" data-tab="relatorios">
+<div class="demo-banner">
+  <svg class="ic"><use href="#info"/></svg>
+  <span>Sistema sem acesso ao servidor Java/banco de dados - exibindo dados de demonstração.</span>
+</div>
+
+<div class="layout">
+  <aside class="sidebar sidebar-func">
+    <div class="sidebar-top">
+      <div class="profile">
+        <div class="avatar"><svg class="ic"><use href="#user"/></svg></div>
+        <div>
+          <p class="who">Administrador</p>
+          <p class="name">Equipe da pizzaria</p>
+          <p class="caption">Pequenos detalhes fazem a diferença.</p>
+        </div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="../pedidos/pedidos.html"><span class="nav-ic"><svg class="ic"><use href="#clipboard"/></svg></span> Pedidos</a>
+      <a class="nav-item" href="../pizzas/pizzas.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
+      <a class="nav-item" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Clientes</a>
+      <a class="nav-item" href="../estoque/estoque.html"><span class="nav-ic"><svg class="ic"><use href="#box"/></svg></span> Estoque</a>
+      <a class="nav-item active" href="../relatorios/relatorios.html"><span class="nav-ic"><svg class="ic"><use href="#chart"/></svg></span> Relatórios</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="sidebar-logout" href="../../auth/login/login.html">
+        <span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão
+      </a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="content">
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">Relatórios</h1>
+          <p class="page-sub">Números que mostram como a casa está indo.</p>
+        </div>
+        <span class="status-pill pill-orange"><span class="dot"></span>Outubro de 2026</span>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#dollar"/></svg></span><span class="kpi-label">Faturamento do dia</span></div>
+          <p class="kpi-value">R$ 3.740,50</p>
+          <p class="kpi-detail">8% acima de ontem</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#clipboard"/></svg></span><span class="kpi-label">Pedidos hoje</span></div>
+          <p class="kpi-value">42</p>
+          <p class="kpi-detail">7 cancelados no período</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#trend"/></svg></span><span class="kpi-label">Ticket médio</span></div>
+          <p class="kpi-value">R$ 89,06</p>
+          <p class="kpi-detail">+ R$ 2,10 nesta semana</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#users"/></svg></span><span class="kpi-label">Novos clientes</span></div>
+          <p class="kpi-value">+12</p>
+          <p class="kpi-detail">Cadros feitos no mês</p>
+        </div>
+      </div>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title">Desempenho da semana</h2>
+            <p class="panel-sub">18 a 24 de outubro de 2026 · atualizado às 20:03</p>
+          </div>
+          <div class="panel-actions">
+            <button type="button" class="btn btn-outline" onclick="Pizzaria.toast('Selecione o período na barra de filtros.', 'info', 'calendar')"><svg class="ic"><use href="#calendar"/></svg> Filtrar período</button>
+            <button type="button" class="btn btn-primary" onclick="Pizzaria.toast('Relatório exportado em breve.', 'info', 'download')"><svg class="ic"><use href="#download"/></svg> Exportar relatório</button>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button type="button" class="tab active" data-report="vendas">Vendas</button>
+          <button type="button" class="tab" data-report="top">Mais vendidas</button>
+          <button type="button" class="tab" data-report="horario">Horários de pico</button>
+          <button type="button" class="tab" data-report="entrega">Entregas</button>
+        </div>
+
+        <div class="report-panel" data-panel="vendas">
+          <div class="report-head"><h3 class="card-title">Vendas dos últimos 7 dias</h3><span class="tag tag-yellow">+12% vs. semana anterior</span></div>
+          <div class="chart" style="--cols:7">
+              <div class="col"><span class="val">R$ 1.250</span><span class="bar" style="height:18%"></span><span class="lbl">Seg</span></div>
+              <div class="col"><span class="val">R$ 1.480</span><span class="bar" style="height:21%"></span><span class="lbl">Ter</span></div>
+              <div class="col"><span class="val">R$ 1.310</span><span class="bar" style="height:19%"></span><span class="lbl">Qua</span></div>
+              <div class="col"><span class="val">R$ 1.980</span><span class="bar" style="height:28%"></span><span class="lbl">Qui</span></div>
+              <div class="col"><span class="val">R$ 3.120</span><span class="bar" style="height:44%"></span><span class="lbl">Sex</span></div>
+              <div class="col"><span class="val">R$ 4.560</span><span class="bar" style="height:65%"></span><span class="lbl">Sáb</span></div>
+              <div class="col"><span class="val">R$ 4.210</span><span class="bar" style="height:60%"></span><span class="lbl">Dom</span></div>
+          </div>
+          <div class="hr"></div>
+          <div class="stat-grid">
+            <div class="stat-box"><p class="lbl">Total da semana</p><p class="v">R$ 17.910</p></div>
+            <div class="stat-box"><p class="lbl">Melhor dia</p><p class="v">Sábado</p></div>
+            <div class="stat-box"><p class="lbl">Pedidos na semana</p><p class="v">214</p></div>
+            <div class="stat-box"><p class="lbl">Cancelamentos</p><p class="v">5</p></div>
+          </div>
+        </div>
+        <div class="report-panel" data-panel="top" style="display:none">
+          <div class="report-head"><h3 class="card-title">Pizzas mais vendidas</h3><span class="tag tag-yellow">últimos 7 dias</span></div>
+              <div class="bar-row"><span class="rank">1</span><span class="name">Calabresa</span><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div><span class="qty">184</span></div>
+              <div class="bar-row"><span class="rank">2</span><span class="name">Margherita</span><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div><span class="qty">156</span></div>
+              <div class="bar-row"><span class="rank">3</span><span class="name">Pepperoni</span><div class="bar-track"><div class="bar-fill" style="width:64%"></div></div><span class="qty">128</span></div>
+              <div class="bar-row"><span class="rank">4</span><span class="name">Portuguesa</span><div class="bar-track"><div class="bar-fill" style="width:48%"></div></div><span class="qty">96</span></div>
+              <div class="bar-row"><span class="rank">5</span><span class="name">Quatro Queijos</span><div class="bar-track"><div class="bar-fill" style="width:37%"></div></div><span class="qty">74</span></div>
+        </div>
+        <div class="report-panel" data-panel="horario" style="display:none">
+          <div class="report-head"><h3 class="card-title">Horários de pico</h3><span class="tag tag-yellow">pedidos por hora</span></div>
+          <div class="chart" style="--cols:5">
+              <div class="col"><span class="val">7 pedidos</span><span class="bar" style="height:32%"></span><span class="lbl">18h</span></div>
+              <div class="col"><span class="val">12 pedidos</span><span class="bar" style="height:56%"></span><span class="lbl">19h</span></div>
+              <div class="col"><span class="val">14 pedidos</span><span class="bar" style="height:65%"></span><span class="lbl">20h</span></div>
+              <div class="col"><span class="val">9 pedidos</span><span class="bar" style="height:41%"></span><span class="lbl">21h</span></div>
+              <div class="col"><span class="val">5 pedidos</span><span class="bar" style="height:23%"></span><span class="lbl">22h</span></div>
+          </div>
+        </div>
+        <div class="report-panel" data-panel="entrega" style="display:none">
+          <div class="report-head"><h3 class="card-title">Entregas</h3><span class="tag tag-green">38 min em média</span></div>
+          <div class="stat-grid">
+            <div class="stat-box"><p class="lbl">Tempo médio</p><p class="v">38 min</p></div>
+            <div class="stat-box"><p class="lbl">Entregas no dia</p><p class="v">35</p></div>
+            <div class="stat-box"><p class="lbl">Entregas no prazo</p><p class="v">92%</p></div>
+            <div class="stat-box"><p class="lbl">Cancelamentos</p><p class="v">2</p></div>
+          </div>
+        </div>
+
+        <div class="panel-foot">
+          <span>214 pedidos no período · Valores brutos, sem ajustes</span>
+          <span>Dados ilustrativos</span>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/base.js" data-base="../../assets/"></script>
+  <script src="relatorios.js"></script>
+
+</body>
+</html>

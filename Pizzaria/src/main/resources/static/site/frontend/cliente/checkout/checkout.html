@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Pizzaria Sabores Italiano</title>
+  <link rel="icon" href="../../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="checkout.css">
+</head>
+<body data-page="cliente" data-tab="checkout">
+
+  <div class="demo-banner">
+    <svg class="ic"><use href="#info"/></svg>
+    <span>Servidor Java ou banco de dados indisponível - exibindo dados de demonstração.</span>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar sidebar-cliente">
+      <div class="sidebar-top">
+        <a class="profile" href="../home/home.html">
+          <div class="avatar"><svg class="ic"><use href="#user"/></svg></div>
+          <div>
+            <p class="who">John Luke</p>
+            <p class="name">Cliente</p>
+            <p class="caption">Pequenos detalhes fazem a diferença.</p>
+          </div>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="nav-item" href="../menu/menu.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
+        <a class="nav-item active" href="../carrinho/carrinho.html"><span class="nav-ic"><svg class="ic"><use href="#cart"/></svg></span> Carrinho <span class="nav-badge" data-cart-count style="display:none">0</span></a>
+        <a class="nav-item" href="../rastreio/rastreio.html"><span class="nav-ic"><svg class="ic"><use href="#truck"/></svg></span> Rastrear pedido</a>
+        <a class="nav-item" href="../historico/historico.html"><span class="nav-ic"><svg class="ic"><use href="#refresh"/></svg></span> Histórico</a>
+        <a class="nav-item" href="../config/config.html"><span class="nav-ic"><svg class="ic"><use href="#user"/></svg></span> Minha conta</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a class="sidebar-logout" href="../../auth/login/login.html">
+          <span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span>
+          Encerrar sessão
+        </a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="content">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Falta só um pouquinho</h1>
+            <p class="page-sub">Confirme os detalhes e deixe o resto com a nossa cozinha.</p>
+          </div>
+          <a class="cart-btn" href="../carrinho/carrinho.html" aria-label="Ver carrinho">
+            <svg class="ic"><use href="#cart"/></svg>
+            <span class="count" data-cart-count>0</span>
+          </a>
+        </div>
+
+        <!-- Stepper de etapas -->
+        <div class="steps-bar">
+          <span class="step done">
+            <svg class="ic ic-sm ok"><use href="#check"/></svg> Carrinho
+          </span>
+          <svg class="ic ic-sm sep"><use href="#arrow-right"/></svg>
+          <span class="step on"><b>2</b> Checkout</span>
+          <svg class="ic ic-sm sep"><use href="#arrow-right"/></svg>
+          <span class="step"><b>3</b> Acompanhar pedido</span>
+        </div>
+
+        <div class="co-grid">
+          <!-- Coluna esquerda -->
+          <div class="co-col">
+
+            <!-- 1. Endereco -->
+            <section class="card card-pad co-block">
+              <header class="block-head">
+                <h2 class="card-title"><span class="num">1.</span> Endereço de entrega</h2>
+                <span class="head-right">
+                  <span class="badge badge-green">Casa</span>
+                  <a class="link-orange" href="../carrinho/carrinho.html">Alterar</a>
+                </span>
+              </header>
+
+              <div class="addr-block">
+                <span class="addr-ic"><svg class="ic"><use href="#pin"/></svg></span>
+                <div class="addr-txt">
+                  <b>Casa • John Luke</b>
+                  <span class="line"><span id="co-addr">Rua das Flores, 123</span> • Apto 302</span>
+                  <span class="line">Centro, São Paulo - SP - 01310-000</span>
+                  <span class="line muted">Interfone 202 • Entregar na portaria.</span>
+                </div>
+              </div>
+
+              <div class="confirm-strip">
+                <svg class="ic ic-sm"><use href="#clock"/></svg>
+                <span>10–45 min após a confirmação · Entrega <b id="co-taxa">R$ 6,00</b></span>
+              </div>
+            </section>
+
+            <!-- 2. Pagamento -->
+            <section class="card card-pad co-block">
+              <header class="block-head">
+                <h2 class="card-title"><span class="num">2.</span> Como prefere pagar?</h2>
+              </header>
+
+              <div class="pay-list">
+                <label class="pay-opt active">
+                  <input type="radio" name="pagamento" value="pix" checked>
+                  <span class="pay-ic"><svg class="ic"><use href="#pix"/></svg></span>
+                  <span class="pay-txt">
+                    <b>Pix</b>
+                    <small>Aprovação na hora, sem taxa extra.</small>
+                  </span>
+                  <span class="pay-radio"></span>
+                </label>
+
+                <label class="pay-opt">
+                  <input type="radio" name="pagamento" value="credito">
+                  <span class="pay-ic"><svg class="ic"><use href="#card"/></svg></span>
+                  <span class="pay-txt">
+                    <b>Cartão de crédito ou débito</b>
+                    <small>Pague na entrega com a maquininha.</small>
+                  </span>
+                  <span class="pay-radio"></span>
+                </label>
+
+                <label class="pay-opt">
+                  <input type="radio" name="pagamento" value="dinheiro">
+                  <span class="pay-ic"><svg class="ic"><use href="#dollar"/></svg></span>
+                  <span class="pay-txt">
+                    <b>Dinheiro</b>
+                    <small>Informe se vai precisar de troco.</small>
+                  </span>
+                  <span class="pay-radio"></span>
+                </label>
+              </div>
+
+              <div class="pay-extra" id="pay-troco" style="display:none">
+                <label class="field">
+                  <span>Troco para quanto?</span>
+                  <input type="text" id="troco-input" placeholder="Ex.: R$ 100,00">
+                </label>
+              </div>
+
+              <p class="pay-note" id="pay-note">
+                Ao confirmar, você será direcionado ao código Pix. Seu pedido será enviado à cozinha
+                assim que o pagamento for confirmado.
+              </p>
+            </section>
+
+            <!-- 3. Contato -->
+            <section class="card card-pad co-block">
+              <header class="block-head">
+                <h2 class="card-title"><span class="num">3.</span> Contato para a entrega</h2>
+                <a class="link-orange" href="../config/config.html">Editar</a>
+              </header>
+              <p class="contact-line" id="co-contato">John Luke · (11) 99942-6310</p>
+            </section>
+          </div>
+
+          <!-- Coluna direita: resumo -->
+          <aside class="card card-pad co-summary">
+            <h2 class="card-title">Seu pedido</h2>
+
+            <div id="co-items"></div>
+
+            <div class="sum-row">
+              <span>Subtotal</span>
+              <strong id="sub-val">R$ 0,00</strong>
+            </div>
+            <div class="sum-row">
+              <span>Taxa de entrega</span>
+              <strong id="taxa-val">R$ 6,00</strong>
+            </div>
+
+            <div class="sum-total">
+              <span>Total</span>
+              <strong id="tot-val">R$ 0,00</strong>
+            </div>
+
+            <div class="pay-pill" id="pay-pill">
+              <svg class="ic ic-sm"><use href="#pix"/></svg>
+              <span id="pay-pill-txt">Pagamento via Pix</span>
+            </div>
+
+            <button type="button" id="btn-confirmar" class="btn btn-primary btn-block confirm-btn">
+              Confirmar pedido - R$ 0,00
+            </button>
+
+            <p class="secure-note">
+              <svg class="ic ic-sm"><use href="#lock"/></svg>
+              Seus dados e o seu pagamento estão protegidos.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/base.js" data-base="../../assets/"></script>
+  <script src="checkout.js"></script>
+</body>
+</html>

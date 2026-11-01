@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><title>Cadastro de Cliente</title></head>
+<body>
+<h2>Cadastro de Cliente</h2>
+<form id="form">
+    <h4>Dados pessoais</h4>
+    <input id="nome" placeholder="Nome completo" required><br>
+    <input id="cpf" placeholder="CPF (somente números)" maxlength="14" required><br>
+    <input type="email" id="email" placeholder="E-mail" required><br>
+    <input type="password" id="senha" placeholder="Senha (mín. 6)" minlength="6" required><br>
+    <input type="password" id="confirmar" placeholder="Confirmar senha" required><br>
+
+    <h4>Telefone</h4>
+    <input id="telefone" placeholder="DDD + número" maxlength="15" required>
+    <select id="tipoTelefone">
+        <option value="CELULAR">Celular</option>
+        <option value="RESIDENCIAL">Residencial</option>
+        <option value="COMERCIAL">Comercial</option>
+    </select><br>
+
+    <h4>Endereço</h4>
+    <input id="rua" placeholder="Rua" required><br>
+    <input type="number" id="numero" placeholder="Número" min="1" required><br>
+    <input id="bairro" placeholder="Bairro" required><br>
+    <input id="cidade" placeholder="Cidade" required><br>
+    <input id="cep" placeholder="CEP" maxlength="9" required><br><br>
+
+    <button>Cadastrar</button>
+</form>
+<p id="msg"></p>
+<a href="/UsuarioTest/clienteTest/cliente/login.html">Já tenho conta</a>
+
+<script src="/UsuarioTest/jsuarioTest/js/sessao.js"></script>
+<script>
+    const v = id => document.getElementById(id).value;
+    document.getElementById('form').onsubmit = async e => {
+        e.preventDefault();
+        const msg = document.getElementById('msg');
+
+        if (v('senha') !== v('confirmar')) {
+            msg.style.color = 'red';
+            msg.textContent = 'As senhas não conferem';
+            return;
+        }
+
+        const r = await enviar('/api/cliente/cadastro', {
+            nome: v('nome'), cpf: v('cpf'), email: v('email'),
+            senha: v('senha'), confirmarSenha: v('confirmar'),
+            telefone: v('telefone'), tipoTelefone: v('tipoTelefone'),
+            rua: v('rua'), numero: Number(v('numero')), bairro: v('bairro'),
+            cidade: v('cidade'), cep: v('cep')
+        });
+        const d = await r.json();
+        msg.style.color = r.ok ? 'green' : 'red';
+        msg.textContent = d.mensagem || d.erro;
+    };
+</script>
+</body>
+</html>

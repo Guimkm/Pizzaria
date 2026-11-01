@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histórico de Pedidos - Pizzaria Sabores Italiano</title>
+  <link rel="icon" href="../../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="historico.css">
+</head>
+<body data-page="cliente" data-tab="historico">
+
+  <div class="demo-banner">
+    <svg class="ic"><use href="#info"/></svg>
+    <span>Servidor Java ou banco de dados indisponível - exibindo dados de demonstração.</span>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar sidebar-cliente">
+      <div class="sidebar-top">
+        <a class="profile" href="../home/home.html">
+          <div class="avatar"><svg class="ic"><use href="#user"/></svg></div>
+          <div>
+            <p class="who">John Luke</p>
+            <p class="name">Cliente</p>
+            <p class="caption">Pequenos detalhes fazem a diferença.</p>
+          </div>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a class="nav-item" href="../menu/menu.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
+        <a class="nav-item" href="../carrinho/carrinho.html"><span class="nav-ic"><svg class="ic"><use href="#cart"/></svg></span> Carrinho <span class="nav-badge" data-cart-count style="display:none">0</span></a>
+        <a class="nav-item" href="../rastreio/rastreio.html"><span class="nav-ic"><svg class="ic"><use href="#scooter"/></svg></span> Rastrear pedido</a>
+        <a class="nav-item active" href="../historico/historico.html"><span class="nav-ic"><svg class="ic"><use href="#history"/></svg></span> Histórico</a>
+        <a class="nav-item" href="../config/config.html"><span class="nav-ic"><svg class="ic"><use href="#settings"/></svg></span> Minha conta</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <a class="sidebar-logout" href="../../auth/login/login.html">
+          <span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão
+        </a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="content">
+
+        <!-- Cabeçalho -->
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Histórico de pedidos</h1>
+            <p class="page-sub">Os bons momentos merecem uma segunda volta.</p>
+          </div>
+          <span class="badge badge-green hist-count-pill">
+            <svg class="ic"><use href="#check"/></svg> <span id="hist-entregues">3 pedidos entregues</span>
+          </span>
+        </div>
+
+        <!-- Card destaque: pedido em andamento -->
+        <div class="hist-hero">
+          <span class="hist-hero-ic"><svg class="ic ic-lg"><use href="#scooter"/></svg></span>
+          <div class="hist-hero-txt">
+            <p class="hist-hero-title">Tem pizza a caminho!</p>
+            <p class="hist-hero-sub">Pedido #1048 · Em entrega · Previsão 20:10 – 20:20</p>
+          </div>
+          <a class="btn btn-primary hist-hero-btn" href="../rastreio/rastreio.html">
+            Acompanhar pedido <svg class="ic ic-sm"><use href="#chevron-right"/></svg>
+          </a>
+        </div>
+
+        <!-- Filtros -->
+        <div class="hist-filters">
+          <button type="button" class="hist-chip on" id="hist-chip-entregues">Entregues (3)</button>
+
+          <label class="hist-month" for="hist-month">
+            <svg class="ic ic-sm"><use href="#calendar"/></svg>
+            <select id="hist-month">
+              <option value="2026-10">Outubro de 2026</option>
+              <option value="">Todos os meses</option>
+            </select>
+            <svg class="ic ic-sm hist-caret"><use href="#chevron-down"/></svg>
+          </label>
+
+          <div class="hist-search">
+            <svg class="ic ic-sm"><use href="#search"/></svg>
+            <input type="search" id="hist-search" placeholder="Buscar por pedido ou sabor" autocomplete="off">
+          </div>
+        </div>
+
+        <!-- Lista de pedidos -->
+        <div class="hist-list" id="hist-list">
+
+          <article class="card hist-card" data-mes="2026-10">
+            <div class="hc-top">
+              <p class="hc-code">#1021 <span class="hc-date">17 de outubro de 2026 · 20:14</span></p>
+              <span class="badge badge-green"><svg class="ic"><use href="#check"/></svg> Entregue</span>
+            </div>
+            <div class="hc-body">
+              <img class="hc-thumb" src="../../assets/img/calabresa.png" alt="Seus clássicos favoritos">
+              <div class="hc-info">
+                <h2 class="hc-name">Seus clássicos favoritos</h2>
+                <p class="hc-items">1 Calabresa + 1 Frango c/ Catupiry + 1 Refrigerante 2 L</p>
+                <p class="hc-meta">Grande · Sem borda extra · Pix · Entrega inclusa</p>
+              </div>
+              <div class="hc-side">
+                <p class="hc-price">R$ 112,80</p>
+                <button type="button" class="btn btn-orange-outline hc-repeat" data-items="5,6">
+                  <svg class="ic ic-sm"><use href="#refresh"/></svg> Repetir pedido
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card hist-card" data-mes="2026-10">
+            <div class="hc-top">
+              <p class="hc-code">#0986 <span class="hc-date">10 de outubro de 2026 · 13:48</span></p>
+              <span class="badge badge-green"><svg class="ic"><use href="#check"/></svg> Entregue</span>
+            </div>
+            <div class="hc-body">
+              <img class="hc-thumb" src="../../assets/img/quatro-queijos.png" alt="Do salgado ao docinho">
+              <div class="hc-info">
+                <h2 class="hc-name">Do salgado ao docinho</h2>
+                <p class="hc-items">1 Quatro Queijos + 1 Brigadeiro</p>
+                <p class="hc-meta">Grande · Sem borda extra · Cartão de crédito · Entrega inclusa</p>
+              </div>
+              <div class="hc-side">
+                <p class="hc-price">R$ 98,80</p>
+                <button type="button" class="btn btn-orange-outline hc-repeat" data-items="3">
+                  <svg class="ic ic-sm"><use href="#refresh"/></svg> Repetir pedido
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card hist-card" data-mes="2026-10">
+            <div class="hc-top">
+              <p class="hc-code">#0942 <span class="hc-date">03 de outubro de 2026 · 20:05</span></p>
+              <span class="badge badge-green"><svg class="ic"><use href="#check"/></svg> Entregue</span>
+            </div>
+            <div class="hc-body">
+              <img class="hc-thumb" src="../../assets/img/calabresa.png" alt="Uma noite de Calabresa">
+              <div class="hc-info">
+                <h2 class="hc-name">Uma noite de Calabresa</h2>
+                <p class="hc-items">1 Calabresa + 1 Refrigerante 2 L</p>
+                <p class="hc-meta">Grande · Sem borda extra · Pix · Entrega inclusa</p>
+              </div>
+              <div class="hc-side">
+                <p class="hc-price">R$ 63,90</p>
+                <button type="button" class="btn btn-orange-outline hc-repeat" data-items="5">
+                  <svg class="ic ic-sm"><use href="#refresh"/></svg> Repetir pedido
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div id="hist-empty" class="empty-state" style="display:none">
+          <svg class="ic"><use href="#search"/></svg>
+          <h3>Nenhum pedido encontrado</h3>
+          <p>Tente outro sabor ou limpe a busca.</p>
+        </div>
+
+        <!-- Rodapé -->
+        <div class="hist-foot">
+          <span id="hist-showing">Mostrando 3 de 3 pedidos entregues neste mês</span>
+          <span class="hist-love">Cliente da nossa casa desde outubro/2025</span>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/base.js" data-base="../../assets/"></script>
+  <script src="historico.js"></script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estoque - Pizzaria Sabores Italiano</title>
+  <link rel="icon" href="../../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="estoque.css">
+</head>
+<body data-page="funcionario" data-tab="estoque">
+<div class="demo-banner">
+  <svg class="ic"><use href="#info"/></svg>
+  <span>Sistema sem acesso ao servidor Java/banco de dados - exibindo dados de demonstração.</span>
+</div>
+
+<div class="layout">
+  <aside class="sidebar sidebar-func">
+    <div class="sidebar-top">
+      <div class="profile">
+        <div class="avatar"><svg class="ic"><use href="#user"/></svg></div>
+        <div>
+          <p class="who">Administrador</p>
+          <p class="name">Equipe da pizzaria</p>
+          <p class="caption">Pequenos detalhes fazem a diferença.</p>
+        </div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="../pedidos/pedidos.html"><span class="nav-ic"><svg class="ic"><use href="#clipboard"/></svg></span> Pedidos</a>
+      <a class="nav-item" href="../pizzas/pizzas.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
+      <a class="nav-item" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Clientes</a>
+      <a class="nav-item active" href="../estoque/estoque.html"><span class="nav-ic"><svg class="ic"><use href="#box"/></svg></span> Estoque</a>
+      <a class="nav-item" href="../relatorios/relatorios.html"><span class="nav-ic"><svg class="ic"><use href="#chart"/></svg></span> Relatórios</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="sidebar-logout" href="../../auth/login/login.html">
+        <span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão
+      </a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="content">
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">Estoque</h1>
+          <p class="page-sub">Ingredientes, quantidades e pontos de reposição.</p>
+        </div>
+        <span class="status-pill pill-red"><span class="dot"></span>2 itens críticos</span>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#box"/></svg></span><span class="kpi-label">Itens monitorados</span></div>
+          <p class="kpi-value">6</p>
+          <p class="kpi-detail">2 críticos · 4 dentro do nível</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#alert"/></svg></span><span class="kpi-label">Precisam de reposição</span></div>
+          <p class="kpi-value">2</p>
+          <p class="kpi-detail">Pepperoni e manjericão</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#dollar"/></svg></span><span class="kpi-label">Valor em estoque</span></div>
+          <p class="kpi-value">R$ 1.413</p>
+          <p class="kpi-detail">Soma de quantidade × preço unitário</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#refresh"/></svg></span><span class="kpi-label">Reposição prevista</span></div>
+          <p class="kpi-value">3</p>
+          <p class="kpi-detail">Pedidos gerados esta semana</p>
+        </div>
+      </div>
+      <div class="warn-bar">
+        <svg class="ic"><use href="#alert"/></svg>
+        <span><b>2 ingredientes com estoque crítico:</b> pepperoni (4,00 kg) e manjericão (3,00 kg).</span>
+        <button type="button" class="btn btn-orange-outline btn-sm" onclick="Pizzaria.toast('Pedido de reposição enviado ao fornecedor.', 'success', 'truck')">Repor agora</button>
+      </div>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title">Ingredientes</h2>
+            <p class="panel-sub">Atualize as quantidades antes do próximo turno</p>
+          </div>
+          <div class="panel-actions">
+            <button type="button" class="btn btn-outline" onclick="Pizzaria.toast('Relatório de estoque exportado em breve.', 'info', 'download')"><svg class="ic"><use href="#download"/></svg> Exportar</button>
+            <button type="button" class="btn btn-primary" onclick="Pizzaria.toast('Cadastro de ingrediente em breve.', 'info', 'plus')"><svg class="ic"><use href="#plus"/></svg> Novo item</button>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button type="button" class="tab active" data-filter="todos">Todos (6)</button>
+          <button type="button" class="tab" data-filter="critico">Críticos (2)</button>
+          <button type="button" class="tab" data-filter="ok">No nível (4)</button>
+        </div>
+
+        <div class="toolbar">
+          <div class="field-icon">
+            <svg class="ic"><use href="#search"/></svg>
+            <input type="text" placeholder="Buscar ingrediente" data-search="#table-estoque">
+          </div>
+          <label class="date-select">
+            <svg class="ic ic-sm"><use href="#calendar"/></svg>
+            <select id="filter-estoque" aria-label="Filtro">
+              <option>Todas as unidades</option>
+              <option>kg</option>
+              <option>L</option>
+              <option>un</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="table-estoque" class="table-wrap">
+          <table class="table" data-api="estoque">
+            <thead><tr><th>Código</th><th>Ingrediente</th><th>Preço unitário</th><th>Quantidade</th><th>Unidade</th><th>Status</th><th>Ação</th></tr></thead>
+            <tbody>
+              <tr data-status="ok" data-unidade="kg">
+                <td class="cell-code">#001</td>
+                <td class="cell-strong">Mussarela</td>
+                <td class="cell-price">R$ 25,00</td>
+                <td class="qty-cell">12,00</td>
+                <td>kg</td>
+                <td><span class="badge badge-green">OK</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Reposição de Mussarela solicitada.', 'info', 'refresh')">Repor</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="ok" data-unidade="L">
+                <td class="cell-code">#002</td>
+                <td class="cell-strong">Molho de tomate</td>
+                <td class="cell-price">R$ 8,00</td>
+                <td class="qty-cell">8,00</td>
+                <td>L</td>
+                <td><span class="badge badge-green">OK</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Reposição de Molho de tomate solicitada.', 'info', 'refresh')">Repor</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="ok" data-unidade="kg">
+                <td class="cell-code">#003</td>
+                <td class="cell-strong">Farinha de trigo</td>
+                <td class="cell-price">R$ 4,50</td>
+                <td class="qty-cell">50,00</td>
+                <td>kg</td>
+                <td><span class="badge badge-green">OK</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Reposição de Farinha de trigo solicitada.', 'info', 'refresh')">Repor</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="critico" data-unidade="kg">
+                <td class="cell-code">#004</td>
+                <td class="cell-strong">Pepperoni</td>
+                <td class="cell-price">R$ 62,00</td>
+                <td class="qty-cell qty-low">4,00</td>
+                <td>kg</td>
+                <td><span class="badge badge-red">Crítico</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Reposição de Pepperoni solicitada.', 'info', 'refresh')">Repor</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="critico" data-unidade="kg">
+                <td class="cell-code">#005</td>
+                <td class="cell-strong">Manjericão</td>
+                <td class="cell-price">R$ 40,00</td>
+                <td class="qty-cell qty-low">3,00</td>
+                <td>kg</td>
+                <td><span class="badge badge-red">Crítico</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Reposição de Manjericão solicitada.', 'info', 'refresh')">Repor</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="ok" data-unidade="L">
+                <td class="cell-code">#006</td>
+                <td class="cell-strong">Azeite</td>
+                <td class="cell-price">R$ 38,00</td>
+                <td class="qty-cell">12,00</td>
+                <td>L</td>
+                <td><span class="badge badge-green">OK</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Reposição de Azeite solicitada.', 'info', 'refresh')">Repor</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel-foot">
+          <span>6 itens · 2 com estoque crítico</span>
+          <span>Dados ilustrativos</span>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/base.js" data-base="../../assets/"></script>
+  <script src="estoque.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Pizzaria Sabores Italiano</title>
+  <link rel="icon" href="../../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body data-page="login">
+  <div class="demo-banner">
+    <svg class="ic"><use href="#info"/></svg>
+    <span>Sistema sem acesso ao servidor Java/banco de dados - exibindo dados de demonstração.</span>
+  </div>
+
+  <div class="login-wrap">
+
+    <!-- Lado esquerdo: cartao laranja da marca -->
+    <section class="promo-card">
+      <p class="promo-eyebrow">
+        <svg class="ic"><use href="#pizza-outline"/></svg>
+        <span>Seu cantinho da pizza</span>
+      </p>
+
+      <h1 class="promo-title">Uma boa pizza.<br>Um ótimo momento.</h1>
+
+      <p class="promo-text">Seu sabor favorito, feito com carinho e entregue quentinho na sua porta.</p>
+
+      <div class="promo-photo">
+        <img src="../../assets/img/portuguesa.png" alt="Pizza artesanal servida na mesa">
+      </div>
+
+      <div class="promo-meta">
+        <span><svg class="ic"><use href="#clock"/></svg>30–45 min</span>
+        <span><svg class="ic"><use href="#heart"/></svg>Feita na hora</span>
+      </div>
+
+      <p class="promo-foot">Da nossa cozinha para a sua mesa. Bom apetite!</p>
+    </section>
+
+    <!-- Lado direito: card branco de acesso -->
+    <section class="login-card">
+      <a href="../../index.html" class="btn btn-ghost btn-sm voltar-inicio">
+        <svg class="ic"><use href="#chevron-left"/></svg>
+        Voltar
+      </a>
+
+      <span class="pill-green">Que horas tem seu almo?</span>
+
+      <h1 class="auth-title">Entre e sinta-se em casa.</h1>
+
+      <p class="auth-sub">Acesse sua conta para pedir seus favoritos e acompanhar cada entrega.</p>
+
+      <!-- Botao para trocar entre Cliente e Funcionario -->
+      <div class="profile-toggle">
+        <button type="button" class="toggle-btn active" data-perfil="cliente">
+          <svg class="ic"><use href="#user"/></svg>
+          Cliente
+        </button>
+        <button type="button" class="toggle-btn" data-perfil="funcionario">
+          <svg class="ic"><use href="#users"/></svg>
+          Funcionário
+        </button>
+      </div>
+
+      <form id="form-login" novalidate>
+        <div class="field">
+          <label for="log-email">E-mail</label>
+          <div class="field-icon">
+            <svg class="ic"><use href="#mail"/></svg>
+            <input id="log-email" type="email" placeholder="john.luke@email.com" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="log-senha">Senha</label>
+          <div class="field-icon">
+            <svg class="ic"><use href="#lock"/></svg>
+            <input id="log-senha" type="password" placeholder="••••••••••••" autocomplete="current-password" required>
+            <button type="button" class="end" id="log-eye" aria-label="Mostrar senha">
+              <svg class="ic"><use href="#eye-off"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="field-remember">
+          <label class="remember-label">
+            <input type="checkbox" id="log-remember" checked>
+            <span>Lembrar acesso</span>
+          </label>
+          <a href="#" class="esqueceu">Esqueci minha senha</a>
+        </div>
+
+        <div id="log-erro" class="form-error"></div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-enter">
+          <svg class="ic"><use href="#arrow-right"/></svg>
+          Entrar
+        </button>
+      </form>
+
+      <p class="signup-line" id="signup-line">
+        Ainda não tem uma conta? <a href="../cadastro/cadastro.html">Cadastre-se</a>
+      </p>
+
+      <p class="signup-line" id="func-note">
+        Área exclusiva da equipe — o cadastro de funcionário é feito pelo administrador.
+      </p>
+
+      <div class="secure-box">
+        <svg class="ic"><use href="#shield"/></svg>
+        <span>Seus dados protegidos, do login até a entrega.</span>
+      </div>
+
+      <p class="privacy-note">
+        Ao continuar, você concorda com nossos <a href="#">Termos de uso</a><br>
+        e nossa <a href="#">Política de privacidade</a>.
+      </p>
+
+      <div id="log-demo" class="demo-hint" style="display:none"></div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/base.js" data-base="../../assets/"></script>
+  <script src="login.js"></script>
+</body>
+</html>

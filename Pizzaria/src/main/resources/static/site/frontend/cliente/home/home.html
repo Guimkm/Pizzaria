@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Início - Pizzaria Sabores Italiano</title>
+  <link rel="icon" href="../../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body data-page="cliente" data-tab="home">
+  <div class="demo-banner">
+    <svg class="ic"><use href="#info"/></svg>
+    <span>Servidor Java ou banco de dados indisponível - exibindo dados de demonstração.</span>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar sidebar-cliente">
+      <div class="sidebar-top">
+        <a class="profile" href="../home/home.html">
+          <div class="avatar"><svg class="ic"><use href="#user"/></svg></div>
+          <div>
+            <p class="who" data-client-nome>John Luke</p>
+            <p class="name">Cliente</p>
+            <p class="caption">Pequenos detalhes fazem a diferença.</p>
+          </div>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="nav-item" href="../menu/menu.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
+        <a class="nav-item" href="../carrinho/carrinho.html"><span class="nav-ic"><svg class="ic"><use href="#cart"/></svg></span> Carrinho <span class="nav-badge" data-cart-count style="display:none">0</span></a>
+        <a class="nav-item" href="../rastreio/rastreio.html"><span class="nav-ic"><svg class="ic"><use href="#truck"/></svg></span> Rastrear pedido</a>
+        <a class="nav-item" href="../historico/historico.html"><span class="nav-ic"><svg class="ic"><use href="#clock"/></svg></span> Histórico</a>
+        <a class="nav-item" href="../config/config.html"><span class="nav-ic"><svg class="ic"><use href="#settings"/></svg></span> Minha conta</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a class="sidebar-logout" href="../../auth/login/login.html"><span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="content">
+
+        <!-- Topo: saudação, busca e carrinho -->
+        <div class="page-head home-head">
+          <div class="head-main">
+            <h1 class="page-title" id="greeting">Olá, John <b>Luke</b>!</h1>
+            <p class="page-sub" id="hoje">Sábado, 24 de outubro de 2026 · O que você vai pedir hoje?</p>
+            <div class="search field-icon">
+              <svg class="ic"><use href="#search"/></svg>
+              <input type="search" id="busca-home" placeholder="Buscar pizzas, bebidas..." aria-label="Buscar pizzas, bebidas" autocomplete="off">
+            </div>
+          </div>
+          <div class="head-actions">
+            <a class="cart-btn" href="../carrinho/carrinho.html" aria-label="Ver carrinho">
+              <svg class="ic"><use href="#cart"/></svg>
+              <span class="count" data-cart-count style="display:none">0</span>
+            </a>
+            <a class="cart-label" href="../carrinho/carrinho.html">Ver carrinho</a>
+          </div>
+        </div>
+
+        <!-- Cartao de boas-vindas -->
+        <section class="welcome">
+          <div class="welcome-body">
+            <h2 id="welcome-name">Olá, John Luke!</h2>
+            <p class="welcome-lead">O que você vai pedir hoje?</p>
+            <p class="welcome-line"><svg class="ic ic-sm"><use href="#clock"/></svg> Personalize seu prato</p>
+            <p class="welcome-line"><svg class="ic ic-sm"><use href="#truck"/></svg> Entrega estimada: 30–45 min</p>
+          </div>
+          <img class="welcome-img" src="../../assets/img/hero.png" alt="Pizza artesanal da casa">
+        </section>
+
+        <!-- Categorias -->
+        <section class="block">
+          <h2 class="block-title">Categorias</h2>
+          <div class="cat-grid">
+            <a class="cat-card" href="#mais" data-cat="Salgada">
+              <span class="cat-ic"><svg class="ic ic-sm"><use href="#pizza"/></svg></span>
+              <p class="cat-title two-tone">Pizzas <b>Salgadas</b></p>
+              <p class="cat-sub">Tradicionais</p>
+            </a>
+            <a class="cat-card" href="#mais" data-cat="Doce">
+              <span class="cat-ic"><svg class="ic ic-sm"><use href="#award"/></svg></span>
+              <p class="cat-title two-tone">Pizzas <b class="olive">Doces</b></p>
+              <p class="cat-sub">Doces</p>
+            </a>
+            <a class="cat-card" href="#mais" data-cat="Bebida">
+              <span class="cat-ic"><svg class="ic ic-sm"><use href="#drink"/></svg></span>
+              <p class="cat-title">Bebidas</p>
+              <p class="cat-sub">Geladas</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- Mais pedidos -->
+        <section class="block" id="mais">
+          <h2 class="block-title">Mais Pedidos</h2>
+          <div class="prod-grid" data-grid>
+
+            <article class="prod-card" data-cat="Salgada">
+              <a class="prod-media" href="../produto/produto.html?id=5">
+                <img src="../../assets/img/calabresa.png" alt="Calabresa">
+              </a>
+              <div class="prod-body">
+                <a class="prod-name" href="../produto/produto.html?id=5">Calabresa</a>
+                <p class="prod-desc">Molho, mussarela e calabresa fatiada</p>
+                <div class="prod-foot">
+                  <span class="prod-price">R$ 39,90</span>
+                  <button type="button" class="add-btn" data-add="5" aria-label="Adicionar Calabresa ao carrinho">
+                    <svg class="ic"><use href="#plus"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="prod-card" data-cat="Salgada">
+              <a class="prod-media" href="../produto/produto.html?id=6">
+                <img src="../../assets/img/frango-catupiry.png" alt="Frango com Catupiry">
+              </a>
+              <div class="prod-body">
+                <a class="prod-name" href="../produto/produto.html?id=6">Frango c/ <b>Catupiry</b></a>
+                <p class="prod-desc">Frango desfiado, catupiry cremoso e orégano</p>
+                <div class="prod-foot">
+                  <span class="prod-price">R$ 54,90</span>
+                  <button type="button" class="add-btn" data-add="6" aria-label="Adicionar Frango com Catupiry ao carrinho">
+                    <svg class="ic"><use href="#plus"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="prod-card" data-cat="Salgada">
+              <a class="prod-media" href="../produto/produto.html?id=3">
+                <img src="../../assets/img/quatro-queijos.png" alt="Quatro Queijos">
+              </a>
+              <div class="prod-body">
+                <a class="prod-name" href="../produto/produto.html?id=3">Quatro <b>Queijos</b></a>
+                <p class="prod-desc">Mussarela, gorgonzola, parmesão e catupiry</p>
+                <div class="prod-foot">
+                  <span class="prod-price">R$ 48,90</span>
+                  <button type="button" class="add-btn" data-add="3" aria-label="Adicionar Quatro Queijos ao carrinho">
+                    <svg class="ic"><use href="#plus"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="prod-card doce"
+                     data-name="Brigadeiro"
+                     data-price="39.90"
+                     data-img="../../assets/img/promo.png"
+                     data-desc="Chocolate cremoso com granulado colorido"
+                     data-cat="Doce">
+              <a class="prod-media" href="../produto/produto.html?id=brigadeiro">
+                <img src="../../assets/img/promo.png" alt="Brigadeiro">
+              </a>
+              <div class="prod-body">
+                <a class="prod-name" href="../produto/produto.html?id=brigadeiro">Brigadeiro</a>
+                <p class="prod-desc">Chocolate cremoso com granulado colorido</p>
+                <div class="prod-foot">
+                  <span class="prod-price">R$ 39,90</span>
+                  <button type="button" class="add-btn" data-add="brigadeiro" aria-label="Adicionar Brigadeiro ao carrinho">
+                    <svg class="ic"><use href="#plus"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+          </div>
+          <p class="empty-state" id="cat-empty" style="display:none">
+            Nenhum item nesta categoria por aqui — <a href="../menu/menu.html">veja o cardápio completo</a>.
+          </p>
+        </section>
+
+        <!-- Banner de promoção -->
+        <section class="promo">
+          <p class="promo-text">Promoção: 2ª pizza com 30% OFF toda sexta-feira!</p>
+          <a class="promo-link" href="../menu/menu.html">Saber mais <span aria-hidden="true">&#8594;</span></a>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/base.js" data-base="../../assets/"></script>
+  <script src="home.js"></script>
+</body>
+</html>

@@ -1,0 +1,466 @@
+/* ============================================================
+   PIZZARIA SABORES ITALIANO - Rastreio (cliente)
+   Usado por: cliente/rastreio/rastreio.html
+
+   ============================================================ */
+
+/* ---------- Cabeçalho ---------- */
+.track-pill {
+  align-self: flex-start;
+  margin-top: 6px;
+  font-size: 0.76rem;
+  padding: 6px 13px;
+}
+.track-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+}
+
+/* ---------- Banner de previsão de chegada ---------- */
+.eta-banner {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  background: var(--brand-grad);
+  border-radius: 20px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 12px 26px rgba(240, 143, 8, 0.22);
+}
+.eta-icon {
+  width: 66px;
+  height: 66px;
+  border-radius: 18px;
+  background: #fdf1c4;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.eta-icon .ic {
+  width: 34px;
+  height: 34px;
+}
+.eta-main {
+  min-width: 0;
+  flex: 1;
+}
+.eta-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(20, 20, 21, 0.62);
+  margin-bottom: 4px;
+}
+.eta-time {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ink);
+}
+.eta-phrase {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(20, 20, 21, 0.78);
+}
+
+/* Trilha fina com o entregador em movimento */
+.eta-track {
+  position: relative;
+  height: 6px;
+  border-radius: 100px;
+  background: rgba(20, 20, 21, 0.16);
+  margin-top: 16px;
+}
+.eta-mover {
+  position: absolute;
+  top: 50%;
+  left: 62%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--brand-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 12px rgba(20, 20, 21, 0.22);
+  transition: left 0.5s ease, background 0.3s, color 0.3s;
+}
+.eta-mover .ic {
+  width: 14px;
+  height: 14px;
+}
+
+.eta-side {
+  margin-left: auto;
+  text-align: right;
+  flex-shrink: 0;
+}
+.eta-chip {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 8px 15px;
+  border-radius: 100px;
+  box-shadow: 0 4px 10px rgba(20, 20, 21, 0.10);
+}
+.eta-updated {
+  margin-top: 8px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: rgba(20, 20, 21, 0.6);
+}
+
+/* ---------- Grade de duas colunas ---------- */
+.track-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+.track-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+/* ---------- Card: cada etapa ---------- */
+.steps-card .card-title {
+  margin-bottom: 18px;
+}
+.step {
+  display: flex;
+  gap: 14px;
+}
+.step .rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.step .dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f4f5;
+  border: 1px solid var(--line-2);
+  color: var(--muted-light);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.step .dot .ic {
+  width: 17px;
+  height: 17px;
+}
+.step.done .dot {
+  background: var(--green-soft);
+  border-color: #d3f0dd;
+  color: var(--green);
+}
+.step.current .dot {
+  background: var(--brand-grad);
+  border-color: transparent;
+  color: #fff;
+}
+.step .line {
+  width: 2px;
+  flex: 1;
+  min-height: 20px;
+  margin: 5px 0;
+  border-radius: 2px;
+  background: var(--line-2);
+}
+.step.done .line {
+  background: #93e2af;
+}
+.step.current .line {
+  background: var(--brand);
+}
+.step .meta {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 18px;
+}
+.step .label {
+  font-weight: 700;
+  font-size: 0.94rem;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.step .detail {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 3px;
+  line-height: 1.45;
+}
+/* Etapa futura: esmaecida */
+.step:not(.done) .label {
+  color: var(--muted-light);
+}
+.step:not(.done) .detail {
+  color: var(--muted-light);
+}
+.step:last-child .meta {
+  padding-bottom: 4px;
+}
+
+/* Pill "Agora" na etapa atual */
+.now-pill {
+  display: none;
+  align-self: flex-start;
+  margin-top: 6px;
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.step.current .now-pill {
+  display: inline-flex;
+}
+
+.steps-note {
+  margin-top: 12px;
+  font-size: 0.76rem;
+  color: var(--muted-light);
+  font-weight: 500;
+}
+
+/* Controle de demonstração */
+.simulate {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line-2);
+}
+.simulate .label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted-light);
+  margin-bottom: 8px;
+}
+.simulate .row {
+  display: flex;
+  gap: 6px;
+}
+.simulate button {
+  flex: 0 0 42px;
+  padding: 7px 0;
+  border-radius: 10px;
+  border: 1px solid var(--line-2);
+  background: #fff;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.8rem;
+  transition: all 0.15s;
+}
+.simulate button:hover {
+  border-color: var(--brand);
+  color: var(--brand-ink);
+}
+.simulate button.on {
+  background: var(--brand-soft);
+  border-color: rgba(245, 161, 30, 0.75);
+  color: var(--brand-ink);
+}
+
+/* ---------- Card: endereço ---------- */
+.addr-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.addr-ic {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--green-soft);
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.addr-info {
+  min-width: 0;
+}
+.addr-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.addr-lines {
+  margin-top: 4px;
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.addr-map {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.addr-card .hr {
+  margin: 16px 0;
+}
+.addr-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.addr-chat {
+  color: var(--brand-ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+.addr-chat:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Card: resumo do pedido ---------- */
+.order-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.order-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.order-items li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.oi-thumb {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #f4f4f5;
+}
+.oi-thumb-ic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-soft);
+  color: var(--green);
+}
+.oi-info {
+  min-width: 0;
+}
+.oi-name {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--ink);
+}
+.oi-meta {
+  margin-top: 3px;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.oi-price {
+  margin-left: auto;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.sum-rows {
+  padding-top: 12px;
+}
+.sum-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  padding: 5px 0;
+}
+.sum-row b {
+  font-weight: 700;
+  color: var(--ink);
+}
+.order-card .hr {
+  margin: 12px 0;
+}
+.total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.total-label {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ink);
+}
+.total-value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  color: var(--brand-ink);
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1080px) {
+  .track-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 820px) {
+  .eta-banner {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 18px;
+  }
+  .eta-time {
+    font-size: 2rem;
+  }
+  .eta-side {
+    margin-left: 0;
+    text-align: left;
+    width: 100%;
+  }
+  .addr-top {
+    flex-wrap: wrap;
+  }
+  .addr-map {
+    margin-left: 58px;
+  }
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - Pizzaria Sabores Italiano</title>
+  <link rel="icon" href="../../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="pizzas.css">
+</head>
+<body data-page="funcionario" data-tab="pizzas">
+<div class="demo-banner">
+  <svg class="ic"><use href="#info"/></svg>
+  <span>Sistema sem acesso ao servidor Java/banco de dados - exibindo dados de demonstração.</span>
+</div>
+
+<div class="layout">
+  <aside class="sidebar sidebar-func">
+    <div class="sidebar-top">
+      <div class="profile">
+        <div class="avatar"><svg class="ic"><use href="#user"/></svg></div>
+        <div>
+          <p class="who">Administrador</p>
+          <p class="name">Equipe da pizzaria</p>
+          <p class="caption">Pequenos detalhes fazem a diferença.</p>
+        </div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="../pedidos/pedidos.html"><span class="nav-ic"><svg class="ic"><use href="#clipboard"/></svg></span> Pedidos</a>
+      <a class="nav-item active" href="../pizzas/pizzas.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
+      <a class="nav-item" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Clientes</a>
+      <a class="nav-item" href="../estoque/estoque.html"><span class="nav-ic"><svg class="ic"><use href="#box"/></svg></span> Estoque</a>
+      <a class="nav-item" href="../relatorios/relatorios.html"><span class="nav-ic"><svg class="ic"><use href="#chart"/></svg></span> Relatórios</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="sidebar-logout" href="../../auth/login/login.html">
+        <span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão
+      </a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="content">
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">Menu da casa</h1>
+          <p class="page-sub">Fotos, preços e disponibilidade das pizzas de hoje.</p>
+        </div>
+        <span class="status-pill pill-green"><span class="dot"></span>Menu ativo</span>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#menu"/></svg></span><span class="kpi-label">Pizzas no cardápio</span></div>
+          <p class="kpi-value">6</p>
+          <p class="kpi-detail">3 tradicionais · 3 especiais</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#check"/></svg></span><span class="kpi-label">Disponíveis hoje</span></div>
+          <p class="kpi-value">5</p>
+          <p class="kpi-detail">1 pizza fora do cardápio</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#dollar"/></svg></span><span class="kpi-label">Preço médio</span></div>
+          <p class="kpi-value">R$ 48,38</p>
+          <p class="kpi-detail">De R$ 39,90 a R$ 54,90</p>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#award"/></svg></span><span class="kpi-label">Mais vendida</span></div>
+          <p class="kpi-value is-text">Calabresa</p>
+          <p class="kpi-detail">184 fatias nos últimos 7 dias</p>
+        </div>
+      </div>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title">Pizzas cadastradas</h2>
+            <p class="panel-sub">Menu completo com foto, categoria e preço</p>
+          </div>
+          <div class="panel-actions">
+            <button type="button" class="btn btn-outline" onclick="Pizzaria.toast('Cardápio exportado em breve.', 'info', 'download')"><svg class="ic"><use href="#download"/></svg> Exportar</button>
+            <button type="button" class="btn btn-primary" onclick="Pizzaria.toast('Cadastro de pizza em breve.', 'info', 'plus')"><svg class="ic"><use href="#plus"/></svg> Nova pizza</button>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button type="button" class="tab active" data-filter="todos">Todas (6)</button>
+          <button type="button" class="tab" data-filter="tradicional">Tradicionais (3)</button>
+          <button type="button" class="tab" data-filter="especial">Especiais (2)</button>
+          <button type="button" class="tab" data-filter="indisponivel">Indisponível (1)</button>
+        </div>
+
+        <div class="toolbar">
+          <div class="field-icon">
+            <svg class="ic"><use href="#search"/></svg>
+            <input type="text" placeholder="Buscar por nome ou categoria" data-search="#table-pizzas">
+          </div>
+          <label class="date-select">
+            <svg class="ic ic-sm"><use href="#calendar"/></svg>
+            <select id="filter-pizzas" aria-label="Filtro">
+              <option>Todos os tamanhos</option>
+              <option>Broto</option>
+              <option>Média</option>
+              <option>Grande</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="table-pizzas" class="table-wrap">
+          <table class="table" data-api="pizzas">
+            <thead><tr><th>Código</th><th>Pizza</th><th>Categoria</th><th>Tamanho</th><th>Preço</th><th>Disponibilidade</th><th>Ação</th></tr></thead>
+            <tbody>
+              <tr data-status="tradicional">
+                <td class="cell-code">#001</td>
+                <td>
+                  <div class="piz-cell">
+                    <img class="piz-thumb" src="../../assets/img/margherita.png" alt="Margherita">
+                    <div><div class="cell-strong">Margherita</div><div class="cell-sub">Molho, mussarela e manjericão fresco</div></div>
+                  </div>
+                </td>
+                <td><span class="tag tag-green">Tradicional</span></td>
+                <td>G</td>
+                <td class="cell-price-ink">R$ 45,90</td>
+                <td><span class="badge badge-green">No cardápio</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Edição de Margherita em breve.', 'info', 'edit')">Editar</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="especial">
+                <td class="cell-code">#002</td>
+                <td>
+                  <div class="piz-cell">
+                    <img class="piz-thumb" src="../../assets/img/pepperoni.png" alt="Pepperoni">
+                    <div><div class="cell-strong">Pepperoni</div><div class="cell-sub">Pepperoni artesanal e queijo defumado</div></div>
+                  </div>
+                </td>
+                <td><span class="tag tag-yellow">Especial</span></td>
+                <td>G</td>
+                <td class="cell-price-ink">R$ 52,90</td>
+                <td><span class="badge badge-green">No cardápio</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Edição de Pepperoni em breve.', 'info', 'edit')">Editar</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="especial">
+                <td class="cell-code">#003</td>
+                <td>
+                  <div class="piz-cell">
+                    <img class="piz-thumb" src="../../assets/img/quatro-queijos.png" alt="Quatro Queijos">
+                    <div><div class="cell-strong">Quatro Queijos</div><div class="cell-sub">Mussarela, gorgonzola, parmesão e provolone</div></div>
+                  </div>
+                </td>
+                <td><span class="tag tag-yellow">Especial</span></td>
+                <td>G</td>
+                <td class="cell-price-ink">R$ 48,90</td>
+                <td><span class="badge badge-green">No cardápio</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Edição de Quatro Queijos em breve.', 'info', 'edit')">Editar</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="tradicional">
+                <td class="cell-code">#004</td>
+                <td>
+                  <div class="piz-cell">
+                    <img class="piz-thumb" src="../../assets/img/portuguesa.png" alt="Portuguesa">
+                    <div><div class="cell-strong">Portuguesa</div><div class="cell-sub">Presunto, ovo, cebola e azeitona</div></div>
+                  </div>
+                </td>
+                <td><span class="tag tag-green">Tradicional</span></td>
+                <td>G</td>
+                <td class="cell-price-ink">R$ 47,90</td>
+                <td><span class="badge badge-green">No cardápio</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Edição de Portuguesa em breve.', 'info', 'edit')">Editar</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="tradicional">
+                <td class="cell-code">#005</td>
+                <td>
+                  <div class="piz-cell">
+                    <img class="piz-thumb" src="../../assets/img/calabresa.png" alt="Calabresa">
+                    <div><div class="cell-strong">Calabresa</div><div class="cell-sub">Calabresa artesanal e cebola roxa</div></div>
+                  </div>
+                </td>
+                <td><span class="tag tag-green">Tradicional</span></td>
+                <td>M</td>
+                <td class="cell-price-ink">R$ 39,90</td>
+                <td><span class="badge badge-green">No cardápio</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Edição de Calabresa em breve.', 'info', 'edit')">Editar</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="indisponivel">
+                <td class="cell-code">#006</td>
+                <td>
+                  <div class="piz-cell">
+                    <img class="piz-thumb" src="../../assets/img/frango-catupiry.png" alt="Frango Catupiry">
+                    <div><div class="cell-strong">Frango Catupiry</div><div class="cell-sub">Frango desfiado e catupiry original</div></div>
+                  </div>
+                </td>
+                <td><span class="tag tag-yellow">Especial</span></td>
+                <td>G</td>
+                <td class="cell-price-ink">R$ 54,90</td>
+                <td><span class="badge badge-red">Indisponível</span></td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" onclick="Pizzaria.toast('Edição de Frango Catupiry em breve.', 'info', 'edit')">Editar</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel-foot">
+          <span>6 pizzas · Preços já com a taxa de entrega inclusa</span>
+          <span>Dados ilustrativos</span>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/base.js" data-base="../../assets/"></script>
+  <script src="pizzas.js"></script>
+
+</body>
+</html>
