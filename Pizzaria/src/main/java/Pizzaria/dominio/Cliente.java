@@ -13,5 +13,7 @@ public class Cliente {
     String cpf;
     String email;
     String senha;
+    String telefone;
     LocalDate data_cadastro;
+    Endereco endereco;
 }

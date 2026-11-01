@@ -12,5 +12,4 @@ public class Endereco {
     String bairro;
     String cidade;
     String cep;
-    Cliente id_cliente;
 }
