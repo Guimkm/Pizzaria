@@ -8,7 +8,7 @@
   /* Tabela demo, caso apareca no futuro (mantem o hook table[data-api]) */
   var table = document.querySelector('table[data-api="relatorios"]');
   if (table && P.bindTable) {
-    P.bindTable(table, 'api/relatorios', 'relatorios');
+    P.bindTable(table, '/api/relatorios', 'relatorios');
   }
 
   /* Busca generica do base.js */

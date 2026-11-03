@@ -8,7 +8,7 @@
   /* Tabela demo (mantem o hook table[data-api]) */
   var table = document.querySelector('table[data-api="estoque"]');
   if (table && P.bindTable) {
-    P.bindTable(table, 'api/estoque', 'estoque');
+    P.bindTable(table, '/api/estoque', 'estoque');
   }
 
   /* Busca generica do base.js */
@@ -45,5 +45,6 @@
   });
 
   if (input) input.addEventListener('input', applyFilter);
+  if (wrap) wrap.addEventListener('pizzaria:updated', applyFilter);
   if (unidade) unidade.addEventListener('change', applyFilter);
 })();

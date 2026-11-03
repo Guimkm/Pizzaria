@@ -40,8 +40,8 @@ Pizzaria_Front/
     │   └── (img/ é a única pasta de imagens: nada fora daqui)
     │
     ├── auth/                  ← páginas de acesso (sem sessão)
-    │   ├── login/             ← login.html + login.css + login.js
-    │   └── cadastro/          ← cadastro.html + cadastro.css + cadastro.js
+    │   ├── cliente/           ← login e cadastro do CLIENTE
+    │   └── funcionario/       ← login e cadastro da EQUIPE (cargo liberado pelo admin)
     │
     ├── cliente/               ← área do cliente (exige sessão com perfil "cliente")
     │   ├── home/              ← painel inicial

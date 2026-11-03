@@ -193,22 +193,57 @@
         previsao: '30-45 min',
       };
 
-      try {
-        localStorage.setItem('pizzaria.pedido', JSON.stringify(pedido));
-        var hist = JSON.parse(localStorage.getItem('pizzaria.pedidos') || '[]');
-        if (!Array.isArray(hist)) hist = [];
-        hist.unshift(pedido);
-        localStorage.setItem('pizzaria.pedidos', JSON.stringify(hist));
-      } catch (e) {}
+      /* Guarda o pedido no navegador (usado pelas telas de rastreio e historico) e segue */
+      function concluir() {
+        try {
+          localStorage.setItem('pizzaria.pedido', JSON.stringify(pedido));
+          var hist = JSON.parse(localStorage.getItem('pizzaria.pedidos') || '[]');
+          if (!Array.isArray(hist)) hist = [];
+          hist.unshift(pedido);
+          localStorage.setItem('pizzaria.pedidos', JSON.stringify(hist));
+        } catch (e) {}
 
-      P.Cart.clear();
-      sessionStorage.setItem('pizzaria.step', '0');
-      sessionStorage.removeItem('pizzaria.cupom');
+        P.Cart.clear();
+        sessionStorage.setItem('pizzaria.step', '0');
+        sessionStorage.removeItem('pizzaria.cupom');
 
-      P.toast('Pedido confirmado! Pagamento: ' + (PAY_NAME[pay] || 'Pix') + '.', 'success', 'check');
-      setTimeout(function () {
-        location.href = '../rastreio/rastreio.html';
-      }, 900);
+        P.toast('Pedido confirmado! Pagamento: ' + (PAY_NAME[pay] || 'Pix') + '.', 'success', 'check');
+        setTimeout(function () {
+          location.href = '../rastreio/rastreio.html';
+        }, 900);
+      }
+
+      /* Envia o pedido ao servidor Java (tabelas Pedido e Item_Pedido do SQL Server) */
+      confirmar.disabled = true;
+      P.Api.send('POST', '/api/pedidos', {
+        itens: items.map(function (it) {
+          return { nome: it.name, qtd: it.qty, preco: it.price };
+        }),
+        pagamento: PAY_NAME[pay] || 'Pix',
+        taxa: taxa,
+      }).then(function (res) {
+        confirmar.disabled = false;
+        if (res.ok && res.data && res.data.ok) {
+          pedido.numero = res.data.numero || ('Pedido #' + res.data.id);
+          pedido.idPedido = res.data.id;
+          concluir();
+          return;
+        }
+        if (res.status === 401) {
+          enviando = false;
+          P.toast((res.data && res.data.erro) || 'Entre novamente para finalizar o pedido.', 'error', 'alert');
+          setTimeout(function () { location.href = '../../auth/cliente/login.html'; }, 1200);
+          return;
+        }
+        /* Sem servidor (estatico / API fora do ar / banco indisponivel): modo demonstracao */
+        if (res.status === 0 || res.status === 404 || res.status === 405 || res.status === 503) {
+          concluir();
+          return;
+        }
+        /* Erro real (carrinho invalido, item fora do cardapio...): mostra e deixa tentar de novo */
+        enviando = false;
+        P.toast((res.data && res.data.erro) || 'Não foi possível registrar o pedido.', 'error', 'alert');
+      });
     });
   }
 

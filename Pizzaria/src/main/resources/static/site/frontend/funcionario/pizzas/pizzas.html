@@ -29,12 +29,12 @@
     <nav class="sidebar-nav">
       <a class="nav-item" href="../pedidos/pedidos.html"><span class="nav-ic"><svg class="ic"><use href="#clipboard"/></svg></span> Pedidos</a>
       <a class="nav-item active" href="../pizzas/pizzas.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
-      <a class="nav-item" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Clientes</a>
+      <a class="nav-item" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Usuários</a>
       <a class="nav-item" href="../estoque/estoque.html"><span class="nav-ic"><svg class="ic"><use href="#box"/></svg></span> Estoque</a>
       <a class="nav-item" href="../relatorios/relatorios.html"><span class="nav-ic"><svg class="ic"><use href="#chart"/></svg></span> Relatórios</a>
     </nav>
     <div class="sidebar-bottom">
-      <a class="sidebar-logout" href="../../auth/login/login.html">
+      <a class="sidebar-logout" href="../../auth/funcionario/login.html">
         <span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão
       </a>
     </div>
@@ -47,28 +47,28 @@
           <h1 class="page-title">Menu da casa</h1>
           <p class="page-sub">Fotos, preços e disponibilidade das pizzas de hoje.</p>
         </div>
-        <span class="status-pill pill-green"><span class="dot"></span>Menu ativo</span>
+        <span class="status-pill pill-green" data-summary="pill"><span class="dot"></span>Menu ativo</span>
       </div>
       <div class="kpi-grid">
         <div class="kpi">
-          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#menu"/></svg></span><span class="kpi-label">Pizzas no cardápio</span></div>
-          <p class="kpi-value">6</p>
-          <p class="kpi-detail">3 tradicionais · 3 especiais</p>
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#menu"/></svg></span><span class="kpi-label">Itens no cardápio</span></div>
+          <p class="kpi-value" data-kpi="cardapio-total">6</p>
+          <p class="kpi-detail" data-kpi-detail="cardapio-total">3 tradicionais · 3 especiais</p>
         </div>
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#check"/></svg></span><span class="kpi-label">Disponíveis hoje</span></div>
-          <p class="kpi-value">5</p>
-          <p class="kpi-detail">1 pizza fora do cardápio</p>
+          <p class="kpi-value" data-kpi="cardapio-disponiveis">5</p>
+          <p class="kpi-detail" data-kpi-detail="cardapio-disponiveis">1 pizza fora do cardápio</p>
         </div>
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#dollar"/></svg></span><span class="kpi-label">Preço médio</span></div>
-          <p class="kpi-value">R$ 48,38</p>
-          <p class="kpi-detail">De R$ 39,90 a R$ 54,90</p>
+          <p class="kpi-value" data-kpi="cardapio-preco">R$ 48,38</p>
+          <p class="kpi-detail" data-kpi-detail="cardapio-preco">De R$ 39,90 a R$ 54,90</p>
         </div>
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#award"/></svg></span><span class="kpi-label">Mais vendida</span></div>
-          <p class="kpi-value is-text">Calabresa</p>
-          <p class="kpi-detail">184 fatias nos últimos 7 dias</p>
+          <p class="kpi-value is-text" data-kpi="cardapio-mais-vendida">Calabresa</p>
+          <p class="kpi-detail" data-kpi-detail="cardapio-mais-vendida">184 fatias nos últimos 7 dias</p>
         </div>
       </div>
 
@@ -80,15 +80,15 @@
           </div>
           <div class="panel-actions">
             <button type="button" class="btn btn-outline" onclick="Pizzaria.toast('Cardápio exportado em breve.', 'info', 'download')"><svg class="ic"><use href="#download"/></svg> Exportar</button>
-            <button type="button" class="btn btn-primary" onclick="Pizzaria.toast('Cadastro de pizza em breve.', 'info', 'plus')"><svg class="ic"><use href="#plus"/></svg> Nova pizza</button>
+            <button type="button" class="btn btn-primary" data-add="pizzas"><svg class="ic"><use href="#plus"/></svg> Nova pizza</button>
           </div>
         </div>
 
         <div class="tabs">
-          <button type="button" class="tab active" data-filter="todos">Todas (6)</button>
-          <button type="button" class="tab" data-filter="tradicional">Tradicionais (3)</button>
-          <button type="button" class="tab" data-filter="especial">Especiais (2)</button>
-          <button type="button" class="tab" data-filter="indisponivel">Indisponível (1)</button>
+          <button type="button" class="tab active" data-filter="todos" data-count="todos" data-label="Todas">Todas (6)</button>
+          <button type="button" class="tab" data-filter="tradicional" data-count="tradicional" data-label="Tradicionais">Tradicionais (3)</button>
+          <button type="button" class="tab" data-filter="especial" data-count="especial" data-label="Especiais">Especiais (2)</button>
+          <button type="button" class="tab" data-filter="indisponivel" data-count="indisponivel" data-label="Indisponível">Indisponível (1)</button>
         </div>
 
         <div class="toolbar">
@@ -218,8 +218,8 @@
         </div>
 
         <div class="panel-foot">
-          <span>6 pizzas · Preços já com a taxa de entrega inclusa</span>
-          <span>Dados ilustrativos</span>
+          <span data-summary="foot">6 pizzas · Preços já com a taxa de entrega inclusa</span>
+          <span data-summary="sync">Dados ilustrativos</span>
         </div>
       </section>
     </div>
@@ -230,6 +230,7 @@
   <script src="../../assets/js/icons.js"></script>
   <script src="../../assets/js/base.js" data-base="../../assets/"></script>
   <script src="pizzas.js"></script>
+  <script src="../../assets/js/resumos.js"></script>
 
 </body>
 </html>

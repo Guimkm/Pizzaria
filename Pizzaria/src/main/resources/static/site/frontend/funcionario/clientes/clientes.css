@@ -123,6 +123,9 @@
   box-shadow: var(--shadow-card);
   padding: 18px 18px 14px;
 }
+.panel + .panel {
+  margin-top: 18px;
+}
 .panel-head {
   display: flex;
   align-items: flex-start;

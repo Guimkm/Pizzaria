@@ -29,12 +29,12 @@
     <nav class="sidebar-nav">
       <a class="nav-item active" href="../pedidos/pedidos.html"><span class="nav-ic"><svg class="ic"><use href="#clipboard"/></svg></span> Pedidos</a>
       <a class="nav-item" href="../pizzas/pizzas.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
-      <a class="nav-item" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Clientes</a>
+      <a class="nav-item" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Usuários</a>
       <a class="nav-item" href="../estoque/estoque.html"><span class="nav-ic"><svg class="ic"><use href="#box"/></svg></span> Estoque</a>
       <a class="nav-item" href="../relatorios/relatorios.html"><span class="nav-ic"><svg class="ic"><use href="#chart"/></svg></span> Relatórios</a>
     </nav>
     <div class="sidebar-bottom">
-      <a class="sidebar-logout" href="../../auth/login/login.html">
+      <a class="sidebar-logout" href="../../auth/funcionario/login.html">
         <span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão
       </a>
     </div>
@@ -52,23 +52,23 @@
       <div class="kpi-grid">
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#clipboard"/></svg></span><span class="kpi-label">Pedidos hoje</span></div>
-          <p class="kpi-value">8</p>
-          <p class="kpi-detail">4 entregues · 4 em andamento</p>
+          <p class="kpi-value" data-kpi="pedidos-hoje">8</p>
+          <p class="kpi-detail" data-kpi-detail="pedidos-hoje">4 entregues · 4 em andamento</p>
         </div>
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#dollar"/></svg></span><span class="kpi-label">Vendas do dia</span></div>
-          <p class="kpi-value">R$ 695,70</p>
-          <p class="kpi-detail">Total dos 8 pedidos até hoje</p>
+          <p class="kpi-value" data-kpi="vendas-dia">R$ 695,70</p>
+          <p class="kpi-detail" data-kpi-detail="vendas-dia">Total dos 8 pedidos até hoje</p>
         </div>
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#clock"/></svg></span><span class="kpi-label">Em andamento</span></div>
-          <p class="kpi-value">4</p>
-          <p class="kpi-detail">2 recebidos · 1 no forno · 1 na rua</p>
+          <p class="kpi-value" data-kpi="em-andamento">4</p>
+          <p class="kpi-detail" data-kpi-detail="em-andamento">2 recebidos · 1 no forno · 1 na rua</p>
         </div>
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#trend"/></svg></span><span class="kpi-label">Ticket médio</span></div>
-          <p class="kpi-value">R$ 86,96</p>
-          <p class="kpi-detail">Vendas · pedidos do dia</p>
+          <p class="kpi-value" data-kpi="ticket-medio">R$ 86,96</p>
+          <p class="kpi-detail" data-kpi-detail="ticket-medio">Vendas · pedidos do dia</p>
         </div>
       </div>
 
@@ -80,16 +80,16 @@
           </div>
           <div class="panel-actions">
             <button type="button" class="btn btn-outline" onclick="Pizzaria.toast('Arquivo de pedidos pronto para exportar.', 'info', 'download')"><svg class="ic"><use href="#download"/></svg> Exportar</button>
-            <button type="button" class="btn btn-primary" onclick="Pizzaria.toast('Novo pedido em breve.', 'info', 'plus')"><svg class="ic"><use href="#plus"/></svg> Novo pedido</button>
+            <button type="button" class="btn btn-primary" data-add="pedidos"><svg class="ic"><use href="#plus"/></svg> Novo pedido</button>
           </div>
         </div>
 
         <div class="tabs">
-          <button type="button" class="tab active" data-filter="todos">Todos (8)</button>
-          <button type="button" class="tab" data-filter="recebido">Recebidos (2)</button>
-          <button type="button" class="tab" data-filter="preparo">Em preparo (1)</button>
-          <button type="button" class="tab" data-filter="entrega">Em entrega (1)</button>
-          <button type="button" class="tab" data-filter="entregue">Entregues (4)</button>
+          <button type="button" class="tab active" data-filter="todos" data-count="todos" data-label="Todos">Todos (8)</button>
+          <button type="button" class="tab" data-filter="recebido" data-count="recebido" data-label="Recebidos">Recebidos (2)</button>
+          <button type="button" class="tab" data-filter="preparo" data-count="preparo" data-label="Em preparo">Em preparo (1)</button>
+          <button type="button" class="tab" data-filter="entrega" data-count="entrega" data-label="Em entrega">Em entrega (1)</button>
+          <button type="button" class="tab" data-filter="entregue" data-count="entregue" data-label="Entregues">Entregues (4)</button>
         </div>
 
         <div class="toolbar">
@@ -220,8 +220,8 @@
         </div>
 
         <div class="panel-foot">
-          <span>8 pedidos · Soma dos totais: R$ 695,70</span>
-          <span>Dados ilustrativos</span>
+          <span data-summary="foot">8 pedidos · Soma dos totais: R$ 695,70</span>
+          <span data-summary="sync">Dados ilustrativos</span>
         </div>
       </section>
     </div>
@@ -232,6 +232,7 @@
   <script src="../../assets/js/icons.js"></script>
   <script src="../../assets/js/base.js" data-base="../../assets/"></script>
   <script src="pedidos.js"></script>
+  <script src="../../assets/js/resumos.js"></script>
 
 </body>
 </html>

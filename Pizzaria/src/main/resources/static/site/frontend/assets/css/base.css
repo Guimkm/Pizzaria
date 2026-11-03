@@ -1117,3 +1117,102 @@ body .total-row {
 .sidebar-func .profile {
   align-items: center;
 }
+
+/* ---------- Modal de edicao das tabelas (painel do funcionario) ---------- */
+body.modal-open {
+  overflow: hidden;
+}
+.edit-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(13, 13, 14, 0.45);
+  backdrop-filter: blur(3px);
+}
+.edit-modal[hidden] {
+  display: none;
+}
+.edit-dialog {
+  width: min(520px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-pop);
+  border: 1px solid var(--line);
+}
+.edit-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px 14px;
+  border-bottom: 1px solid var(--line);
+}
+.edit-head h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+.edit-sub {
+  margin-top: 4px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.edit-x {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink-2);
+  font-size: 1.35rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.edit-x:hover {
+  background: var(--surface-2);
+}
+.edit-form {
+  padding: 20px 24px 24px;
+}
+.edit-fields .field:last-child {
+  margin-bottom: 8px;
+}
+.edit-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 2px 0 16px;
+  font-weight: 600;
+  color: var(--ink-2);
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+.edit-check input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--brand-ink);
+}
+.edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.edit-actions .btn {
+  min-width: 130px;
+}
+@media (max-width: 560px) {
+  .edit-modal { padding: 12px; }
+  .edit-head { padding: 18px 18px 12px; }
+  .edit-form { padding: 16px 18px 18px; }
+  .edit-actions { flex-direction: column-reverse; }
+  .edit-actions .btn { width: 100%; }
+}

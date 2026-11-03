@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clientes - Pizzaria Sabores Italiano</title>
+  <title>Usuários - Pizzaria Sabores Italiano</title>
   <link rel="icon" href="../../assets/img/favicon.svg">
   <link rel="stylesheet" href="../../assets/css/base.css">
   <link rel="stylesheet" href="clientes.css">
@@ -29,12 +29,12 @@
     <nav class="sidebar-nav">
       <a class="nav-item" href="../pedidos/pedidos.html"><span class="nav-ic"><svg class="ic"><use href="#clipboard"/></svg></span> Pedidos</a>
       <a class="nav-item" href="../pizzas/pizzas.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
-      <a class="nav-item active" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Clientes</a>
+      <a class="nav-item active" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Usuários</a>
       <a class="nav-item" href="../estoque/estoque.html"><span class="nav-ic"><svg class="ic"><use href="#box"/></svg></span> Estoque</a>
       <a class="nav-item" href="../relatorios/relatorios.html"><span class="nav-ic"><svg class="ic"><use href="#chart"/></svg></span> Relatórios</a>
     </nav>
     <div class="sidebar-bottom">
-      <a class="sidebar-logout" href="../../auth/login/login.html">
+      <a class="sidebar-logout" href="../../auth/funcionario/login.html">
         <span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão
       </a>
     </div>
@@ -44,31 +44,31 @@
     <div class="content">
       <div class="page-head">
         <div>
-          <h1 class="page-title">Clientes</h1>
-          <p class="page-sub">Quem faz parte da história da pizzaria.</p>
+          <h1 class="page-title">Usuários</h1>
+          <p class="page-sub">Clientes e equipe que fazem parte da pizzaria.</p>
         </div>
-        <span class="status-pill pill-green"><span class="dot"></span>6 cadastrados</span>
+        <span class="status-pill pill-green" data-summary="pill"><span class="dot"></span>6 cadastrados</span>
       </div>
       <div class="kpi-grid">
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#users"/></svg></span><span class="kpi-label">Clientes cadastrados</span></div>
-          <p class="kpi-value">6</p>
-          <p class="kpi-detail">3 novos em outubro</p>
+          <p class="kpi-value" data-kpi="clientes-total">6</p>
+          <p class="kpi-detail" data-kpi-detail="clientes-total">3 novos em outubro</p>
         </div>
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#user"/></svg></span><span class="kpi-label">Novos em outubro</span></div>
-          <p class="kpi-value">3</p>
-          <p class="kpi-detail">Cadastros de 02/10 a 25/10/2026</p>
+          <p class="kpi-value" data-kpi="clientes-novos">3</p>
+          <p class="kpi-detail" data-kpi-detail="clientes-novos">Cadastros de 02/10 a 25/10/2026</p>
         </div>
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#refresh"/></svg></span><span class="kpi-label">Recorrentes</span></div>
-          <p class="kpi-value">2</p>
-          <p class="kpi-detail">Dois pedidos ou mais</p>
+          <p class="kpi-value" data-kpi="clientes-recorrentes">2</p>
+          <p class="kpi-detail" data-kpi-detail="clientes-recorrentes">Dois pedidos ou mais</p>
         </div>
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#dollar"/></svg></span><span class="kpi-label">Ticket médio</span></div>
-          <p class="kpi-value">R$ 86,96</p>
-          <p class="kpi-detail">Média dos pedidos de hoje</p>
+          <p class="kpi-value" data-kpi="clientes-ticket">R$ 86,96</p>
+          <p class="kpi-detail" data-kpi-detail="clientes-ticket">Média dos pedidos de hoje</p>
         </div>
       </div>
 
@@ -80,15 +80,15 @@
           </div>
           <div class="panel-actions">
             <button type="button" class="btn btn-outline" onclick="Pizzaria.toast('Lista de clientes exportada em breve.', 'info', 'download')"><svg class="ic"><use href="#download"/></svg> Exportar</button>
-            <button type="button" class="btn btn-primary" onclick="Pizzaria.toast('Cadastro de cliente em breve.', 'info', 'plus')"><svg class="ic"><use href="#plus"/></svg> Novo cliente</button>
+            <button type="button" class="btn btn-primary" data-add="clientes"><svg class="ic"><use href="#plus"/></svg> Novo cliente</button>
           </div>
         </div>
 
         <div class="tabs">
-          <button type="button" class="tab active" data-filter="todos">Todos (6)</button>
-          <button type="button" class="tab" data-filter="novo">Novos (3)</button>
-          <button type="button" class="tab" data-filter="recorrente">Recorrentes (2)</button>
-          <button type="button" class="tab" data-filter="sempedido">Sem pedidos (1)</button>
+          <button type="button" class="tab active" data-filter="todos" data-count="todos" data-label="Todos">Todos (6)</button>
+          <button type="button" class="tab" data-filter="novo" data-count="novo" data-label="Novos">Novos (3)</button>
+          <button type="button" class="tab" data-filter="recorrente" data-count="recorrente" data-label="Recorrentes">Recorrentes (2)</button>
+          <button type="button" class="tab" data-filter="sempedido" data-count="sempedido" data-label="Sem pedidos">Sem pedidos (1)</button>
         </div>
 
         <div class="toolbar">
@@ -224,8 +224,72 @@
         </div>
 
         <div class="panel-foot">
-          <span>6 clientes · Base de demonstração</span>
-          <span>Dados ilustrativos</span>
+          <span data-summary="foot">6 clientes · Base de demonstração</span>
+          <span data-summary="sync">Dados ilustrativos</span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title">Equipe da pizzaria</h2>
+            <p class="panel-sub">Funcionários, cargos e acessos ao sistema</p>
+          </div>
+          <div class="panel-actions">
+            <span class="status-pill pill-green" data-team-pill><span class="dot"></span>2 funcionários</span>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <div class="field-icon">
+            <svg class="ic"><use href="#search"/></svg>
+            <input type="text" placeholder="Buscar por nome, e-mail, cargo ou telefone" data-search="#table-funcionarios">
+          </div>
+        </div>
+
+        <div id="table-funcionarios" class="table-wrap">
+          <table class="table" data-api="funcionarios">
+            <thead><tr><th>Código</th><th>Funcionário</th><th>Cargo</th><th>Telefone</th><th>Admissão</th><th>Ação</th></tr></thead>
+            <tbody>
+              <tr data-status="atendente">
+                <td class="cell-code">#001</td>
+                <td>
+                  <div class="cli-cell">
+                    <span class="cli-avatar">CS</span>
+                    <div><div class="cell-strong">Carlos Souza</div><div class="cell-sub">carlos@email.com</div></div>
+                  </div>
+                </td>
+                <td><span class="badge badge-blue">Atendente</span></td>
+                <td>(11) 98888-1111</td>
+                <td class="cell-muted">12/03/2024</td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" data-edit>Editar</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+              <tr data-status="gerente">
+                <td class="cell-code">#002</td>
+                <td>
+                  <div class="cli-cell">
+                    <span class="cli-avatar">GU</span>
+                    <div><div class="cell-strong">Guilherme</div><div class="cell-sub">guilherme@pizzariasabores.com</div></div>
+                  </div>
+                </td>
+                <td><span class="badge badge-indigo">Gerente</span></td>
+                <td>(11) 97777-2222</td>
+                <td class="cell-muted">05/01/2024</td>
+                <td class="cell-action">
+                  <button type="button" class="link-action" data-edit>Editar</button>
+                  <svg class="ic chev"><use href="#chevron-right"/></svg>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel-foot">
+          <span data-team-foot>2 funcionários · Equipe cadastrada</span>
+          <span>Edite o cargo para liberar o acesso</span>
         </div>
       </section>
     </div>
@@ -236,6 +300,7 @@
   <script src="../../assets/js/icons.js"></script>
   <script src="../../assets/js/base.js" data-base="../../assets/"></script>
   <script src="clientes.js"></script>
+  <script src="../../assets/js/resumos.js"></script>
 
 </body>
 </html>

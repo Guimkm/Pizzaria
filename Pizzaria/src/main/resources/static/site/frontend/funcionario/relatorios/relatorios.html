@@ -29,12 +29,12 @@
     <nav class="sidebar-nav">
       <a class="nav-item" href="../pedidos/pedidos.html"><span class="nav-ic"><svg class="ic"><use href="#clipboard"/></svg></span> Pedidos</a>
       <a class="nav-item" href="../pizzas/pizzas.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
-      <a class="nav-item" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Clientes</a>
+      <a class="nav-item" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Usuários</a>
       <a class="nav-item" href="../estoque/estoque.html"><span class="nav-ic"><svg class="ic"><use href="#box"/></svg></span> Estoque</a>
       <a class="nav-item active" href="../relatorios/relatorios.html"><span class="nav-ic"><svg class="ic"><use href="#chart"/></svg></span> Relatórios</a>
     </nav>
     <div class="sidebar-bottom">
-      <a class="sidebar-logout" href="../../auth/login/login.html">
+      <a class="sidebar-logout" href="../../auth/funcionario/login.html">
         <span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão
       </a>
     </div>
@@ -47,28 +47,28 @@
           <h1 class="page-title">Relatórios</h1>
           <p class="page-sub">Números que mostram como a casa está indo.</p>
         </div>
-        <span class="status-pill pill-orange"><span class="dot"></span>Outubro de 2026</span>
+        <span class="status-pill pill-orange" data-summary="periodo"><span class="dot"></span>Outubro de 2026</span>
       </div>
       <div class="kpi-grid">
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#dollar"/></svg></span><span class="kpi-label">Faturamento do dia</span></div>
-          <p class="kpi-value">R$ 3.740,50</p>
-          <p class="kpi-detail">8% acima de ontem</p>
+          <p class="kpi-value" data-kpi="rel-faturamento">R$ 3.740,50</p>
+          <p class="kpi-detail" data-kpi-detail="rel-faturamento">8% acima de ontem</p>
         </div>
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#clipboard"/></svg></span><span class="kpi-label">Pedidos hoje</span></div>
-          <p class="kpi-value">42</p>
-          <p class="kpi-detail">7 cancelados no período</p>
+          <p class="kpi-value" data-kpi="rel-pedidos">42</p>
+          <p class="kpi-detail" data-kpi-detail="rel-pedidos">7 cancelados no período</p>
         </div>
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#trend"/></svg></span><span class="kpi-label">Ticket médio</span></div>
-          <p class="kpi-value">R$ 89,06</p>
-          <p class="kpi-detail">+ R$ 2,10 nesta semana</p>
+          <p class="kpi-value" data-kpi="rel-ticket">R$ 89,06</p>
+          <p class="kpi-detail" data-kpi-detail="rel-ticket">+ R$ 2,10 nesta semana</p>
         </div>
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#users"/></svg></span><span class="kpi-label">Novos clientes</span></div>
-          <p class="kpi-value">+12</p>
-          <p class="kpi-detail">Cadros feitos no mês</p>
+          <p class="kpi-value" data-kpi="rel-novos">+12</p>
+          <p class="kpi-detail" data-kpi-detail="rel-novos">Cadastros feitos no mês</p>
         </div>
       </div>
 
@@ -76,7 +76,7 @@
         <div class="panel-head">
           <div>
             <h2 class="panel-title">Desempenho da semana</h2>
-            <p class="panel-sub">18 a 24 de outubro de 2026 · atualizado às 20:03</p>
+            <p class="panel-sub" data-summary="periodo-semana">18 a 24 de outubro de 2026 · atualizado às 20:03</p>
           </div>
           <div class="panel-actions">
             <button type="button" class="btn btn-outline" onclick="Pizzaria.toast('Selecione o período na barra de filtros.', 'info', 'calendar')"><svg class="ic"><use href="#calendar"/></svg> Filtrar período</button>
@@ -92,7 +92,7 @@
         </div>
 
         <div class="report-panel" data-panel="vendas">
-          <div class="report-head"><h3 class="card-title">Vendas dos últimos 7 dias</h3><span class="tag tag-yellow">+12% vs. semana anterior</span></div>
+          <div class="report-head"><h3 class="card-title">Vendas dos últimos 7 dias</h3><span class="tag tag-yellow" data-report-tag="vendas">+12% vs. semana anterior</span></div>
           <div class="chart" style="--cols:7">
               <div class="col"><span class="val">R$ 1.250</span><span class="bar" style="height:18%"></span><span class="lbl">Seg</span></div>
               <div class="col"><span class="val">R$ 1.480</span><span class="bar" style="height:21%"></span><span class="lbl">Ter</span></div>
@@ -104,10 +104,10 @@
           </div>
           <div class="hr"></div>
           <div class="stat-grid">
-            <div class="stat-box"><p class="lbl">Total da semana</p><p class="v">R$ 17.910</p></div>
-            <div class="stat-box"><p class="lbl">Melhor dia</p><p class="v">Sábado</p></div>
-            <div class="stat-box"><p class="lbl">Pedidos na semana</p><p class="v">214</p></div>
-            <div class="stat-box"><p class="lbl">Cancelamentos</p><p class="v">5</p></div>
+            <div class="stat-box"><p class="lbl">Total da semana</p><p class="v" data-stat="vendas-total">R$ 17.910</p></div>
+            <div class="stat-box"><p class="lbl">Melhor dia</p><p class="v" data-stat="vendas-melhor-dia">Sábado</p></div>
+            <div class="stat-box"><p class="lbl">Pedidos na semana</p><p class="v" data-stat="vendas-pedidos">214</p></div>
+            <div class="stat-box"><p class="lbl">Cancelamentos</p><p class="v" data-stat="vendas-cancelamentos">5</p></div>
           </div>
         </div>
         <div class="report-panel" data-panel="top" style="display:none">
@@ -131,16 +131,16 @@
         <div class="report-panel" data-panel="entrega" style="display:none">
           <div class="report-head"><h3 class="card-title">Entregas</h3><span class="tag tag-green">38 min em média</span></div>
           <div class="stat-grid">
-            <div class="stat-box"><p class="lbl">Tempo médio</p><p class="v">38 min</p></div>
-            <div class="stat-box"><p class="lbl">Entregas no dia</p><p class="v">35</p></div>
-            <div class="stat-box"><p class="lbl">Entregas no prazo</p><p class="v">92%</p></div>
-            <div class="stat-box"><p class="lbl">Cancelamentos</p><p class="v">2</p></div>
+            <div class="stat-box"><p class="lbl">Tempo médio</p><p class="v" data-stat="entrega-tempo">—</p></div>
+            <div class="stat-box"><p class="lbl">Entregues hoje</p><p class="v" data-stat="entrega-hoje">35</p></div>
+            <div class="stat-box"><p class="lbl">Em entrega</p><p class="v" data-stat="entrega-em-curso">—</p></div>
+            <div class="stat-box"><p class="lbl">Cancelados hoje</p><p class="v" data-stat="entrega-cancelados">2</p></div>
           </div>
         </div>
 
         <div class="panel-foot">
-          <span>214 pedidos no período · Valores brutos, sem ajustes</span>
-          <span>Dados ilustrativos</span>
+          <span data-summary="relatorio-foot">214 pedidos no período · Valores brutos, sem ajustes</span>
+          <span data-summary="relatorio-sync">Dados ilustrativos</span>
         </div>
       </section>
     </div>
@@ -151,6 +151,7 @@
   <script src="../../assets/js/icons.js"></script>
   <script src="../../assets/js/base.js" data-base="../../assets/"></script>
   <script src="relatorios.js"></script>
+  <script src="../../assets/js/resumos.js"></script>
 
 </body>
 </html>

@@ -8,7 +8,23 @@
   /* Tabela demo (mantem o hook table[data-api]) */
   var table = document.querySelector('table[data-api="clientes"]');
   if (table && P.bindTable) {
-    P.bindTable(table, 'api/clientes', 'clientes');
+    P.bindTable(table, '/api/clientes', 'clientes');
+  }
+
+  /* Tabela da equipe: cargos e dados dos funcionarios */
+  var teamTable = document.querySelector('table[data-api="funcionarios"]');
+  function updateTeamSummary() {
+    if (!teamTable) return;
+    var total = (teamTable._rows || []).length;
+    var label = total + ' ' + (total === 1 ? 'funcionário' : 'funcionários');
+    var pill = document.querySelector('[data-team-pill]');
+    if (pill) pill.innerHTML = '<span class="dot"></span>' + label;
+    var foot = document.querySelector('[data-team-foot]');
+    if (foot) foot.textContent = label + ' · Equipe cadastrada';
+  }
+  if (teamTable) {
+    teamTable.addEventListener('pizzaria:updated', updateTeamSummary);
+    if (P.bindTable) P.bindTable(teamTable, '/api/funcionarios', 'funcionarios');
   }
 
   /* Busca generica do base.js */
@@ -45,5 +61,6 @@
   });
 
   if (input) input.addEventListener('input', applyFilter);
+  if (wrap) wrap.addEventListener('pizzaria:updated', applyFilter);
   if (bairro) bairro.addEventListener('change', applyFilter);
 })();

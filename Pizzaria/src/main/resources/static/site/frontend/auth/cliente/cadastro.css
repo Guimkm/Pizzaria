@@ -1,0 +1,290 @@
+/* ============================================================
+   PIZZARIA SABORES ITALIANO - Cadastro (cliente)
+   Usado por: cadastro.html
+   Layout: 2 cards lado a lado sobre fundo #f4f4f5
+   Esquerda = card laranja (marca) | Direita = card branco (form)
+   ============================================================ */
+
+.login-wrap {
+  min-height: calc(100vh - 44px);
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 20px;
+  align-items: stretch;
+  font-family: var(--font-body);
+}
+
+/* ------------------------------------------------------------
+   Card esquerdo (laranja)
+   ------------------------------------------------------------ */
+.promo-card {
+  background: var(--brand-grad);
+  border-radius: 24px;
+  padding: 38px 36px 30px;
+  display: flex;
+  flex-direction: column;
+  color: var(--ink);
+  box-shadow: 0 12px 32px rgba(240, 143, 8, 0.20);
+  min-width: 0;
+}
+
+.promo-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(20, 20, 21, 0.88);
+  letter-spacing: -0.01em;
+}
+.promo-eyebrow .ic {
+  width: 19px;
+  height: 19px;
+}
+
+.promo-title {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  color: #141415;
+  margin-top: 20px;
+}
+
+.promo-text {
+  margin-top: 14px;
+  font-size: 0.97rem;
+  line-height: 1.55;
+  font-weight: 500;
+  color: rgba(20, 20, 21, 0.82);
+  max-width: 46ch;
+}
+
+.promo-photo {
+  margin-top: 22px;
+  flex: 1 1 auto;
+  aspect-ratio: 4 / 3;
+  min-height: 210px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 32px rgba(80, 45, 0, 0.28);
+  background: rgba(255, 255, 255, 0.25);
+}
+.promo-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.promo-meta {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-top: 22px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #141415;
+}
+.promo-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+.promo-meta .ic {
+  width: 19px;
+  height: 19px;
+}
+
+.promo-foot {
+  margin-top: 16px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: rgba(20, 20, 21, 0.72);
+}
+
+/* ------------------------------------------------------------
+   Card direito (branco)
+   ------------------------------------------------------------ */
+.login-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 38px 40px 32px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pill-green {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  background: var(--green-soft);
+  color: var(--green-ink);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 6px 13px;
+  border-radius: 100px;
+  letter-spacing: -0.005em;
+}
+
+.auth-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  margin-top: 18px;
+  max-width: 340px;
+}
+
+.auth-sub {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-weight: 500;
+  max-width: 48ch;
+}
+
+/* Formulario */
+.login-card form {
+  margin-top: 24px;
+}
+
+.login-card .field-row {
+  gap: 0 16px;
+}
+.login-card .field {
+  gap: 7px;
+  margin-bottom: 15px;
+}
+.login-card .field label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.login-card .field input {
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+.login-card .field-icon input {
+  padding-left: 41px;
+  padding-right: 40px;
+}
+.login-card .field-icon .end {
+  cursor: pointer;
+  padding: 5px;
+}
+/* o icone do olho nao pode herdar o posicionamento do icone do campo */
+.field-icon .end .ic {
+  position: static;
+  left: auto;
+  width: 18px;
+  height: 18px;
+  pointer-events: auto;
+  color: var(--muted-light);
+}
+.field-icon .end:hover .ic,
+.field-icon .end.showing .ic {
+  color: var(--ink-2);
+}
+
+/* Botao criar conta */
+.btn-enter {
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.btn-enter .ic {
+  width: 18px;
+  height: 18px;
+}
+
+/* Linha de login */
+.signup-line {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 0.86rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.signup-line a {
+  color: var(--brand-ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+.signup-line a:hover {
+  text-decoration: underline;
+}
+
+/* Caixa verde de seguranca */
+.secure-box {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 16px;
+  background: var(--green-soft);
+  color: var(--green-ink);
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.secure-box .ic {
+  width: 17px;
+  height: 17px;
+}
+
+/* Nota de privacidade */
+.privacy-note {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--muted-light);
+}
+.privacy-note a {
+  color: var(--muted);
+  text-decoration: underline;
+}
+.privacy-note a:hover {
+  color: var(--brand-ink);
+}
+
+/* Responsivo */
+@media (max-width: 1040px) {
+  .promo-title { font-size: 2.1rem; }
+  .auth-title { font-size: 1.8rem; }
+}
+
+@media (max-width: 900px) {
+  .login-wrap {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 16px;
+    gap: 16px;
+  }
+  .promo-card { padding: 30px 26px 26px; }
+  .promo-photo { aspect-ratio: 16 / 10; min-height: 200px; }
+  .login-card { padding: 30px 26px 28px; }
+  .auth-title { max-width: none; }
+}
+
+@media (max-width: 560px) {
+  .login-card .field-row { grid-template-columns: 1fr; }
+  .promo-title { font-size: 1.8rem; }
+  .promo-meta { flex-wrap: wrap; gap: 12px 20px; }
+}

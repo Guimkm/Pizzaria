@@ -10,6 +10,7 @@ GO
 -- Remove as tabelas se já existirem (ordem inversa das FKs),
 -- para o script poder ser executado mais de uma vez
 DROP TABLE IF EXISTS Item_Pedido;
+DROP TABLE IF EXISTS Pizza_Ingrediente;
 DROP TABLE IF EXISTS Pedido;
 DROP TABLE IF EXISTS Endereco;
 DROP TABLE IF EXISTS Telefone;
@@ -66,6 +67,18 @@ CREATE TABLE Pizza (
     id_categoria INT NOT NULL,
     CONSTRAINT FK_Pizza_Categoria FOREIGN KEY (id_categoria)
         REFERENCES Categoria (id_categoria)
+);
+
+-- Relação "Possui" do DER: Pizza (1,n) <-> (0,n) Ingrediente
+CREATE TABLE Pizza_Ingrediente (
+    id_pizza_ingrediente INT IDENTITY(1,1) PRIMARY KEY,
+    id_pizza INT NOT NULL,
+    id_ingrediente INT NOT NULL,
+    CONSTRAINT FK_PizzaIngrediente_Pizza FOREIGN KEY (id_pizza)
+        REFERENCES Pizza (id_pizza) ON DELETE CASCADE,
+    CONSTRAINT FK_PizzaIngrediente_Ingrediente FOREIGN KEY (id_ingrediente)
+        REFERENCES Ingredientes (id_ingrediente),
+    CONSTRAINT UQ_Pizza_Ingrediente UNIQUE (id_pizza, id_ingrediente)
 );
 
 CREATE TABLE Telefone (
@@ -147,6 +160,11 @@ VALUES ('Pepperoni', 'Molho de tomate, mussarela e pepperoni artesanal',
 INSERT INTO Pizza (nome, descricao, tamanho, preco, ativa, id_categoria)
 VALUES ('Margherita', 'Molho de tomate, mussarela e manjericão fresco',
         'G', 45.90, 1, 2);
+
+INSERT INTO Pizza_Ingrediente (id_pizza, id_ingrediente) VALUES (1, 1);
+INSERT INTO Pizza_Ingrediente (id_pizza, id_ingrediente) VALUES (1, 2);
+INSERT INTO Pizza_Ingrediente (id_pizza, id_ingrediente) VALUES (2, 1);
+INSERT INTO Pizza_Ingrediente (id_pizza, id_ingrediente) VALUES (2, 2);
 
 INSERT INTO Telefone (numero, tipo, id_cliente, id_funcionario)
 VALUES ('11987654321', 'Celular', 1, NULL);

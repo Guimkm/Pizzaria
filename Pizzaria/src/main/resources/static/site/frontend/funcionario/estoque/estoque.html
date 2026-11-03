@@ -29,12 +29,12 @@
     <nav class="sidebar-nav">
       <a class="nav-item" href="../pedidos/pedidos.html"><span class="nav-ic"><svg class="ic"><use href="#clipboard"/></svg></span> Pedidos</a>
       <a class="nav-item" href="../pizzas/pizzas.html"><span class="nav-ic"><svg class="ic"><use href="#menu"/></svg></span> Menu</a>
-      <a class="nav-item" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Clientes</a>
+      <a class="nav-item" href="../clientes/clientes.html"><span class="nav-ic"><svg class="ic"><use href="#users"/></svg></span> Usuários</a>
       <a class="nav-item active" href="../estoque/estoque.html"><span class="nav-ic"><svg class="ic"><use href="#box"/></svg></span> Estoque</a>
       <a class="nav-item" href="../relatorios/relatorios.html"><span class="nav-ic"><svg class="ic"><use href="#chart"/></svg></span> Relatórios</a>
     </nav>
     <div class="sidebar-bottom">
-      <a class="sidebar-logout" href="../../auth/login/login.html">
+      <a class="sidebar-logout" href="../../auth/funcionario/login.html">
         <span class="nav-ic"><svg class="ic"><use href="#logout"/></svg></span> Encerrar sessão
       </a>
     </div>
@@ -47,33 +47,33 @@
           <h1 class="page-title">Estoque</h1>
           <p class="page-sub">Ingredientes, quantidades e pontos de reposição.</p>
         </div>
-        <span class="status-pill pill-red"><span class="dot"></span>2 itens críticos</span>
+        <span class="status-pill pill-red" data-summary="pill"><span class="dot"></span>2 itens críticos</span>
       </div>
       <div class="kpi-grid">
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#box"/></svg></span><span class="kpi-label">Itens monitorados</span></div>
-          <p class="kpi-value">6</p>
-          <p class="kpi-detail">2 críticos · 4 dentro do nível</p>
+          <p class="kpi-value" data-kpi="estoque-itens">6</p>
+          <p class="kpi-detail" data-kpi-detail="estoque-itens">2 críticos · 4 dentro do nível</p>
         </div>
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#alert"/></svg></span><span class="kpi-label">Precisam de reposição</span></div>
-          <p class="kpi-value">2</p>
-          <p class="kpi-detail">Pepperoni e manjericão</p>
+          <p class="kpi-value" data-kpi="estoque-reposicao">2</p>
+          <p class="kpi-detail" data-kpi-detail="estoque-reposicao">Pepperoni e manjericão</p>
         </div>
         <div class="kpi">
           <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#dollar"/></svg></span><span class="kpi-label">Valor em estoque</span></div>
-          <p class="kpi-value">R$ 1.413</p>
-          <p class="kpi-detail">Soma de quantidade × preço unitário</p>
+          <p class="kpi-value" data-kpi="estoque-valor">R$ 1.413</p>
+          <p class="kpi-detail" data-kpi-detail="estoque-valor">Soma de quantidade × preço unitário</p>
         </div>
         <div class="kpi">
-          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#refresh"/></svg></span><span class="kpi-label">Reposição prevista</span></div>
-          <p class="kpi-value">3</p>
-          <p class="kpi-detail">Pedidos gerados esta semana</p>
+          <div class="kpi-top"><span class="kpi-ic"><svg class="ic"><use href="#refresh"/></svg></span><span class="kpi-label">Valor em risco</span></div>
+          <p class="kpi-value" data-kpi="estoque-risco">R$ 0,00</p>
+          <p class="kpi-detail" data-kpi-detail="estoque-risco">Soma dos itens críticos</p>
         </div>
       </div>
       <div class="warn-bar">
         <svg class="ic"><use href="#alert"/></svg>
-        <span><b>2 ingredientes com estoque crítico:</b> pepperoni (4,00 kg) e manjericão (3,00 kg).</span>
+        <span data-summary="warn"><b>2 ingredientes com estoque crítico:</b> pepperoni (4,00 kg) e manjericão (3,00 kg).</span>
         <button type="button" class="btn btn-orange-outline btn-sm" onclick="Pizzaria.toast('Pedido de reposição enviado ao fornecedor.', 'success', 'truck')">Repor agora</button>
       </div>
 
@@ -85,14 +85,14 @@
           </div>
           <div class="panel-actions">
             <button type="button" class="btn btn-outline" onclick="Pizzaria.toast('Relatório de estoque exportado em breve.', 'info', 'download')"><svg class="ic"><use href="#download"/></svg> Exportar</button>
-            <button type="button" class="btn btn-primary" onclick="Pizzaria.toast('Cadastro de ingrediente em breve.', 'info', 'plus')"><svg class="ic"><use href="#plus"/></svg> Novo item</button>
+            <button type="button" class="btn btn-primary" data-add="estoque"><svg class="ic"><use href="#plus"/></svg> Novo item</button>
           </div>
         </div>
 
         <div class="tabs">
-          <button type="button" class="tab active" data-filter="todos">Todos (6)</button>
-          <button type="button" class="tab" data-filter="critico">Críticos (2)</button>
-          <button type="button" class="tab" data-filter="ok">No nível (4)</button>
+          <button type="button" class="tab active" data-filter="todos" data-count="todos" data-label="Todos">Todos (6)</button>
+          <button type="button" class="tab" data-filter="critico" data-count="critico" data-label="Críticos">Críticos (2)</button>
+          <button type="button" class="tab" data-filter="ok" data-count="ok" data-label="No nível">No nível (4)</button>
         </div>
 
         <div class="toolbar">
@@ -192,8 +192,8 @@
         </div>
 
         <div class="panel-foot">
-          <span>6 itens · 2 com estoque crítico</span>
-          <span>Dados ilustrativos</span>
+          <span data-summary="foot">6 itens · 2 com estoque crítico</span>
+          <span data-summary="sync">Dados ilustrativos</span>
         </div>
       </section>
     </div>
@@ -204,6 +204,7 @@
   <script src="../../assets/js/icons.js"></script>
   <script src="../../assets/js/base.js" data-base="../../assets/"></script>
   <script src="estoque.js"></script>
+  <script src="../../assets/js/resumos.js"></script>
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   /* Tabela demo (mantem o hook table[data-api]) */
   var table = document.querySelector('table[data-api="pedidos"]');
   if (table && P.bindTable) {
-    P.bindTable(table, 'api/pedidos', 'pedidos');
+    P.bindTable(table, '/api/pedidos', 'pedidos');
   }
 
   /* Busca generica do base.js */
@@ -41,6 +41,7 @@
   });
 
   if (input) input.addEventListener('input', applyFilter);
+  if (wrap) wrap.addEventListener('pizzaria:updated', applyFilter);
 
   /* ---------- Data e hora dinamicas no subtitulo ---------- */
   function fillDate() {

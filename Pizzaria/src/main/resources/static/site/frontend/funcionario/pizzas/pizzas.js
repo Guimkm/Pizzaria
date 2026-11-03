@@ -8,7 +8,7 @@
   /* Tabela demo (mantem o hook table[data-api]) */
   var table = document.querySelector('table[data-api="pizzas"]');
   if (table && P.bindTable) {
-    P.bindTable(table, 'api/pizzas', 'pizzas');
+    P.bindTable(table, '/api/pizzas', 'pizzas');
   }
 
   /* Busca generica do base.js */
@@ -41,4 +41,5 @@
   });
 
   if (input) input.addEventListener('input', applyFilter);
+  if (wrap) wrap.addEventListener('pizzaria:updated', applyFilter);
 })();

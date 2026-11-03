@@ -33,7 +33,7 @@
         email: document.getElementById('cfg-email').value.trim(),
       };
       P.setClient(novo);
-      P.Api.send('PUT', 'api/clientes/' + novo.id, novo).then(function (res) {
+      P.Api.send('PUT', '/api/clientes/' + novo.id, novo).then(function (res) {
         if (res.ok) {
           P.toast('Dados atualizados com sucesso!', 'success');
         } else if (res.status === 0) {
