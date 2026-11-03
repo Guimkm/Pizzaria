@@ -1,6 +1,6 @@
 package Pizzaria.repository;
 
-import Pizzaria.dominio.*;
+import Pizzaria.domain.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +17,48 @@ public class Repository {
         if (tipo == Funcionario.class) return castList(tipo, FuncionarioRepository.findByName(nome));
         if (tipo == Pizza.class) return castList(tipo, PizzaRepository.findByName(nome));
         if (tipo == Ingrediente.class) return castList(tipo, IngredienteRepository.findByName(nome));
+        if (tipo == Categoria.class) return castList(tipo, CategoriaRepository.findByName(nome));
         throw naoSuportado("findByName", tipo);
+    }
+
+    public static <T> List<T> findAll(Class<T> tipo) {
+        if (tipo == Cliente.class) return castList(tipo, ClienteRepository.findAll());
+        if (tipo == Funcionario.class) return castList(tipo, FuncionarioRepository.findAll());
+        if (tipo == Pizza.class) return castList(tipo, PizzaRepository.findAll());
+        if (tipo == Ingrediente.class) return castList(tipo, IngredienteRepository.findAll());
+        if (tipo == Categoria.class) return castList(tipo, CategoriaRepository.findAll());
+        if (tipo == Pedido.class) return castList(tipo, PedidoRepository.findAll());
+        throw naoSuportado("findAll", tipo);
+    }
+
+    // Relações 1:N usadas pelas telas (Cliente -> Endereco/Telefone/Pedido)
+    public static List<Endereco> findEnderecosByCliente(Integer idCliente) {
+        return EnderecoRepository.findByCliente(idCliente);
+    }
+
+    public static List<Telefone> findTelefonesByCliente(Integer idCliente) {
+        return TelefoneRepository.findByCliente(idCliente);
+    }
+
+    public static List<Telefone> findTelefonesByFuncionario(Integer idFuncionario) {
+        return TelefoneRepository.findByFuncionario(idFuncionario);
+    }
+
+    public static List<Pedido> findPedidosByCliente(Integer idCliente) {
+        return PedidoRepository.findByCliente(idCliente);
+    }
+
+    public static boolean updatePedidoPainel(Integer id, String status, String formaPagamento, Integer idFuncionario) {
+        return PedidoRepository.updatePainel(id, status, formaPagamento, idFuncionario);
+    }
+
+    public static java.util.Map<Integer, Integer> contarPedidosPorHora(java.time.LocalDate inicio, java.time.LocalDate fim) {
+        return PedidoRepository.contarPorHora(inicio, fim);
+    }
+
+    public static List<java.util.Map<String, Object>> topPizzas(java.time.LocalDate inicio,
+                                                               java.time.LocalDate fim, int limite) {
+        return PedidoRepository.topPizzas(inicio, fim, limite);
     }
 
     // Retorna null se não encontrar (o diagrama define o retorno como T, não Optional)
@@ -28,8 +69,9 @@ public class Repository {
         else if (tipo == Pizza.class) resultado = PizzaRepository.findById(id);
         else if (tipo == Ingrediente.class) resultado = IngredienteRepository.findById(id);
         else if (tipo == Endereco.class) resultado = EnderecoRepository.findById(id);
+        else if (tipo == Categoria.class) resultado = CategoriaRepository.findById(id);
+        else if (tipo == Telefone.class) resultado = TelefoneRepository.findById(id);
         else if (tipo == Pedido.class) resultado = PedidoRepository.findById(id);
-        else if (tipo == ItemPedido.class) resultado = ItemPedidoRepository.findById(id);
         else throw naoSuportado("findById", tipo);
         return resultado.map(tipo::cast).orElse(null);
     }
@@ -50,8 +92,9 @@ public class Repository {
         else if (obj instanceof Pizza o) PizzaRepository.save(o);
         else if (obj instanceof Ingrediente o) IngredienteRepository.save(o);
         else if (obj instanceof Endereco o) EnderecoRepository.save(o);
+        else if (obj instanceof Categoria o) CategoriaRepository.save(o);
+        else if (obj instanceof Telefone o) TelefoneRepository.save(o);
         else if (obj instanceof Pedido o) PedidoRepository.save(o);
-        else if (obj instanceof ItemPedido o) ItemPedidoRepository.save(o);
         else throw naoSuportado("save", obj.getClass());
     }
 
@@ -61,8 +104,9 @@ public class Repository {
         else if (tipo == Pizza.class) PizzaRepository.delete(id);
         else if (tipo == Ingrediente.class) IngredienteRepository.delete(id);
         else if (tipo == Endereco.class) EnderecoRepository.delete(id);
+        else if (tipo == Categoria.class) CategoriaRepository.delete(id);
+        else if (tipo == Telefone.class) TelefoneRepository.delete(id);
         else if (tipo == Pedido.class) PedidoRepository.delete(id);
-        else if (tipo == ItemPedido.class) ItemPedidoRepository.delete(id);
         else throw naoSuportado("delete", tipo);
     }
 
@@ -72,8 +116,9 @@ public class Repository {
         else if (obj instanceof Pizza o) PizzaRepository.update(id, o);
         else if (obj instanceof Ingrediente o) IngredienteRepository.update(id, o);
         else if (obj instanceof Endereco o) EnderecoRepository.update(id, o);
+        else if (obj instanceof Categoria o) CategoriaRepository.update(id, o);
+        else if (obj instanceof Telefone o) TelefoneRepository.update(id, o);
         else if (obj instanceof Pedido o) PedidoRepository.update(id, o);
-        else if (obj instanceof ItemPedido o) ItemPedidoRepository.update(id, o);
         else throw naoSuportado("update", obj.getClass());
     }
 

@@ -1,7 +1,7 @@
 package Pizzaria.repository;
 
 import Pizzaria.connection.ConnectionFactory;
-import Pizzaria.dominio.Funcionario;
+import Pizzaria.domain.Funcionario;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
@@ -32,6 +32,26 @@ public class FuncionarioRepository {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, String.format("%%%s%%", nome));
         return ps;
+    }
+
+    public static List<Funcionario> findAll() {
+        log.info("Finding all funcionarios");
+        List<Funcionario> lista = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = createPreparedStatementFindAll(conn);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                lista.add(map(rs));
+            }
+        } catch (SQLException e) {
+            log.error("Error while trying to find all funcionarios", e);
+        }
+        return lista;
+    }
+
+    private static PreparedStatement createPreparedStatementFindAll(Connection conn) throws SQLException {
+        String sql = "SELECT * FROM dbo.Funcionario ORDER BY id_funcionario";
+        return conn.prepareStatement(sql);
     }
 
     public static Optional<Funcionario> findById(Integer id) {

@@ -1,13 +1,13 @@
 package Pizzaria.repository;
 
 import Pizzaria.connection.ConnectionFactory;
-import Pizzaria.dominio.Endereco;
+import Pizzaria.domain.Cliente;
+import Pizzaria.domain.Endereco;
 import lombok.extern.log4j.Log4j2;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Log4j2
@@ -33,6 +33,29 @@ public class EnderecoRepository {
         return ps;
     }
 
+    // Lista os endereços de um cliente
+    public static List<Endereco> findByCliente(Integer idCliente) {
+        log.info("Finding enderecos of cliente '{}'", idCliente);
+        List<Endereco> enderecos = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = createPreparedStatementFindByCliente(conn, idCliente);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                enderecos.add(map(rs));
+            }
+        } catch (SQLException e) {
+            log.error("Error while trying to find enderecos of cliente '{}'", idCliente, e);
+        }
+        return enderecos;
+    }
+
+    private static PreparedStatement createPreparedStatementFindByCliente(Connection conn, Integer idCliente) throws SQLException {
+        String sql = "SELECT * FROM dbo.Endereco WHERE id_cliente = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, idCliente);
+        return ps;
+    }
+
     public static void save(Endereco endereco) {
         log.info("Saving endereco '{}'", endereco);
         try (Connection conn = ConnectionFactory.getConnection();
@@ -44,7 +67,7 @@ public class EnderecoRepository {
     }
 
     private static PreparedStatement createPreparedStatementSave(Connection conn, Endereco endereco) throws SQLException {
-        String sql = "INSERT INTO dbo.Endereco (rua, numero, bairro, cidade, cep) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO dbo.Endereco (rua, numero, bairro, cidade, cep, id_cliente) VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = conn.prepareStatement(sql);
         fill(ps, endereco);
         return ps;
@@ -78,10 +101,10 @@ public class EnderecoRepository {
     }
 
     private static PreparedStatement createPreparedStatementUpdate(Connection conn, Integer id, Endereco endereco) throws SQLException {
-        String sql = "UPDATE dbo.Endereco SET rua = ?, numero = ?, bairro = ?, cidade = ?, cep = ? WHERE id_endereco = ?";
+        String sql = "UPDATE dbo.Endereco SET rua = ?, numero = ?, bairro = ?, cidade = ?, cep = ?, id_cliente = ? WHERE id_endereco = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
         fill(ps, endereco);
-        ps.setInt(6, id);
+        ps.setInt(7, id);
         return ps;
     }
 
@@ -92,6 +115,7 @@ public class EnderecoRepository {
         ps.setString(3, e.getBairro());
         ps.setString(4, e.getCidade());
         ps.setString(5, e.getCep());
+        ps.setInt(6, e.getId_cliente().getId_cliente());
     }
 
     private static Endereco map(ResultSet rs) throws SQLException {
@@ -102,6 +126,7 @@ public class EnderecoRepository {
                 .bairro(rs.getString("bairro"))
                 .cidade(rs.getString("cidade"))
                 .cep(rs.getString("cep"))
+                .id_cliente(Cliente.builder().id_cliente(rs.getInt("id_cliente")).build())
                 .build();
     }
 }

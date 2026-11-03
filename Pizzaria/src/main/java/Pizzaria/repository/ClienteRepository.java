@@ -1,8 +1,7 @@
 package Pizzaria.repository;
 
 import Pizzaria.connection.ConnectionFactory;
-import Pizzaria.dominio.Cliente;
-import Pizzaria.dominio.Endereco;
+import Pizzaria.domain.Cliente;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
@@ -33,6 +32,26 @@ public class ClienteRepository {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, String.format("%%%s%%", nome));
         return ps;
+    }
+
+    public static List<Cliente> findAll() {
+        log.info("Finding all clientes");
+        List<Cliente> lista = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = createPreparedStatementFindAll(conn);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                lista.add(map(rs));
+            }
+        } catch (SQLException e) {
+            log.error("Error while trying to find all clientes", e);
+        }
+        return lista;
+    }
+
+    private static PreparedStatement createPreparedStatementFindAll(Connection conn) throws SQLException {
+        String sql = "SELECT * FROM dbo.Cliente ORDER BY id_cliente";
+        return conn.prepareStatement(sql);
     }
 
     public static Optional<Cliente> findById(Integer id) {
@@ -95,42 +114,19 @@ public class ClienteRepository {
     }
 
     public static void save(Cliente cliente) {
-        log.info("Saving cliente '{}'", cliente.getNome());
+        log.info("Saving cliente '{}'", cliente);
         try (Connection conn = ConnectionFactory.getConnection();
-             PreparedStatement psEndereco = createPreparedStatementSaveEndereco(conn, cliente.getId_endereco())) {
-            psEndereco.execute();
-            int idEndereco = getGeneratedId(psEndereco);
-            try (PreparedStatement ps = createPreparedStatementSave(conn, cliente, idEndereco)) {
-                ps.execute();
-            }
+             PreparedStatement ps = createPreparedStatementSave(conn, cliente)) {
+            ps.execute();
         } catch (SQLException e) {
             log.error("Error while trying to save cliente '{}'", cliente.getNome(), e);
         }
     }
 
-    private static PreparedStatement createPreparedStatementSaveEndereco(Connection conn, Endereco endereco) throws SQLException {
-        String sql = "INSERT INTO dbo.Endereco (rua, numero, bairro, cidade, cep) VALUES (?, ?, ?, ?, ?)";
-        PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        ps.setString(1, endereco.getRua());
-        ps.setString(2, endereco.getNumero());
-        ps.setString(3, endereco.getBairro());
-        ps.setString(4, endereco.getCidade());
-        ps.setString(5, endereco.getCep());
-        return ps;
-    }
-
-    // Lê o id gerado pelo INSERT que acabou de ser executado
-    private static int getGeneratedId(PreparedStatement ps) throws SQLException {
-        try (ResultSet keys = ps.getGeneratedKeys()) {
-            keys.next();
-            return keys.getInt(1);
-        }
-    }
-
-    private static PreparedStatement createPreparedStatementSave(Connection conn, Cliente cliente, int idEndereco) throws SQLException {
-        String sql = "INSERT INTO dbo.Cliente (nome, cpf, email, senha, telefone, data_cadastro, id_endereco) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static PreparedStatement createPreparedStatementSave(Connection conn, Cliente cliente) throws SQLException {
+        String sql = "INSERT INTO dbo.Cliente (nome, cpf, email, senha, data_cadastro) VALUES (?, ?, ?, ?, ?)";
         PreparedStatement ps = conn.prepareStatement(sql);
-        fill(ps, cliente, idEndereco);
+        fill(ps, cliente);
         return ps;
     }
 
@@ -162,22 +158,20 @@ public class ClienteRepository {
     }
 
     private static PreparedStatement createPreparedStatementUpdate(Connection conn, Integer id, Cliente cliente) throws SQLException {
-        String sql = "UPDATE dbo.Cliente SET nome = ?, cpf = ?, email = ?, senha = ?, telefone = ?, data_cadastro = ?, id_endereco = ? WHERE id_cliente = ?";
+        String sql = "UPDATE dbo.Cliente SET nome = ?, cpf = ?, email = ?, senha = ?, data_cadastro = ? WHERE id_cliente = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
-        fill(ps, cliente, cliente.getId_endereco().getId_endereco());
-        ps.setInt(8, id);
+        fill(ps, cliente);
+        ps.setInt(6, id);
         return ps;
     }
 
-    // Preenche os 7 primeiros parâmetros (usado no INSERT e no UPDATE)
-    private static void fill(PreparedStatement ps, Cliente c, int idEndereco) throws SQLException {
+    // Preenche os 5 primeiros parâmetros (usado no INSERT e no UPDATE)
+    private static void fill(PreparedStatement ps, Cliente c) throws SQLException {
         ps.setString(1, c.getNome());
         ps.setString(2, c.getCpf());
         ps.setString(3, c.getEmail());
         ps.setString(4, c.getSenha());
-        ps.setString(5, c.getTelefone());
-        ps.setDate(6, Date.valueOf(c.getData_cadastro() == null ? java.time.LocalDate.now() : c.getData_cadastro()));
-        ps.setInt(7, idEndereco);
+        ps.setDate(5, Date.valueOf(c.getData_cadastro() == null ? java.time.LocalDate.now() : c.getData_cadastro()));
     }
 
     private static Cliente map(ResultSet rs) throws SQLException {
@@ -188,9 +182,7 @@ public class ClienteRepository {
                 .cpf(rs.getString("cpf"))
                 .email(rs.getString("email"))
                 .senha(rs.getString("senha"))
-                .telefone(rs.getString("telefone"))
                 .data_cadastro(data == null ? null : data.toLocalDate())
-                .id_endereco(EnderecoRepository.findById(rs.getInt("id_endereco")).orElse(null))
                 .build();
     }
 }

@@ -1,15 +1,13 @@
 package Pizzaria.repository;
 
 import Pizzaria.connection.ConnectionFactory;
-import Pizzaria.dominio.Ingrediente;
+import Pizzaria.domain.Ingrediente;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Log4j2
 public class IngredienteRepository {
@@ -34,6 +32,26 @@ public class IngredienteRepository {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, String.format("%%%s%%", nome));
         return ps;
+    }
+
+    public static List<Ingrediente> findAll() {
+        log.info("Finding all ingredientes");
+        List<Ingrediente> lista = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = createPreparedStatementFindAll(conn);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                lista.add(map(rs));
+            }
+        } catch (SQLException e) {
+            log.error("Error while trying to find all ingredientes", e);
+        }
+        return lista;
+    }
+
+    private static PreparedStatement createPreparedStatementFindAll(Connection conn) throws SQLException {
+        String sql = "SELECT * FROM dbo.Ingredientes ORDER BY nome";
+        return conn.prepareStatement(sql);
     }
 
     public static Optional<Ingrediente> findById(Integer id) {
@@ -116,30 +134,13 @@ public class IngredienteRepository {
         ps.setString(4, i.getUnidade());
     }
 
-    private static Ingrediente map(ResultSet rs) throws SQLException {
+    static Ingrediente map(ResultSet rs) throws SQLException {
         return Ingrediente.builder()
                 .id_ingrediente(rs.getInt("id_ingrediente"))
                 .nome(rs.getString("nome"))
                 .preco_unitario(rs.getDouble("preco_unitario"))
-                .quantidade(rs.getInt("quantidade"))
+                .quantidade(rs.getDouble("quantidade"))
                 .unidade(rs.getString("unidade"))
                 .build();
-    }
-
-    static String ingredientesToString(Ingrediente[] ings) {
-        if (ings == null || ings.length == 0) return null;
-        return Arrays.stream(ings)
-                .filter(i -> i != null && i.getId_ingrediente() != null)
-                .map(i -> String.valueOf(i.getId_ingrediente()))
-                .collect(Collectors.joining(","));
-    }
-
-    static Ingrediente[] ingredientesFromString(String ids) {
-        if (ids == null || ids.isBlank()) return new Ingrediente[0];
-        List<Ingrediente> lista = new ArrayList<>();
-        for (String id : ids.split(",")) {
-            IngredienteRepository.findById(Integer.parseInt(id.trim())).ifPresent(lista::add);
-        }
-        return lista.toArray(new Ingrediente[0]);
     }
 }
