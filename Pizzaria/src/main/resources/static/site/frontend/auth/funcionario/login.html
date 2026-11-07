@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login do Funcionário - Pizzaria Sabores Italiano</title>
+  <link rel="icon" href="../../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body data-page="login">
+  <div class="demo-banner">
+    <svg class="ic"><use href="#info"/></svg>
+    <span>Sistema sem acesso ao servidor Java/banco de dados - exibindo dados de demonstração.</span>
+  </div>
+
+  <div class="login-wrap">
+
+    <!-- Lado esquerdo: cartao laranja da marca -->
+    <section class="promo-card">
+      <p class="promo-eyebrow">
+        <svg class="ic"><use href="#pizza"/></svg>
+        <span>Área da equipe</span>
+      </p>
+
+      <h1 class="promo-title">A casa está<br>nas suas mãos.</h1>
+
+      <p class="promo-text">Acesse o painel para acompanhar pedidos, clientes, estoque e o cardápio da pizzaria.</p>
+
+      <div class="promo-photo">
+        <img src="../../assets/img/promo.png" alt="Pizza artesanal recém-saída do forno">
+      </div>
+
+      <div class="promo-meta">
+        <span><svg class="ic"><use href="#users"/></svg>Equipe</span>
+        <span><svg class="ic"><use href="#shield"/></svg>Acesso restrito</span>
+      </div>
+
+      <p class="promo-foot">Uso exclusivo dos funcionários da Pizzaria Sabores Italiano.</p>
+    </section>
+
+    <!-- Lado direito: card branco de acesso do FUNCIONARIO -->
+    <section class="login-card">
+      <a href="../../index.html" class="btn btn-ghost btn-sm voltar-inicio">
+        <svg class="ic"><use href="#chevron-left"/></svg>
+        Voltar
+      </a>
+
+      <span class="pill-green">Acesso da equipe</span>
+
+      <h1 class="auth-title">Bem-vindo de volta à cozinha.</h1>
+
+      <p class="auth-sub">Entre com seu e-mail corporativo @PizzariaSabores para acessar o painel.</p>
+
+      <form id="form-login" novalidate>
+        <div class="field">
+          <label for="log-email">E-mail corporativo</label>
+          <div class="field-icon">
+            <svg class="ic"><use href="#mail"/></svg>
+            <input id="log-email" type="email" placeholder="nome@pizzariasabores.com" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="log-senha">Senha</label>
+          <div class="field-icon">
+            <svg class="ic"><use href="#lock"/></svg>
+            <input id="log-senha" type="password" placeholder="••••••••••••" autocomplete="current-password" required>
+            <button type="button" class="end" id="log-eye" aria-label="Mostrar senha">
+              <svg class="ic"><use href="#eye-off"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="field-remember">
+          <label class="remember-label">
+            <input type="checkbox" id="log-remember" checked>
+            <span>Lembrar acesso</span>
+          </label>
+          <a href="#" class="esqueceu">Esqueci minha senha</a>
+        </div>
+
+        <div id="log-erro" class="form-error"></div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-enter">
+          <svg class="ic"><use href="#arrow-right"/></svg>
+          Entrar
+        </button>
+      </form>
+
+      <p class="signup-line">
+        Ainda não tem acesso? <a href="cadastro.html">Cadastre-se como funcionário</a>
+      </p>
+
+      <p class="signup-line">
+        É cliente? <a href="../cliente/login.html">Acesse a área do cliente</a>
+      </p>
+
+      <p class="signup-line" id="func-note">
+        O cargo é liberado por um administrador após a confirmação do cadastro.
+      </p>
+
+      <div class="secure-box">
+        <svg class="ic"><use href="#shield"/></svg>
+        <span>Acesso restrito à equipe da pizzaria.</span>
+      </div>
+
+      <p class="privacy-note">
+        Ao continuar, você concorda com nossos <a href="#">Termos de uso</a><br>
+        e nossa <a href="#">Política de privacidade</a>.
+      </p>
+
+      <div id="log-demo" class="demo-hint" style="display:none"></div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../../assets/js/icons.js"></script>
+  <script src="../../assets/js/base.js" data-base="../../assets/"></script>
+  <script src="login.js"></script>
+</body>
+</html>
